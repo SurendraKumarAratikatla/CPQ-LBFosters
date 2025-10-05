@@ -1,0 +1,70 @@
+<script type="text/html" id="quoteTableCheckboxCell">
+    <label class="fiori3-quote-table-checkbox fiori3-checkbox-group">
+        <input type="checkbox" data-bind="attr:{ 'id': cellId }, value: value, checked: value, disable: !isEditable" />
+        <span></span>
+    </label>
+</script>
+
+<script type="text/html" id="quoteTableInputTextCell">
+    <div class="input-group fiori3-number-cell flex">
+        <!-- ko if: isMoneyColumn-->
+        <span class="input-group-addon cart-table-no-background fiori3-currency" data-bind="attr:{ 'id': cellId + 'currencySign' }, textOrNbsp: $root.currencySign" ></span>
+        <!-- /ko -->
+        <!-- ko if: isNumberColumn-->
+        <input type="text" class="form-control numberCell" data-bind="attr:{ 'id': cellId }, numericValue: value, css: {'validation-failed': validationViolated }" />
+        <!-- /ko -->
+        <!-- ko if: !isNumberColumn-->
+        <input type="text" class="form-control" data-bind="attr:{ 'id': cellId }, value: value" />
+        <!-- /ko -->
+    </div>
+</script>
+
+<script type="text/html" id="quoteTableAttributeCell">
+    <div class="fiori3-input-group fiori3-select-group">
+        <!--ko if: column.name == 'UnitOfMeasure' -->
+            <select data-bind="attr:{ 'id': cellId, event: uomFunctionCall() }, options: column.values, optionsText: 'displayValue', optionsValue: 'attributeValue', value: value, disable: !isEditable, css: {'validation-failed': validationViolated }" class="form-control"></select>
+        <!-- /ko -->
+        <!--ko ifnot: column.name == 'UnitOfMeasure' -->
+            <select data-bind="attr:{ 'id': cellId }, options: column.values, optionsText: 'displayValue', optionsValue: 'attributeValue', value: value, disable: !isEditable, css: {'validation-failed': validationViolated }" class="form-control"></select>
+        <!-- /ko -->
+    </div>
+</script>
+
+<script type="text/html" id="quoteTableDateCell">
+    <div class="fiori3-input-group input-group date-field">
+        <input data-bind="attr: { 'id': cellId }, value: value, disable: !isEditable, css: {'validation-failed': validationViolated }" class="form-control cart-table-date-cell" />
+        <!-- ko if: isEditable-->
+        <a tabindex="-1" class="input-group-addon btn btn-default" data-date-format="@Environment.DateFormatString" data-bind="datepicker: value, tooltip: { title: '@Translation.GetJS("Quote.Calendar")', placement: 'auto top' }"><span class="sap-icon">&#xe0ae;</span></a>
+        <!-- /ko -->
+    </div>
+</script>
+
+<script type="text/html" id="quoteTableLabelCell">
+    <div>
+        <!-- ko if: isMoneyColumn-->
+        <span data-bind="attr: { 'id': cellId + 'currencySign' }, textOrNbsp: $root.currencySign"></span>
+        <!-- /ko -->
+        <span data-bind="attr: { 'id': cellId }, html: value"></span>
+    </div>
+</script>
+
+<script type="text/html" id="quoteTableAttributeRadioCell">
+    <!-- ko foreach: column.values -->
+    <ul class="chckqty">
+        <li>
+            <label class="text-left fiori3-radio-button">
+                <input type="radio" data-bind="enable: $parent.isEditable, value: attributeValue, checked: $parent.value, attr: { name: $parent.cellId, id: $parent.cellId + attributeValue }">
+                <span data-bind="text: displayValue"></span>
+                <span data-bind="if: !displayValue">@Translation.Get("TablesOnQuotes.NoOptionChosen")</span>
+            </label>
+        </li>
+    </ul>
+    <!-- /ko -->
+</script>
+
+<script>
+    function uomFunctionCall(){
+        cpq.server.executeScript('LBF_GS_VCP_REQ_FIELDS_CHANGE 2');
+        console.log("LBF_GS_VCP_REQ_FIELDS_CHANGE script executed.....")
+    }
+</script>

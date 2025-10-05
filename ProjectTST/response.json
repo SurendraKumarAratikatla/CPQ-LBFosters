@@ -1,0 +1,133 @@
+{
+
+    "ns0:SD_SALESDOCUMENT_CREATEResponse": {
+  
+      "CONDITIONS_EX": {
+  
+        "item": {
+  
+          "COND_TYPE": "EK01",
+  
+          "COND_VALUE": "49.9" ---///Mat.Cost/Unit
+  
+        }
+  
+      },
+  
+      "RETURN": {
+  
+        "item": [
+  
+          {
+  
+            "TYPE": "S",
+  
+            "ID": "V4",
+  
+            "NUMBER": "233",
+  
+            "MESSAGE": "SALES_HEADER_IN has been processed successfully",
+  
+            "LOG_NO": "",
+  
+            "LOG_MSG_NO": "000000",
+  
+            "MESSAGE_V1": "VBAKKOM",
+  
+            "MESSAGE_V2": "",
+  
+            "MESSAGE_V3": "",
+  
+            "MESSAGE_V4": "",
+  
+            "PARAMETER": "SALES_HEADER_IN",
+  
+            "ROW": "0",
+  
+            "FIELD": "",
+  
+            "SYSTEM": "S4DCLNT100"
+  
+          },
+  
+          {
+  
+            "TYPE": "S",
+  
+            "ID": "V4",
+  
+            "NUMBER": "233",
+  
+            "MESSAGE": "SALES_ITEM_IN has been processed successfully",
+  
+            "LOG_NO": "",
+  
+            "LOG_MSG_NO": "000000",
+  
+            "MESSAGE_V1": "VBAPKOM",
+  
+            "MESSAGE_V2": "000001",
+  
+            "MESSAGE_V3": "",
+  
+            "MESSAGE_V4": "",
+  
+            "PARAMETER": "SALES_ITEM_IN",
+  
+            "ROW": "1",
+  
+            "FIELD": "",
+  
+            "SYSTEM": "S4DCLNT100"
+  
+          },
+  
+          {
+  
+            "TYPE": "W",
+  
+            "ID": "V1",
+  
+            "NUMBER": "555",
+  
+            "MESSAGE": "The sales document is not yet complete: Edit data",
+  
+            "LOG_NO": "",
+  
+            "LOG_MSG_NO": "000000",
+  
+            "MESSAGE_V1": "VBAPKOM",
+  
+            "MESSAGE_V2": "000001",
+  
+            "MESSAGE_V3": "",
+  
+            "MESSAGE_V4": "",
+  
+            "PARAMETER": "VBUVKOM",
+  
+            "ROW": "0",
+  
+            "FIELD": "",
+  
+            "SYSTEM": "S4DCLNT100"
+  
+          }
+  
+        ]
+  
+      },
+  
+      "SALES_CFGS_REF": {
+  
+        "item": {
+  
+          "POSEX": "000001"
+  
+        }
+  
+      }
+  
+    }
+  
+  }

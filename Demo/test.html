@@ -1,0 +1,50 @@
+<div class="subscription-item-values-wrapper flex">
+    <!-- ko if: values[0] -->
+        <div class="flex" data-title="Quantity">
+        <!-- ko template : { name : values[0].template, data: values[0] }  -->
+            <div data-bind="css: { 'cell-wrapper-reset-condition' : isDeletionOfPricingConditionAllowed() }">
+                <!-- ko if: isDeletionOfPricingConditionAllowed() --><!--/ko-->
+
+                <div data-bind="css : { numberCell: isNumber }, click: function(){ if($data.isFocused) $data.isFocused(true) }" class="numberCell">
+                    <!-- ko if: hasModifiedComputedField --><!-- /ko -->
+                    <!--ko if: isPrice --><!-- /ko -->
+                    <!--ko if: isDropDown --><!--/ko-->
+                    <!--ko ifnot: isDropDown-->
+                    <a href="#" class="editable-column" data-bind="text: value() ? value() : 'empty', css: { hasError: errorMessage, empty: !value() }, tooltip: { title: errorMessage() ? errorMessage() : 'Click to edit' }, click: function() { startEditing(tabId + '_' + editableGroup) }, attr: { id: tabId + '_' + editableGroup }" title="Click to edit" id="Quantity_22804_342448395">1</a>
+                    <!--/ko-->
+                    <!-- ko if: isDiscount --><!--/ko-->
+
+                    <div class="period-unit-wrapper">
+                        <!--ko if: isPrice && $data.column && ($data.column.isMRC || quantityAndUnit) && $parent.recurringCostPeriod && $parent.recurringPricePeriod--><!--/ko-->
+                        <!-- ko if: !isCost && isPrice && quantityAndUnit.trim() --><!-- /ko -->
+                    </div>
+                </div>
+            </div>
+        <!-- /ko -->
+            </div>
+    <!-- /ko -->
+</div>
+
+<div class="subscription-item-values-wrapper flex">
+    <!-- ko if: values[2] -->
+        <div class="flex" data-title="Cost">
+        <!-- ko template : { name : values[2].template, data: values[2] }  -->
+            <div data-bind="css : { numberCell: isNumber }" class="numberCell">
+                <!--ko if: isDropDown --><!--/ko-->
+                <!--ko ifnot: isDropDown-->
+                <!-- ko if: isPrice && value -->
+                <span data-bind="text: $root.currencySign">$</span>
+                <!-- /ko -->
+                <a href="#" class="editable-column" data-bind="text: value() ? value() : 'empty', css: { hasError: errorMessage, empty: !value() }, tooltip: { title: errorMessage() ? errorMessage() : 'Click to edit' }, click: function() { startEditing(tabId + '_' + editableGroup) }, attr: { id: tabId + '_' + editableGroup }" title="Click to edit" id="Quantity_22804_342448395566">0.00</a>
+                <!--/ko-->
+                <!-- ko if: isDiscount --><!-- /ko -->
+
+                <div class="period-unit-wrapper">
+                    <!--ko if: isPrice && $data.column && ($data.column.isMRC || quantityAndUnit) && $parent.recurringCostPeriod && $parent.recurringPricePeriod --><!--/ko-->
+                    <!-- ko if: !isCost && isPrice && quantityAndUnit.trim() --><!-- /ko -->
+                </div>
+            </div>
+        <!-- /ko -->
+        </div>
+    <!-- /ko -->
+</div>

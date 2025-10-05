@@ -1,0 +1,398 @@
+{
+    "subscriptionBillingInfo": {
+      "contractTerms": {
+        "contractTermLength": 0,
+        "minimumContractTermLength": 0
+      },
+      "marketRatePlans": [
+        {
+          "marketId": 0,
+          "marketCode": "string",
+          "ratePlan": {
+            "ratePlanTemplate": {
+              "id": "string",
+              "number": 0,
+              "description": "string",
+              "parameters": [
+                {
+                  "code": "string",
+                  "description": "string",
+                  "type": 0
+                }
+              ],
+              "tags": [
+                "string"
+              ],
+              "currency": {
+                "value": "string",
+                "parameterCode": "string"
+              },
+              "periodicity": {
+                "value": "string",
+                "parameterCode": "string",
+                "viewValue": "string"
+              },
+              "charges": [
+                {
+                  "id": "string",
+                  "chargeType": "string",
+                  "ratingType": "string",
+                  "metric": {
+                    "metricId": "string",
+                    "label": "string",
+                    "source": "string",
+                    "technicalResourceType": "string"
+                  },
+                  "billing": {
+                    "billedInAdvance": {
+                      "value": true,
+                      "parameterCode": "string"
+                    },
+                    "proratable": {
+                      "value": true,
+                      "parameterCode": "string"
+                    }
+                  },
+                  "customAmountCode": "string",
+                  "priceModel": {
+                    "fixedRate": {
+                      "id": "string",
+                      "price": {
+                        "value": 0,
+                        "parameterCode": "string"
+                      }
+                    },
+                    "fixedFee": {
+                      "id": "string",
+                      "price": {
+                        "value": 0,
+                        "parameterCode": "string"
+                      }
+                    },
+                    "blockRate": {
+                      "id": "string",
+                      "includedQuantity": {
+                        "value": 0,
+                        "parameterCode": "string"
+                      },
+                      "blockSize": {
+                        "value": 0,
+                        "parameterCode": "string"
+                      },
+                      "pricePerBlock": {
+                        "value": 0,
+                        "parameterCode": "string"
+                      }
+                    },
+                    "allUnitVolumeRate": {
+                      "id": "string",
+                      "tiers": [
+                        {
+                          "bound": {
+                            "value": 0,
+                            "parameterCode": "string"
+                          },
+                          "pricePerUnit": {
+                            "value": 0,
+                            "parameterCode": "string"
+                          },
+                          "fixedPrice": {
+                            "value": 0,
+                            "parameterCode": "string"
+                          },
+                          "pricePerBlock": {
+                            "value": 0,
+                            "parameterCode": "string"
+                          }
+                        }
+                      ],
+                      "blockSize": {
+                        "value": 0,
+                        "parameterCode": "string"
+                      },
+                      "minimumBlocks": {
+                        "value": 0,
+                        "parameterCode": "string"
+                      }
+                    },
+                    "tierRate": {
+                      "id": "string",
+                      "blockSize": {
+                        "value": 0,
+                        "parameterCode": "string"
+                      },
+                      "minimumBlocks": {
+                        "value": 0,
+                        "parameterCode": "string"
+                      },
+                      "tiers": [
+                        {
+                          "bound": {
+                            "value": 0,
+                            "parameterCode": "string"
+                          },
+                          "pricePerUnit": {
+                            "value": 0,
+                            "parameterCode": "string"
+                          },
+                          "pricePerBlock": {
+                            "value": 0,
+                            "parameterCode": "string"
+                          }
+                        }
+                      ]
+                    },
+                    "percentageRate": {
+                      "id": "string",
+                      "ratio": {
+                        "value": "string",
+                        "ratioType": 0,
+                        "parameterCode": "string"
+                      },
+                      "pricePerUnit": {
+                        "value": 0,
+                        "parameterCode": "string"
+                      }
+                    }
+                  }
+                }
+              ],
+              "possibleMarkets": [
+                {
+                  "id": 0,
+                  "code": "string",
+                  "text": "string"
+                }
+              ],
+              "marketCurrencyMapping": [
+                {
+                  "id": 0,
+                  "text": "string"
+                }
+              ],
+              "subscriptionParameters": [
+                {
+                  "code": "string"
+                }
+              ],
+              "percentageOperationLookups": [
+                {
+                  "id": 0,
+                  "text": "string"
+                }
+              ]
+            },
+            "id": "string",
+            "code": "string",
+            "description": "string",
+            "snapshots": [
+              {
+                "effectiveAt": "string",
+                "parameters": [
+                  {
+                    "code": "string",
+                    "value": "string",
+                    "inputValue": "string",
+                    "type": 0,
+                    "percentageOperation": 0
+                  }
+                ]
+              }
+            ],
+            "tags": [
+              "string"
+            ],
+            "marketId": 0,
+            "marketCode": "string",
+            "marketSystemId": "string"
+          }
+        }
+      ]
+    },
+    "id": 0,
+    "systemId": "string",
+    "name": "string",
+    "displayTypeId": 0,
+    "configurationTypeId": 0,
+    "productTypeId": 0,
+    "catalogCode": "string",
+    "unitOfMeasure": "string",
+    "description": "string",
+    "categories": [
+      {
+        "id": 0,
+        "name": "string",
+        "rank": 0
+      }
+    ],
+    "createdDate": "string",
+    "modifiedDate": "string",
+    "createdBy": "string",
+    "modifiedBy": "string",
+    "productVersion": "string",
+    "versionNumber": 0,
+    "image": "string",
+    "alternativeText": "string",
+    "isProductUsingAlternativePricing": true,
+    "displayTypePricingId": 0,
+    "pricingCode": "string",
+    "price": 0,
+    "costBuilder": "string",
+    "priceBuilder": "string",
+    "baseRecurringPrice": 0,
+    "recurringPricePeriodFormula": "string",
+    "recurringPriceFormula": "string",
+    "recurringCostPeriodFormula": "string",
+    "recurringCostFormula": "string",
+    "useCustomPricing": true,
+    "alternativePricing": {
+      "pricingType": 0,
+      "price": 0,
+      "costBuilder": "string",
+      "recurringCostFormula": "string",
+      "priceBuilder": "string",
+      "baseRecurringPrice": 0,
+      "recurringPriceFormula": "string",
+      "pricingCode": "string",
+      "recurringPricePeriodFormula": "string",
+      "recurringCostPeriodFormula": "string"
+    },
+    "active": true,
+    "visibleToEveryone": true,
+    "permissionSelected": [
+      0
+    ],
+    "permissionStartDate": "string",
+    "permissionStartDateTimestamp": "string",
+    "permissionEndDate": "string",
+    "permissionEndDateTimestamp": "string",
+    "endStatus": 0,
+    "replacementProductSystemId": "string",
+    "replacementProductName": "string",
+    "externalId": "string",
+    "uPC": "string",
+    "mPN": "string",
+    "inventory": 0,
+    "leadTime": "string",
+    "familyCode": "string",
+    "weight": "string",
+    "imageLarge": "string",
+    "descriptionLong": "string",
+    "executeRulesOnce": true,
+    "allowConfigurationImport": true,
+    "script": "string",
+    "configurationTemplate": "string",
+    "updateAsset": true,
+    "alwaysAllowRenewal": true,
+    "isSapProduct": true,
+    "isSyncedFromBackOffice": true,
+    "sAPEffectiveDate": "string",
+    "isRootItem": true,
+    "isSubscription": true,
+    "orderItemType": 0,
+    "autoRenewalIndicator": 0,
+    "ratePlanTemplateId": "string",
+    "descriptionBuilder": "string",
+    "userCanEnterQuantity": "string",
+    "skipRelatedProductsLoading": true,
+    "defaultItemType": "string",
+    "userCanChangeItemType": "string",
+    "value3": "string",
+    "generalItemCategoryGroup": "string",
+    "hasUsagePricing": true,
+    "isBundleProduct": true,
+    "shippings": [
+      {
+        "systemId": "string",
+        "id": 0,
+        "expression": "string"
+      }
+    ],
+    "layout": {
+      "tabs": [
+        {
+          "id": 0,
+          "code": 0,
+          "name": "string",
+          "rank": 0,
+          "templateId": 0,
+          "rDTemplateId": 0,
+          "attributes": [
+            {
+              "systemId": "string",
+              "id": 0,
+              "standardAttributeCode": 0,
+              "name": "string",
+              "rank": 0,
+              "displayAs": 1,
+              "buttonText": "string",
+              "values": [
+                "string"
+              ],
+              "containerValue": {
+                "canAddNewRow": true,
+                "hasActions": true,
+                "columns": [
+                  {
+                    "columnId": 0,
+                    "columnName": "string",
+                    "displayAs": 0,
+                    "values": [
+                      "string"
+                    ]
+                  }
+                ],
+                "rows": [
+                  {
+                    "rowId": 0,
+                    "values": [
+                      "string"
+                    ]
+                  }
+                ]
+              },
+              "isWholeRow": true,
+              "dataType": "string"
+            }
+          ],
+          "visibilityId": 0,
+          "visibilityCondition": "string"
+        }
+      ],
+      "responderAttributes": [
+        {
+          "id": 0,
+          "attributeSystemId": "string",
+          "standardAttributeCode": 0,
+          "name": "string",
+          "rank": 0,
+          "value": {
+            "displayValue": "string",
+            "price": 0
+          }
+        }
+      ],
+      "responderLineItems": [
+        {
+          "id": 0,
+          "attributeSystemId": "string",
+          "standardAttributeCode": 0,
+          "name": "string",
+          "rank": 0,
+          "value": {
+            "displayValue": "string",
+            "price": 0
+          }
+        }
+      ],
+      "responderTemplateId": 0
+    },
+    "codeMatching": [
+      {
+        "id": 0,
+        "productId": 0,
+        "matchString": "string",
+        "codeGenerator": "string"
+      }
+    ]
+  }

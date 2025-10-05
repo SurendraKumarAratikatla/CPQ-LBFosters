@@ -1,0 +1,33 @@
+if i am having below as list of dictionaries
+
+data = [
+    {'FOB': "Shipping Point - Full Freight Allowed via truck / van to (jobsite or destination)."},
+    {'Shipment': 'Quoted from stock - subject to prior sale.'},
+    {'Notes': 'Prices quoted valid for 5 days.'},
+    {'Notes': 'Prices quoted do not include sales tax.'},
+    {'Notes': 'Please reconfirm prices prior to placing an order.'},
+    {'Shipment': 'Rail Anchors and Track Spikes - Please allow 4-6 weeks ARO for shipment.'},
+    {'Shipment': 'Tie Plates - Please allow 6-8 weeks ARO for shipment.'},
+    {'Notes': 'Prices quoted are subject to base price changes in metal/steel, and rubber, fuel, scrap, energy and other surcharges in effect at time of order placement and shipment.'},
+    {'Notes': 'Prices quoted valid for 5 days.'},
+    {'Extra': 'This is a newly added section.'}
+]
+
+i want sort it like if any values of the dictnaries same only then both should be at above and below, if you can see the above list of dictionries one of Notes is 'Prices quoted valid for 5 days.' is at 3rd place and 9th place.
+
+but i need both at above and below and also should be consider this point which is index of 1st duplicate value should be at same place and if we one or more next value like in 9th place in above it should be have 4th place and rest should be same index. check below how i want to be.
+
+data = [
+    {'FOB': "Shipping Point - Full Freight Allowed via truck / van to (jobsite or destination)."},
+    {'Shipment': 'Quoted from stock - subject to prior sale.'},
+    {'Notes': 'Prices quoted valid for 5 days.'},
+    {'Notes': 'Prices quoted valid for 5 days.'},
+    {'Notes': 'Prices quoted do not include sales tax.'},
+    {'Notes': 'Please reconfirm prices prior to placing an order.'},
+    {'Shipment': 'Rail Anchors and Track Spikes - Please allow 4-6 weeks ARO for shipment.'},
+    {'Shipment': 'Tie Plates - Please allow 6-8 weeks ARO for shipment.'},
+    {'Notes': 'Prices quoted are subject to base price changes in metal/steel, and rubber, fuel, scrap, energy and other surcharges in effect at time of order placement and shipment.'},
+    {'Extra': 'This is a newly added section.'}
+]
+
+can you do this ?

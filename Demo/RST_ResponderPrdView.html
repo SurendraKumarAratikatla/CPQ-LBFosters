@@ -1,0 +1,359 @@
+<!-- ko if: isVariantPricingProduct -->
+@*show prices*@
+<div class="col-md-12 fiori3-responder-show-prices-toggle"">
+    <div class="fiori3-configurator-main-actions flex flex-start">
+        <label class="fiori3-toggle-label" style="margin-right: 0;">
+            <span class="fiori3-toggle fiori3-toggle-compact">
+                <input role="switch" class="fiori3-toggle-input" type="checkbox" name="toggleShowPrices" value="" aria-labelledby="showPricesLabel" data-bind="checked: isShowPricesChecked, event: { change: showPricesToggleChange }" />
+                <div class="fiori3-toggle-wrapper">
+                    <div class="fiori3-toggle-track">
+                        <span class="fiori3-toggle-handle" role="presentation"></span>
+                    </div>
+                </div>
+            </span>
+            <span id="showPricesLabel" class="fiori3-toggle-text" style="margin-right: 0;">@Translation.Get("Configurator.ShowVariantPrices")</span>
+        </label>
+    </div>
+</div>
+<!-- /ko -->
+<table class="table table-hover responder-table fiori3-table fiori3-responder-table">
+    <tbody>
+        <tr>
+            <th scope="row">@Translation.Get("docPartNumber")</th>
+            <td colspan="2" data-bind="text: partNumber"></td>
+        </tr>
+        @if (BasePriceTypeInConfigurator == 2)
+        {
+            <tr>
+                <th scope="row">@Translation.Get("Configurator.BasePrice")</th>
+                <td colspan="2"><span data-bind="visible: basePrice, text: basePriceFormatted"></span></td>
+            </tr>
+            <tr>
+                <th scope="row">@Translation.Get("Configurator.ExtendedBasePrice")</th>
+                <td colspan="2"><span data-bind="visible: extendedBasePrice, text: extendedBasePriceFormatted"></span></td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                @if (BasePriceTypeInConfigurator == 0)
+                {
+                    <th scope="row">@Translation.Get("Configurator.BasePrice")</th>
+                    <td colspan="2"><span data-bind="visible: basePrice, text: basePriceFormatted"></span></td>
+                }
+                @if (BasePriceTypeInConfigurator == 1)
+                {
+                    <th scope="row">@Translation.Get("Configurator.ExtendedBasePrice")</th>
+                    <td colspan="2"><span data-bind="visible: extendedBasePrice, text: extendedBasePriceFormatted"></span></td>
+                }
+            </tr>
+        }
+
+        @if (UseRecurringPriceAndCost)
+        {
+            if (BasePriceTypeInConfigurator == 2)
+            {
+                <tr>
+                    <th scope="row">@Translation.Get("Configurator.BaseMRCPrice")</th>
+                    <td colspan="2"><span data-bind="visible: basePrice, text: baseMRCPriceFormatted"></span></td>
+                </tr>
+                <tr>
+                    <th scope="row">@Translation.Get("Configurator.ExtendedBaseMRCPrice")</th>
+                    <td colspan="2"><span data-bind="visible: extendedBasePrice, text: extendedBaseMRCPriceFormatted"></span></td>
+                </tr>
+            }
+            else
+            {
+                <tr>
+                    @if (BasePriceTypeInConfigurator == 0)
+                    {
+                        <th scope="row">@Translation.Get("Configurator.BaseMRCPrice")</th>
+                        <td colspan="2"><span data-bind="visible: basePrice, text: baseMRCPriceFormatted"></span></td>
+                    }
+                    @if (BasePriceTypeInConfigurator == 1)
+                    {
+                        <th scope="row">@Translation.Get("Configurator.ExtendedBaseMRCPrice")</th>
+                        <td colspan="2"><span data-bind="visible: extendedBasePrice, text: extendedBaseMRCPriceFormatted"></span></td>
+                    }
+                </tr>
+            }
+        }
+        <tr>
+            <td colspan="3"></td>
+        </tr>
+        <tr class="table-heading">
+            <th scope="col">@Translation.Get("Configurator.Items")</th>
+            @if (UseRecurringPriceAndCost)
+            {
+                <!-- ko if: useNewQuoteEngine -->
+                <th scope="col">@Translation.Get("Configurator.NRC")</th>
+                <th scope="col">@Translation.Get("Configurator.MRC")</th>
+                <!-- /ko -->
+
+                <!-- ko if: !useNewQuoteEngine -->
+                <th scope="col">@Translation.Get("xsltNRC")</th>
+                <th scope="col">@Translation.Get("xsltMRC")</th>
+                <!-- /ko -->
+            }
+            else
+            {
+                <td></td>
+            }
+        </tr>
+
+        <!-- ko foreach: attributes -->
+        <tr>
+            <th scope="row" class="responder-attribute">
+                <span data-bind="text:label"></span>
+                <span data-bind="visible: inconsistent" class="info-label clear-fix-info-label">
+                    <!-- ko if: conflicts().length > 0 -->
+
+                    <a href="#" data-bind="popover: {templateId: 'cpsConflictMsg', trigger: 'click', placement: 'right' }"><span data-bind="tooltip: { title: $root.seeWhyMsg }" class="fiori3-warning-icon-color sap-icon">&#xe053;</span></a>
+
+                    <!-- /ko -->
+                    <!-- ko ifnot: conflicts().length > 0 -->
+                    <span data-bind="tooltip: { title: $root.inconsistentMsg }" class="fiori3-warning-icon-color sap-icon" tabindex="0">&#xe053;</span>
+                    <!-- /ko -->
+                </span>
+            </th>
+            <td data-bind="text: showTotalPrice ? totalAttributePriceFormatted : '', attr: { 'aria-label': showTotalPrice ? '' : '@Translation.Get("Msg.NoValue")'}"></td>
+            @if (UseRecurringPriceAndCost)
+            {
+                <td data-bind="text: showTotalRecurringPrice ? totalAttributeRecurringPriceFormatted : '', attr: { 'aria-label': showTotalRecurringPrice ? '' : '@Translation.Get("Msg.NoValue")'}"></td>
+            }
+        </tr>
+
+        <!-- ko foreach: values -->
+        <tr>
+            <td data-bind="html: displayValue" class="responder-values"></td>
+            <!-- ko ifnot: missingPriceBook -->
+            <td data-bind="text: $parent.showOneTimePrice ? priceFormatted : '', attr: { 'aria-label': $parent.showOneTimePrice ? '' : '@Translation.Get("Msg.NoValue")'}"></td>
+            @if (UseRecurringPriceAndCost)
+            {
+                <td data-bind="text: $parent.showRecurringPrice ? recurringPriceFormatted : '', attr: { 'aria-label': $parent.showRecurringPrice ? '' : '@Translation.Get("Msg.NoValue")'}"></td>
+            }
+            <!-- /ko -->
+            <!-- ko if: missingPriceBook -->
+            <td colspan="2" class="error_message">@Translation.Get("Configurator.PriceCouldNotBeFound")</td>
+            <!-- /ko -->
+        </tr>
+
+        <!-- /ko -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+        <!-- /ko -->
+
+        <tr>
+            <td colspan="3" class="table-separator"></td>
+        </tr>
+
+        <!-- ko foreach: lineItems -->
+        <tr>
+            <th scope="row" class="responder-line-items">
+                <span data-bind="text:partNumber"></span>
+                <span data-bind="visible: inconsistent" class="info-label clear-fix-info-label">
+                    <a href="#" data-bind="tooltip: { title: $root.inconsistentMsg }" class="fiori3-warning-icon-color sap-icon">&#xe053;</a>
+                </span>
+            </th>
+            <!-- ko ifnot: missingPriceBook -->
+            <td data-bind="text: showOneTimePrice ? priceFormatted : '', attr: { 'aria-label': showOneTimePrice ? '' : '@Translation.Get("Msg.NoValue")'}"></td>
+            @if (UseRecurringPriceAndCost)
+            {
+                <td data-bind="text: showRecurringPrice ? recurringPriceFormatted : '', attr: { 'aria-label': showRecurringPrice ? '' : '@Translation.Get("Msg.NoValue")'}"></td>
+            }
+            <!-- /ko -->
+            <!-- ko if: missingPriceBook -->
+            <td colspan="2" class="error_message">@Translation.Get("Configurator.PriceCouldNotBeFound")</td>
+            <!-- /ko -->
+        </tr>
+        <!-- /ko -->
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <th style="vertical-align:middle;" scope="row">@Translation.Get("docTotal")</th>
+            <!-- ko ifnot: totalPriceMissingError -->
+            <td data-bind="html: totalPrice"></td>
+            @if (UseRecurringPriceAndCost)
+            {
+                <td> <div data-bind="html: totalMRCPrice"></div><div data-bind="html: totalYRCPrice"></div></td>
+            }
+            <!-- /ko -->
+            <!-- ko if: totalPriceMissingError -->
+            <td colspan="2" data-bind="html: totalPriceMissingError"></td>
+            <!-- /ko -->
+        </tr>
+    </tfoot>
+</table>
+
+<script type="text/html" id="cpsConflictMsg">
+    <div>
+        <h3 class="incomplete-popover-title">Conflicts</h3>
+        <ul class="incomplete" data-bind="foreach: conflicts">
+            <li>
+                <div class="conflict-item">
+                    <!-- ko if: name.length > 0 -->
+                    <div data-bind="text: name"></div>
+                    <!-- /ko -->
+                    <!-- ko if: explanation.length > 0 -->
+                    <div data-bind="text: explanation"></div>
+                    <!-- /ko -->
+                </div>
+            </li>
+        </ul>
+    </div>
+</script>

@@ -1,0 +1,231 @@
+class CostAPI:
+    def __init__(self, context):
+        self.context = context
+        self.Product = context.Product
+        self.attrStack = ""
+        self.dictStack = {}
+        self.currentItemId = 0
+        self.plant = ''
+        self.disCha = ''
+        self.division = ''
+        self.errMsg = ''
+        self.payload = {
+            'ORDER_HEADER_IN': {
+                'DOC_TYPE': 'ZSIM',
+                'SALES_ORG': '4200',
+                'DISTR_CHAN': '10',
+                'DIVISION': '40',
+                'PURCH_NO': ''
+            },
+            'ORDER_ITEMS_IN': {
+                'ITM_NUMBER': '000001',
+                'PO_ITM_NO': '1',
+                'MATERIAL': '',
+                'TARGET_QTY': '1',
+                'PLANT' : '',
+            },
+            'ORDER_PARTNERS': {},
+            'ORDER_SCHEDULE_IN': {
+                'ITM_NUMBER': '000001',
+                'SCHED_LINE': '0001',
+                'REQ_QTY': '1'
+            },
+            'ORDER_CFGS_REF': {
+                'POSEX': '',
+                'CONFIG_ID': '000001',
+                'ROOT_ID': '00000001',
+                'SCE': '1',
+                'COMPLETE': 'T',
+                'CONSISTENT': 'T',
+            },
+            'ORDER_CFGS_INST': {
+                'CONFIG_ID': '000001',
+                'INST_ID': '00000001',
+                'OBJ_TYPE': 'MARA',
+                'CLASS_TYPE': '300',
+                'OBJ_KEY': '',
+                'QUANTITY': '1',
+            },
+            'ORDER_CFGS_VALUE': []
+        }
+
+    def accessMatCostTbl(self):
+        prtNo = self.Product.PartNumber
+        data = SqlHelper.GetFirst("SELECT * from LBF_QU_MAT_COST WHERE MATERIAL = '{0}' ".format(prtNo))
+        if data:
+            self.plant = data.Plant
+            self.salesOrg = data.SORG
+            self.disCha = data.DC
+            self.division = data.DIV
+        else:
+            self.plant = ''
+            self.salesOrg = ''
+            self.disCha = ''
+            self.division = ''
+        
+
+    def getRolledupItemId(self):
+        self.currentItemId = 0
+        #Log.Info('self.currentItemId-- Out-->'+str(self.currentItemId))
+        for item in context.Quote.GetAllItems():
+            self.currentItemId += 1
+            #Log.Info('self.currentItemId-- In-->'+str(self.currentItemId))
+
+    def getCostErrorMsgs(self,resErrorMsgArr):
+        resErrorMsg = JsonHelper.Deserialize(str(resErrorMsgArr))
+        if str(type(resErrorMsg)) == "<type 'list'>":
+            for item in resErrorMsg:
+                #Log.Info(item['TYPE'])
+                if str(item['TYPE']) == "E":
+                    self.errMsg += str(item['MESSAGE']) + '. '
+                    #Log.Info(item['MESSAGE'])
+            pass
+
+        elif str(type(resErrorMsg)) == "<type 'list'>":
+            if str(resErrorMsg['TYPE']) == "E":
+                self.errMsg += str(item['MESSAGE']) + '. '
+
+    def update_header(self):
+        """Update header information based on the quote."""
+        self.payload['ORDER_HEADER_IN']['PURCH_NO'] = self.context.Quote.QuoteNumber
+        self.payload['ORDER_ITEMS_IN']['MATERIAL'] = self.Product.PartNumber
+        self.payload['ORDER_ITEMS_IN']['PLANT'] = self.plant
+        self.payload['ORDER_ITEMS_IN']['PO_ITM_NO'] = str(self.currentItemId)
+        self.payload['ORDER_CFGS_INST']['OBJ_KEY'] = self.Product.PartNumber
+        #Log.Info('self.currentItemId-- AT-->'+str(self.currentItemId))
+        self.payload['ORDER_CFGS_REF']['POSEX'] = "00000"+str(self.currentItemId)
+
+        self.payload['ORDER_HEADER_IN']['SALES_ORG'] = self.salesOrg
+        self.payload['ORDER_HEADER_IN']['DISTR_CHAN'] = self.disCha
+        self.payload['ORDER_HEADER_IN']['DIVISION'] = self.division
+
+    def update_partners(self):
+        """Update partner information in the payload."""
+        involved_parties = self.context.Quote.GetInvolvedParties()
+        for party in involved_parties:
+            self.payload['ORDER_PARTNERS'][party.PartnerFunctionKey] = {
+                'PARTN_ROLE': party.PartnerFunctionKey,
+                'PARTN_NUMB': party.ExternalId
+            }
+
+    def beautifyAttrStr(self):
+        longest_attr = max(self.dictStack.keys(), key=len)
+        longest_attr_length = len(longest_attr)
+        self.attrStack = "\n".join("{} : {}".format(key.ljust(longest_attr_length)+"     ", "  "+str(value)) for key, value in self.dictStack.items())
+
+    def populate_cfgs_value(self):
+        """Populate ORDER_CFGS_VALUE with editable attributes."""
+        tot_attr = self.Product.Attributes
+        #editable_attr = [attr.Name for attr in tot_attr if str(attr.Access) == 'Editable']
+        for item in tot_attr:
+            system_id = str(item.SystemId)
+            attrName = str(item.Name)
+            values = item.Values
+            for value in values:
+                if value.IsSelected == True:
+                    valueCode = str(value.ValueCode)
+                    if str(attrName) == "Special Instructions":
+                        Log.Info("attrName : Special Instructions : valueStCode is----"+str(valueCode))
+                    valueSt = str(value.UserInput) if valueCode == "DefaultValue" else valueCode
+                    if str(attrName) == "Special Instructions":
+                        Log.Info("attrName : Special Instructions : valueSt111 is----"+str(valueSt))
+                    break
+                else:
+                    valueSt = ""
+                    Log.Info("attrName : Special Instructions : valueSt111 is----"+str(valueSt))
+                    break
+            if str(item.Access) != 'Hidden':
+                if str(attrName) == "Special Instructions":
+                    Log.Info("attrName : Special Instructions : IsSelected FALSE valueSt222 is----"+str(valueSt))
+                self.dictStack[attrName] = valueSt if valueSt else ''
+
+            self.payload['ORDER_CFGS_VALUE'].append({
+                    'CONFIG_ID': '000001',
+                    'INST_ID': '00000001',
+                    'CHARC': system_id,
+                    'VALUE': valueSt if valueSt else ''
+                })
+        '''total_attr = [attr.Name for attr in tot_attr]
+        for item in total_attr:
+            try:
+                #value = self.Product.Attr(item).GetValue()
+                valueTemp = self.Product.Attr(item).SelectedValue.ValueCode
+                value = self.Product.Attr(item).GetValue() if valueTemp == "DefaultValue" else valueTemp
+                systemId = self.Product.Attr(item).SystemId
+            except Exception as e:
+                value = None
+
+            self.payload['ORDER_CFGS_VALUE'].append({
+                'CONFIG_ID': '000001',
+                'INST_ID': '00000001',
+                'CHARC': systemId,
+                'VALUE': value
+            })'''
+
+
+    def responseUpdateAtCart(self,resMatCost,resErrorMsg):
+        # Error msg
+        #Log.Info('resErrorMsg---'+str(resErrorMsg))
+        #Log.Info("TYPE: resErrorMsg----"+str(type(resErrorMsg)))
+        self.getCostErrorMsgs(resErrorMsg)
+        Log.Info("self.errMsg----"+str(self.errMsg))
+        Log.Info('COST API Response COST if-->'+str(resMatCost))
+        for item in context.Quote.GetAllItems():
+            if str(int(item.RolledUpQuoteItem)) == str(int(self.currentItemId)):
+                Log.Info('COST API Response COST elif-->'+str(resMatCost))
+                item['LBF_QU_ITEMCONFIG'] = str(self.attrStack)
+                if self.errMsg != '':
+                    Log.Info('innnnn if')
+                    item['LBF_QU_MAT_CST'] = str(resMatCost)
+                    item['LBF_QU_COSTSTATUS'] = "Error"
+                    item['LBF_QU_COSTERROR'] = str(self.errMsg)
+                    break
+                elif self.errMsg == '' and resMatCost != '':
+                    Log.Info('innnnn elif 1')
+                    item['LBF_QU_MAT_CST'] = str(resMatCost)
+                    item['LBF_QU_COSTSTATUS'] = "Success"
+                    item['LBF_QU_COSTERROR'] = 'Cost is added to the line item.'
+                    break
+                elif self.errMsg == '' and resMatCost == '':
+                    Log.Info('innnnn elif 2')
+                    item['LBF_QU_MAT_CST'] = str(resMatCost)
+                    item['LBF_QU_COSTSTATUS'] = "Error Warning"
+                    item['LBF_QU_COSTERROR'] = 'Cost data is not retrieved from S4 - Please contact Administrator'
+                    break
+
+    def process(self):
+        """Main process to update the payload."""
+        self.getRolledupItemId()
+        self.accessMatCostTbl()
+        self.update_header()
+        self.update_partners()
+        self.populate_cfgs_value()
+        Log.Info("self.dictStack:----->"+str(self.dictStack)) # self.attrStack
+        Log.Info("self.attrStack:----->"+str(self.attrStack)) # self.attrStack
+        self.beautifyAttrStr()
+        Log.Info("Final Payload:")
+        Log.Info(str(self.payload))
+        data = JsonHelper.Serialize(self.payload)
+        Log.Info(str(data))
+        cpiEndUrl = 'https://lb-foster-integration-suite-nonprod-br62rx5d.it-cpi019-rt.cfapps.us10-002.hana.ondemand.com/http/Replicate_Cost_to_S4'
+        try:
+            cpiResponse = AuthorizedRestClient.Post('CPQ', cpiEndUrl, data)
+            Log.Info(str(cpiResponse))
+            resMatCost = cpiResponse['ns0:SD_SALESDOCUMENT_CREATEResponse']['CONDITIONS_EX']['item']['COND_VALUE']
+            resErrorMsg = cpiResponse['ns0:SD_SALESDOCUMENT_CREATEResponse']['RETURN']['item']
+            self.responseUpdateAtCart(resMatCost,resErrorMsg)
+        except Exception as e:
+            Log.Info('Error:'+str(e))
+            resMatCost = ''
+            resErrorMsg = cpiResponse['ns0:SD_SALESDOCUMENT_CREATEResponse']['RETURN']['item']
+            self.responseUpdateAtCart(resMatCost,resErrorMsg)
+           
+
+# Usage
+partNumber = context.Product.PartNumber
+vcpPro = SqlHelper.GetList("Select * from PRODUCTS where PRODUCT_CATALOG_CODE ='{0}' and IsSyncedFromBackOffice ='{1}' and IsSimple='{2}'".format(partNumber,'True','False'))
+proIsComplete = context.Product.IsComplete
+
+if vcpPro and proIsComplete:
+    processor = CostAPI(context)
+    processor.process()

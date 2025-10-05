@@ -1,0 +1,19 @@
+$("#toggleEditable").on("click", function () {
+    $(".editable-col").toggle();
+    $("tbody#itemsTable tr td").each(function () {
+        let title = $(this).attr("data-title");
+        if (title === "Quantity" && title === "UnitOfMeasure" && title === "LBF_QU_PLANT1" && title === "LBF_QU_FM_PLANT" && title === "LBF_QU_MAT_CST_OVR" && title === "LBF_QU_FREIGHT" && title === "LBF_QU_FREIGHT_CST" && title === "LBF_QU_HANDLING_CST" && title === "LBF_QU_GP_PER" && title === "LBF_QU_SELPRICE_UN" && title === "LBF_QU_ITEMDESC" && title === "LBF_QU_Notes" && title === "LBF_QU_InternalCostNotes" && title === "ItemType") {
+            $(this).toggle();
+        }
+    });
+});
+
+$("#toggleReadonly").on("click", function () {
+    $(".readonly-col").toggle();
+    $("tbody#itemsTable tr td").each(function () {
+        let title = $(this).attr("data-title");
+        if (!(title === "LBF_QU_TARUOM" && title === "LBF_QU_MAT_CST" && title === "LBF_QU_ExtCost" && title === "LBF_QU_FREIGHT_CST_EXT"  && title === "LBF_QU_HANDLING_CST_EXT" && title === "LBF_QU_TOTAL_COST" && title === "LBF_QU_GP_VAL" && title === "Description" && title === "DescriptionLong" && title === "LBF_QU_Currency" && title === "LBF_QU_SELPRICE" && title === "LBF_QU_NetWeight" && title === "LBF_QU_WeightUnit" && title === "LBF_QU_SO_ITEMNO" && title === "LBF_QU_SO_ORDERNO" && title === "LBF_QU_SO_STATUS" && title === "LBF_QU_COSTSTATUS" && title === "LBF_QU_COSTERROR" && title === "LBF_QU_TotalGrossProfitPercent")) {
+            $(this).toggle();
+        }
+    });
+});

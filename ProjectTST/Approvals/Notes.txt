@@ -1,0 +1,10 @@
+[AND]([AND]([EQ](<*CTX( Product.Name.Translated )*>,CWR),[GT](<*CTX( Quote.Total.Amount.Value )*>,1000000)),[NEQ](<* IsApproved *>,1))
+
+
+[AND]([AND]([EQ](<*CTX( Product.Name.Translated )*>,CWR),[GT](<*CTX( Quote.Total.Amount.Value )*>,1000000)),[NEQ](<* IsApproved *>,1))
+
+[IF]([AND]([NEQ](<*CTX( Product.Name.Translated )*>,CWR),[GT](<*CTX( Quote.Total.Amount.Value )*>,1000000))){<* ApprovalRequired *>}{}[ENDIF]
+
+[AND]([NEQ](<*CTX( Quote.StatusName )*>,Approved),[EQ](<*CTX( Product.Name.Translated )*>,CWR),[GT](<*CTX( Quote.Total.Amount.Value )*>,1000000))
+
+[AND]([NEQ](<*CTX( Quote.StatusName )*>,Approved),[EQ](<*CTX( Product.Name.Translated )*>,CWR),[GT](<*CTX( Quote.Total.Amount.Value )*>,1000000))

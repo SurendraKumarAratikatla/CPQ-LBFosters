@@ -1,0 +1,119 @@
+<script type="text/html" id="CartCustomFieldHtmlTemplate">
+    <div class="fiori3-input-group col-xs-12 col-sm-6 col-md-4">
+        <label data-bind="html: label, attr: { for: $index() + '_' + id, id: 'Label_' + $index() + '_' + id }" style="display: inline-block;"></label>
+        <span data-bind="visible: isRequiredIndicatorVisible" class="required">*</span>
+        <pre class="cpq-scroll" data-bind="html: content().length > 0 ? content() : '@Translation.GetRaw("CartCustomFieldTemplates.none")', css:{ 'cf-placeholder': content().length == 0, 'required-validation-error': error }, attr: { id: 'readOnly_' + id, 'aria-describedby': $index() + '_' + id + 'validationmessage' }"></pre>
+        <span data-bind="text: error, enable: editable, visible: error" class="validation-message-required" role="alert" aria-live="assertive"></span>
+    </div>
+</script>
+
+<script type="text/html" id="CartCustomFieldFreeFormTemplate">
+    <div class="fiori3-input-group col-xs-12 col-sm-6 col-md-4">
+        <label data-bind="html: label, attr: { for: $index() + '_' + id, id: 'Label_' + $index() + '_' + id }" style="display: inline-block;"></label>
+        <span data-bind="visible: isRequiredIndicatorVisible" class="required">*</span>
+        <input class="form-control" data-bind="
+               event: { focus: setLastFocusedField, blur: clearLastFocusedField },
+               valueUpdatedOnEnter: content,
+               validateInput: content,
+               enable: editable,
+               attr: { title: errorMessage() ? errorMessage() : '', id: $index() + '_' + id, 'aria-labelledby': 'Label_' + $index() + '_' + id, required: isRequiredIndicatorVisible, 'aria-describedby': $index() + '_' + id + 'validationmessage' },
+               css: { 'validation-error-customField': errorMessage || (content.isValid && !content.isValid()), 'validation-initial': !document.dirtyList.has($index() + '_' + id), 'required-validation-error': error }"
+               autocomplete="off">
+        <span data-bind="text: error, enable: editable, visible: error" class="validation-message-required" role="alert" aria-live="assertive"></span>
+    </div>
+</script>
+
+<script type="text/html" id="CartCustomFieldAttributeTemplate">
+    <div class="fiori3-input-group fiori3-select-group col-xs-12 col-sm-6 col-md-4">
+        <label data-bind="html: label, attr: { for: $index() + '_' + id, id: 'Label_' + $index() + '_' + id }" style="display: inline-block;"></label>
+        <span data-bind="visible: isRequiredIndicatorVisible" class="required">*</span>
+        <!-- ko if:values.length > 0 -->
+        <select class="form-control" data-bind="
+                event: { focus: setLastFocusedField, blur: clearLastFocusedField },
+                options: values,
+                optionsText: 'value',
+                value: selectedValue,
+                validateInput: { val: selectedValue, event: 'change blur' },
+                enable: editable,
+                attr: { id: $index() + '_' + id, 'aria-disabled': !editable, 'aria-required': isRequiredIndicatorVisible, required: isRequiredIndicatorVisible, 'aria-describedby': $index() + '_' + id + 'validationmessage' },
+                css: { 'validation-error': selectedValue.isValid && !selectedValue.isValid(), 'validation-initial': !document.dirtyList.has($index() + '_' + id), 'required-validation-error': error },
+                optionsAfterRender: setOptionTooltip">
+        </select>
+        <!-- /ko -->
+        <!-- ko if:values.length === 0 -->
+        <select class="form-control" data-bind="event: { focus: setLastFocusedField, blur: clearLastFocusedField }, enable: false, attr: { id: $index() + '_' + id}"></select>
+        <!-- /ko -->
+        <span data-bind="text: error, enable: editable, visible: error" class="validation-message-required" role="alert" aria-live="assertive"></span>
+    </div>
+</script>
+
+<script type="text/html" id="CartCustomFieldDateTemplate">
+    <div class="fiori3-input-group col-xs-12 col-sm-6 col-md-4">
+        <label data-bind="html: label, attr: { for: $index() + '_' + id, id: 'Label_' + $index() + '_' + id }" style="display: inline-block;"></label>
+        <span data-bind="visible: isRequiredIndicatorVisible" class="required">*</span>
+        <div class="fiori3-input-group input-group date-field">
+            <input class="form-control" data-bind="
+                   event: { focus: setLastFocusedField, blur: clearLastFocusedField },
+                   value: content,
+                   validateInput: { val: content, event: 'keypress input blur' },
+                   enable: editable,
+                   attr: { id: $index() + '_' + id, placeholder: '@Environment.DateFormatString', 'aria-labelledby': 'Label_' + $index() + '_' + id, 'aria-disabled': !editable, 'aria-required': isRequiredIndicatorVisible, required: isRequiredIndicatorVisible, 'aria-describedby': $index() + '_' + id + 'validationmessage' },
+                   css: { 'validation-error': content.isValid && !content.isValid(), 'validation-initial': !document.dirtyList.has($index() + '_' + id), 'required-validation-error': error }"
+                   autocomplete="off">
+            <!-- ko if: editable -->
+            <a role="button" tabindex="-1" class="input-group-addon btn btn-default" data-date-format="@Environment.DateFormatString" data-bind="datepicker: content, tooltip: { title: '@Translation.GetJS("Quote.Calendar")', placement: 'auto top' }" aria-haspopup="true"><span class="sap-icon">&#xe0ae;</span></a>
+            <!-- /ko -->
+            <!-- ko ifnot: editable -->
+            <a role="button" tabindex="-1" class="input-group-addon btn btn-default" aria-haspopup="true"><span class="sap-icon">&#xe0ae;</span></a>
+            <!-- /ko -->
+        </div>
+        <span data-bind="text: error, enable: editable, visible: error" class="validation-message-required" role="alert" aria-live="assertive"></span>
+    </div>
+</script>
+
+<script type="text/html" id="CartCustomFieldLongTextTemplate">
+    <div class="fiori3-input-group col-xs-12 col-sm-6 col-md-4">
+        <!-- ko if: $parent.orderStatusName() != "Submitted" && $parent.orderStatusName() != "Order Placed" -->
+            <label data-bind="html: label, attr: { for: $index() + '_' + id, id: 'Label_' + $index() + '_' + id }" style="display: inline-block;"></label>
+            <span data-bind="visible: isRequiredIndicatorVisible" class="required">*</span>
+            <textarea class="form-control long-text cpq-scroll" data-bind="
+                    event: { focus: setLastFocusedField, blur: clearLastFocusedField },
+                    value: content,
+                    validateInput: content,
+                    enable: editable,
+                    attr: { id: $index() + '_' + id, 'aria-disabled': !editable, 'aria-required': isRequiredIndicatorVisible, required: isRequiredIndicatorVisible, 'aria-describedby': $index() + '_' + id + 'validationmessage' },
+                    css: { 'validation-error': content.isValid && !content.isValid(), 'validation-initial': !document.dirtyList.has($index() + '_' + id), 'required-validation-error': error }">
+            </textarea>
+            <span data-bind="text: error, enable: editable, visible: error" class="validation-message-required" role="alert" aria-live="assertive"></span>
+        <!-- /ko -->
+
+        <!-- ko if: $parent.orderStatusName() == "Submitted" && $parent.orderStatusName() == "Order Placed" -->
+        <label data-bind="html: label, attr: { for: $index() + '_' + id, id: 'Label_' + $index() + '_' + id }" style="display: inline-block;"></label>
+            <span data-bind="visible: isRequiredIndicatorVisible" class="required">*</span>
+            <textarea class="form-control long-text cpq-scroll" data-bind="
+                    event: { focus: setLastFocusedField, blur: clearLastFocusedField },
+                    value: content,
+                    validateInput: content,
+                    enable: editable,
+                    attr: { id: $index() + '_' + id, 'aria-disabled': !editable, 'aria-required': isRequiredIndicatorVisible, required: isRequiredIndicatorVisible, 'aria-describedby': $index() + '_' + id + 'validationmessage' },
+                    css: { 'validation-error': content.isValid && !content.isValid(), 'validation-initial': !document.dirtyList.has($index() + '_' + id), 'required-validation-error': error }" disabled="">
+            </textarea>
+            <span data-bind="text: error, enable: editable, visible: error" class="validation-message-required" role="alert" aria-live="assertive"></span>
+        <!-- /ko -->
+    </div>
+</script>
+
+<script type="text/html" id="CartCustomFieldAutocompleteTemplate">
+    <div class="fiori3-input-group fiori3-select-group col-xs-12 col-sm-6 col-md-4">
+        <label data-bind="html: label, attr: { for: $index() + '_' + id, id: 'Label_' + $index() + '_' + id}" class="ac-custom-field-label" style="display: inline-block;"></label>
+        <span data-bind="visible: isRequiredIndicatorVisible" class="required">*</span>
+        <select style="display: block; width: 100%;" role="combobox" class="form-control ignore-id-on-autosave" data-bind="
+                event: { change: setLastFocusedField },
+                select2: { selectedOptions: selectedRow, ajax: getSearchResults, onSelect: onSelect, onUnselect: onUnselect, placeholder: placeholder, allowClear: true, minimumInputLength: minimumSearchInputLength, closeOnSelect: true, disabled: !editable },
+                validateInput: { val: selectedValue, event: 'change blur' },
+                attr: { id: $index() + '_' + id, 'aria-disabled': !editable, 'aria-required': isRequiredIndicatorVisible, required: isRequiredIndicatorVisible, 'aria-describedby': $index() + '_' + id + 'validationmessage' },
+                css: { 'validation-error': selectedValue.isValid && !selectedValue.isValid(), 'validation-initial': !document.dirtyList.has($index() + '_' + id), 'required-validation-error': error }">
+        </select>
+        <span data-bind="text: error, enable: editable, visible: error" class="validation-message-required" role="alert" aria-live="assertive"></span>
+    </div>
+</script>

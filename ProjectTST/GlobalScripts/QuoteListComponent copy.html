@@ -1,0 +1,205 @@
+<div class="cart-list fiori3-cart-list col-md-12 hidden" id="quoteListContainer" data-bind="css: { hidden : $root.landedFromC4C }" role="region" aria-labelledby="quoteListTableTitle">
+    <div id="cartListHeaderContainer" class="fiori3-cart-list-header" aria-labelledby="quoteListTableTitle">
+        <div class="dropdown fiori3-dropdown">
+            <h2 id="quoteListTableTitle" class="fiori3-active-tab" role="heading" aria-level="2" data-bind="text: ko.computed(function () {
+                return selectedTab() == 1 ? '@Translation.GetJS("QuoteList.MyQuotes")' : selectedTab() == 2 ? '@Translation.GetJS("QuoteList.WaitingForApproval")' : '@Translation.GetJS("QuoteList.OtherQuotes")'; })"></h2>
+            <div id="quoteTabsDropdown" class="fiori3-dropdown-menu-wrapper">
+                <button id="quoteTabsDropdownTrigger" class="dropdown-toggle fiori3-icon-button btn" data-toggle="dropdown" aria-label="@Translation.GetJS("QuoteList.ListOfQuoteTabs")" aria-expanded="false" aria-haspopup="true" data-bind="tooltip: { title: '@Translation.GetJS("QuoteList.ListOfQuoteTabs")', placement: 'auto top' }">
+                    <span class="sap-icon">&#xe1fe;</span>
+                </button>
+                <ul role="tablist" id="quoteTabsContainer" class="dropdown-menu">
+                    <li role="tab" data-bind="css: { 'active': selectedTab() == 1 }, click: selectMyQuotes, attr: { 'aria-current': selectedTab() == 1 ? 'true' : 'false' }"><a id="myQuotes" href="#">@Translation.Get("QuoteList.MyQuotes")</a></li>
+                    <li role="tab" data-bind="css: { 'active': selectedTab() == 2 }, click: selectWaitingForApproval, attr: { 'aria-current': selectedTab() == 2 ? 'true' : 'false' }"><a id="waitingForApproval" href="#">@Translation.Get("QuoteList.WaitingForApproval")</a></li>
+                    <li role="tab" data-bind="css: { 'active': selectedTab() == 3 }, click: selectOtherQuotes, attr: { 'aria-current': selectedTab() == 3 ? 'true' : 'false' }"><a id="otherQuotes" href="#">@Translation.Get("QuoteList.OtherQuotes")</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="filters-container fiori3-filters-container">
+            <!-- ko with: filterBar -->
+            @Html.PartialWithNameAsComment("QuoteListFilterBar")
+            <!-- /ko -->
+            <!-- ko with: filterEditor -->
+            <div style="display: none" data-bind="visible: $parent.filterEditor()" role="region" aria-labelledby="filterEditorTitle">
+                <h3 id="filterEditorTitle" class="visually-hidden">@Translation.Get("QuoteList.FilterEditor")</h3>
+                @Html.PartialWithNameAsComment("QuoteListFilterEditor")
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+    <div id="no-more-tables" class="quote-grid-wrapper quote-list fiori3-quote-list-table fiori3-quote-list-grid" role="region" aria-labelledby="quoteListTableTitle">
+        <div id="mainGridContainer" class="quote-grid-container" data-bind="with: mainGrid, css:{ approvers: $parent.selectedTab() == 2 }" role="grid">
+            @Html.PartialWithNameAsComment("QuoteListGrid")
+        </div>
+        <!-- ko if: selectedTab() == 2 -->
+        <div class="title-container" style="display: none" data-bind="visible: selectedTab() == 2" role="region" aria-labelledby="teamQuotesTitle">
+            <h3 id="teamQuotesTitle">@Translation.Get("QuoteList.MyTeamsQuotes")</h3>
+        </div>
+        <div id="teamApprovalGridContainer" class="quote-grid-container approvers" style="display: none" data-bind="with: teamApprovalGrid, visible: $parent.selectedTab() == 2" role="grid">
+            @Html.PartialWithNameAsComment("QuoteListGrid")
+        </div>
+        <!-- /ko -->
+    </div>
+</div>
+
+<!-- ko if: $root.landedFromC4C -->
+<div class="fiori3-alert fiori3-alert-danger fiori3-alert-danger-border hidden" data-bind="css: { hidden : !$root.landedFromC4C }" role="alert">
+    <span class="sap-icon">&#xe1ec;</span>
+    <span>@Translation.Get("C4C.LoadQuoteDisabledWhenLadningFromC4C")</span>
+</div>
+<!-- /ko -->
+
+
+@Html.Partial("~/Views/Approvals/RetractApprovalCommentTemplate.cshtml")
+@Html.Partial("~/Views/CartList/Dialogs/ReassignCartDialogTemplate.cshtml")
+
+<script type="text/html" id="ActionsCellTemplate">
+    <button aria-haspopup="true" aria-label="@Translation.GetJS("QuoteList.Actions")" style="position: relative" data-bind="css: { 'disabled': !component.getActionOptions(cell.Value).length }, attr: {'id' : 'actionsButton_' + $data.component.id + row.Id.Value(), 'class' : 'fiori3-icon-button' }, popover: { templateId: 'actionsTemplate', container: '#quoteListContainer', autoClose: true, placement: $parentContext.$parentContext.$index() > 5 && $parents[2].rows().length - $parentContext.$parentContext.$index() > 5 ? 'top' : 'bottom', closeOnClick: true },
+                                                                                                            event: { keyup: function() { component.selectQuoteListItemAction(event); } }, tooltip: { title: '@Translation.GetJS("QuoteList.Actions")' }">
+        <span class="sap-icon">&#xe1f2;</span>
+    </button>
+</script>
+
+<script type="text/html" id="actionsTemplate">
+    <ul role="menu" aria-live="assertive" class="dropdown-menu-cart fiori3-quote-list-actions fiori3-dropdown-menu">
+        <!-- ko if: $root.quotingInMultipleTabsEnabled -->
+        <!-- ko if: component.getEditAction(cell.Value) -->
+        <li role="button" data-bind=" click: function() { component.executeAction(component.getEditAction(cell.Value), row, cell.Value, component.id) },
+                event: { keyup: function() { if (event.key === 'Enter' || event.key === 'NumpadEnter')
+                { component.executeAction(component.getEditAction(cell.Value), row, cell.Value, component.id); } } }" tabindex="0">
+            <span class="vertical-align btn-primary fiori3-btn-primary">
+                @Translation.Get("QuoteList.Edit")
+        </span>
+    </li>
+    <!-- /ko -->
+    <!-- ko foreach: component.getActionOptions(cell.Value) -->
+    <li role="button" data-bind="click: function (data) { $parent.component.executeAction(data, $parent.row, $parent.cell.Value, $parent.component.id) },
+                                        event: { keyup: function (data) { if (event.key === 'Enter' || event.key === 'NumpadEnter') { $parent.component.executeAction(data, $parent.row, $parent.cell.Value, $parent.component.id) } } }" tabindex="0">
+        <span class="vertical-align" data-bind="text: Name"></span>
+    </li>
+    <!-- /ko -->
+    <!-- /ko -->
+    <!-- ko ifnot: $root.quotingInMultipleTabsEnabled -->
+    <!-- ko if: component.getEditAction(cell.Value) -->
+    <li role="button" data-bind="click: function() { component.executeAction(component.getEditAction(cell.Value), row, cell.Value, component.id) },
+            event: { keyup: function() { if (event.key === 'Enter' || event.key === 'NumpadEnter')
+            { component.executeAction(component.getEditAction(cell.Value), row, cell.Value, component.id); } } }" tabindex="0">
+        <span class="vertical-align btn-primary fiori3-btn-primary">@Translation.Get("QuoteList.Edit")</span>
+    </li>
+    <!-- /ko -->
+    <!-- ko foreach: component.getActionOptions(cell.Value) -->
+    <li role="button" data-bind="click: function (data) { $parent.component.executeAction(data, $parent.row, $parent.cell.Value, $parent.component.id) },
+                                    event: { keyup: function (data) { if (event.key === 'Enter' || event.key === 'NumpadEnter')
+            { $parent.component.executeAction(data, $parent.row, $parent.cell.Value, $parent.component.id) } } }" tabindex="0">
+        <span class="vertical-align" data-bind="text: Name"></span>
+    </li>
+    <!-- /ko -->
+    <!-- /ko -->
+</ul>
+</script>
+
+<script type="text/html" id="LabelTemplate">
+    <span data-bind='text: cell.Value'></span>
+</script>
+
+<script type="text/html" id="ListBoxTemplate">
+    <select data-bind="options: cell.Options, optionsText: 'Value', optionsValue: 'Id', value: cell.Value" class="form-control"></select>
+</script>
+
+<script type="text/html" id="CellWithActionTemplate">
+    <!-- ko ifnot: $data.row.IsBlocked -->
+    <a href="#" data-bind="text: cell.Value, click: function(){ component.executeCellAction(cell.ActionType, $data.row); }"></a>
+    <!-- /ko -->
+    <!-- ko if: $data.row.IsBlocked -->
+    <span data-bind="text : cell.Value"></span>
+    <!-- /ko -->
+</script>
+<script type="text/html" id="QuoteNumberCellTemplate">
+    <!-- ko if: $data.row.CanEditQuote || $data.row.CanViewQuote-->
+    <!-- ko if: $root.quotingInMultipleTabsEnabled -->
+    <a data-bind="attr: {'href': $data.row.CanEditQuote ? 'quotation/Cart.aspx?quoteId=' + $data.row.Id.Value() : '/Cart/View?quoteId=' + $data.row.Id.Value()}, text: cell.Value, click: function(){ component.executeCellAction($data.row.CanEditQuote ? 1 : 3, $data.row); }"></a>
+    <!-- /ko -->
+    <!-- ko ifnot: $root.quotingInMultipleTabsEnabled -->
+    <a data-bind="text: cell.Value, click: function(){ component.executeCellAction($data.row.CanEditQuote ? 1 : 3, $data.row); }, attr: {'href': 'quotation/Cart.aspx?quoteId=' + $data.row.Id.Value() }"></a>
+    <!-- /ko -->
+    <!-- /ko -->
+    <!-- ko if: !$data.row.CanEditQuote && !$data.row.CanViewQuote -->
+    <span data-bind="text : cell.Value"></span>
+    <!-- /ko -->
+</script>
+
+<script type="text/html" id="DatePickerTemplate">
+    <!-- ko if: cell.isEditMode() -->
+    <div class="input-group fiori3-input-group date-field">
+        <input aria-label="@Translation.GetJS("xsltDate")" type="text" data-bind="value: cell.Value" class="form-control" tabindex="0">
+        <a href="#" aria-label="@Translation.GetJS("QuoteList.Calendar")" class="input-group-addon btn btn-default" data-bind="datepicker: cell.Value, attr: {'data-date-format': component.dateFormat.toLowerCase()}"><span class="sap-icon" data-bind="tooltip: { title: '@Translation.GetJS("QuoteList.Calendar")' }">&#xe0ae;</span></a>
+    </div>
+    <!-- /ko -->
+    <!--  ko ifnot: cell.isEditMode() -->
+    <span data-bind='text: cell.Value'></span>
+    <!-- /ko -->
+</script>
+
+<script type="text/html" id="StatusTemplate">
+    <!-- ko ifnot: $data.row.IsBlocked -->
+    <div class="fiori3-input-group fiori3-select-group">
+        <select aria-label="@Translation.GetJS("xsltStatus")" data-bind="attr: {'id': 'quoteStatus' + $data.row.Id.Value()}, options: cell.Options, optionsText: 'Value', optionsValue: 'Id', value: cell.Value, event:{ 'change': function(){ component.changeStatus(cell.Value(), row); } }" class="form-control"></select>
+    </div>
+    <!-- /ko -->
+    <!-- ko if: $data.row.IsBlocked -->
+    <div class="status-cell">
+        <span data-bind="text: $data.cell.Options[0].Value" tabindex="0"></span>
+        <span style="color: #AD3A3A">
+            <span class="sap-icon" data-bind="tooltip: { title: '@Translation.GetJS("StatusList.BlockedQuote")' }"><a href="#" aria-label="@Translation.GetJS("Msg.Blocked")">&#xe23e;</a></span>
+            <span data-bind="text: '@Translation.GetJS("Msg.Blocked")'" tabindex="0"></span>
+        </span>
+    </div>
+    <!-- /ko -->
+</script>
+
+<script type="text/html" id="AutocompleteTemplate">
+    <span data-bind='text: cell.Value'></span>
+</script>
+
+<script type="text/html" id="AutocompleteTemplate2">
+    <span data-bind='text: cell.Value'></span>
+</script>
+
+
+<script type="text/html" id="UserSelectionAttributeTemplate">
+    <span data-bind='text: cell.Value'></span>
+</script>
+
+<script type="text/html" id="TeamsTemplate">
+    <!-- ko if: row.HasTeam -->
+    <span class="sap-icon clickable-icon" aria-haspopup="true" aria-expanded="false" aria-controls="teamsPopover_{row.Id.Value()}" data-bind="event: { keyup: function() { component.openPopoverAndSetFocusClose(event); } }, popover: { templateId: 'TeamsOnQuoteTemplate', moduleFactory: component.TeamsOnQuoteFactory(row.Id), autoClose: true, placement: 'bottom auto', container: 'body' }, tooltip: { title: '@Translation.Get("QuoteList.Teams")' }, attr: { id: 'teamsTrigger_' + row.Id.Value() }" tabindex="0">&#xe0b4;</span>
+    <!-- /ko -->
+    <!-- ko ifnot: row.HasTeam -->
+    <a class="sap-icon clickable-icon" disabled aria-disabled="true" data-bind="tooltip: { title: '@Translation.Get("QuoteList.Teams")' }">&#xe0b4;</a>
+    <!-- /ko -->
+</script>
+
+<script type="text/html" id="TeamsOnQuoteTemplate">
+    <div id="teamsPopover_{row.Id.Value()}" class="team-members-popover-container" aria-labelledby="quoteListTeamsPopover">
+        <ul class="team-list">
+            <li id="quoteListTeamsPopover" class="popover-team-item">@Translation.Get("QuoteList.Teams")</li>
+            <li id="teamsContainer" class="teams-container cpq-scroll">
+                <ul data-bind="foreach: teams" role="menu" aria-label="@Translation.GetJS("InvolvedParties.TeamsList")">
+                    <li class="list-item team-name popover-team-item" role="menuitem">
+                        <span role="button" tabindex="0" aria-label="@Translation.GetJS("InvolvedParties.TeamUsers")" class="sap-icon team-members-popover-expand-collapse" data-bind="event: { keyup: function() { $data.toggleExpandedOnEnter(event); } }, click: toggleExpanded, text: isExpanded() ? '&#xe1ef;' : '&#xe1ed;', tooltip: { title: '@Translation.GetJS("InvolvedParties.TeamUsers")' }"></span>
+                        <span data-bind="text: name"></span>
+                    </li>
+                    <!-- ko if: isExpanded() -->
+                    <li>
+                        <ul data-bind="foreach: members" class="member-list" role="menu" aria-label="@Translation.GetJS("InvolvedParties.MembersList")">
+                            <li class="list-item member popover-team-item" role="menuitem">
+                                <span data-bind="text: displayName"></span>
+                                <span class="blocked-user-color padding-left-10" data-bind="visible: isBlocked, text: '@Translation.GetJS("Msg.Blocked")'"></span>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- /ko -->
+                </ul>
+            </li>
+        </ul>
+    </div>
+</script>

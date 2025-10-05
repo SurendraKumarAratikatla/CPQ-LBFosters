@@ -1,0 +1,18 @@
+{
+    "id": 0,
+    "systemId": "HMI_displays31111229_cpq",
+    "name": "HMI displays322111119",
+    "productTypeId": 1173,
+    "categories": [
+        {
+            "id": 174,
+            "name": "Components",
+            "rank": 0
+        }
+    ]
+}
+
+
+<button class="btn btn-primary fiori3-btn-primary disabled" data-bind="click: addToCart, visible : canAddToQuote() &amp;&amp; !isInFavoriteEditMode(), css: { 'disabled': hasUnsavedVariantChanges }, attr: { disabled: hasUnsavedVariantChanges }, tooltip: { title: 'To enable click on Update Configuration', placement: 'auto top' }" disabled="false" title="To enable click on Update Configuration"><span data-bind="text: cartExists() ? 'Update Quote' : 'Add to Quote'">Add to Quote</span></button>
+
+<button class="btn btn-primary fiori3-btn-primary" data-bind="click: addToCart, visible : canAddToQuote() &amp;&amp; !isInFavoriteEditMode()"><span data-bind="text: cartExists() ? 'Update Quote' : 'Add to Quote'">Add to Quote</span></button>

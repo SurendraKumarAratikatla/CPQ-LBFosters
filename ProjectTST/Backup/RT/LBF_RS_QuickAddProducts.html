@@ -1,0 +1,58 @@
+
+<script type="text/html" id="QuickAddTemplate">
+    <div class="popover-content-wrapper cpq-scroll">
+        <div class="clearfix">
+            <h4 class="tertiary">@Translation.Get("Cart.ProductsTitle")</h4>
+            <div data-bind="template: { name: 'product-favorite-template', foreach: quickAddProducts }"></div>
+            <a class="btn btn-default btn-block" data-bind="visible: hasMoreQuickAddProducts, attr: { href: searchCatalogUrl }">@Translation.Get("Msg.ShowMore")</a>
+            <div class="loader" data-bind="visible: isLoadingInProgress()">&nbsp;</div>
+            <div class="col-md-12 clearfix" data-bind="visible: !isLoadingInProgress() && quickAddProducts().length === 0">
+                <div class="fiori3-alert fiori3-alert-info fiori3-alert-info-border">
+                    <span class="sap-icon">&#xe202;</span>
+                    @Translation.Get("MsgNoProductsFound")
+                </div>
+            </div>
+            <br>
+        </div>
+        <div data-bind="visible: isFavoriteSearchEnabled" class="clearfix">
+            <h4 class="tertiary">@Translation.Get("Cart.FavoritesTitle")</h4>
+            <div data-bind="template: { name: 'product-favorite-template', foreach: quickAddFavorites }"></div>
+            <a class="btn btn-default btn-block" data-bind="visible: hasMoreQuickAddFavorites, attr: { href: searchFavoritesUrl }">@Translation.Get("Msg.ShowMore")</a>
+            <div class="loader" data-bind="visible: isLoadingInProgress()">&nbsp;</div>
+            <div class="col-md-12 clearfix" data-bind="visible: !isLoadingInProgress() && quickAddFavorites().length === 0">
+                <div class="fiori3-alert fiori3-alert-info fiori3-alert-info-border">
+                    <span class="sap-icon">&#xe202;</span>
+                    @Translation.Get("MsgNoFavoritesFound")
+                </div>
+            </div>
+            <br>
+        </div>
+    </div>
+</script> 
+
+<script type="text/html" id="product-favorite-template">
+    <div class="catalog-table clearfix">
+        <div class="image-on-hover">
+            <span class="product-title" data-bind="text: name"></span>
+            <span data-bind="visible: partNumber">(<span data-bind="text: partNumber"></span>)</span>
+            <img class="img-thumbnail" data-bind="visible: imageUrl, attr: { src: imageUrl }" alt="">
+        </div>
+        <p data-bind="text: description, tooltip: { title: description, placement: 'auto top' }" class="description ellipsis example tooltip-if-long"></p>
+        <p class="details-column" data-bind="visible: categoryName"><span>@Translation.Get("Msg.Category")</span> <span data-bind="text: categoryName"></span></p>
+        <p class="details-column" data-bind="visible: productTypeName"><span>@Translation.Get("Msg.Type")</span> <span data-bind="text: productTypeName"></span></p>
+        <p class="details-column" data-bind="visible: baseOnProductName"><span>@Translation.Get("Msg.BasedOnProduct")</span> <span data-bind="text: baseOnProductName"></span></p>
+        <div class="input-group qty pull-left col-md-1 col-xs-1 quick-add-quantity-add-container" data-bind="tooltip: { title: addBtnDisabpledExplanation, html: true }, visible: !isDiscontinued && !isReplaced && !isConfigurableExternal, css: { disabled: !canAddToQuote }">
+            <input class="form-control" type="text" data-bind="value: quantity, enable: canAlterQuantity, validateInput: { val: quantity, event: 'keypress input blur' }">
+            <span class="input-group-btn quick-add-button" data-bind="attr: { 'aria-label': addBtnDisabpledExplanation, tabindex: !canAddToQuote ? '0' : '-1' }, css: { disabled: !canAddToQuote }">
+                <button class="btn btn-primary fiori3-btn-primary" data-bind="click: addToQuote, enable: canAddToQuote, attr: { tabindex: canAddToQuote ? '0' : '-1' }">@Translation.Get("Msg.Add")</button>
+            </span>
+        </div>
+        <div data-bind="visible: isDiscontinued" class="small fiori3-alert fiori3-alert-info fiori3-alert-info-border">@Translation.Get("Catalogue.Discontinued")</div>
+        <div data-bind="visible: isReplaced" class="small fiori3-alert fiori3-alert-info fiori3-alert-info-border">
+            @Translation.Get("Catalogue.DiscontinuedWithReplacement")
+            <br>
+            <a href="#" data-bind="click: viewReplacement">@Translation.Get("Catalogue.LinkToProductReplacement")</a>
+        </div>
+        <a class="btn btn-secondary fiori3-btn-secondary pull-right" data-bind="attr: { href: configuratorUrl }, visible: canConfigure ">@Translation.Get("Msg.Configure")</a>
+    </div> 
+</script>

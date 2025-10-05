@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        table {
+            border-collapse: collapse; /* Makes the borders collapse into a single border */
+            width: 100%;
+        }
+        table, th, td {
+            border: 1px solid black; /* Adds borders to the table, headers, and cells */
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+    <title>Table with Borders</title>
+</head>
+<body>
+
+<table>
+    <tr>
+        <th>Item Name</th>
+        <th>RFQ Note</th>
+        <th>Material Supply Note</th>
+        <th>Package Note</th>
+        <th>Product Supply Note</th>
+        <th>Operation Note</th>
+    </tr>
+    <tr>
+        <td><*eval(Replace("<*LIST(select CONCAT_WS('</td><td>', PartNumber, qicf_PPK_AR_RFQ_Notes, qicf_PPK_AR_MAT_Notes, qicf_PPK_AR_PACK_Notes, qicf_PPK_AR_PROD_Notes,  qicf_PPK_AR_OPP_Notes) from sys_QuoteItemCustomField sqicf JOIN sys_QuoteItem sqi on sqi.Id = sqicf.Itemid where sqi.quoteId = <* CART_ID *>)*>", "|", "</td><tr><td>"))*></td>
+    </tr>
+</table>
+
+</body>
+</html>
+
+
+
+<* Eval(Replace("12,345,99",",","")) *><* Value(PPK_AR_Notes_RFQ) *>

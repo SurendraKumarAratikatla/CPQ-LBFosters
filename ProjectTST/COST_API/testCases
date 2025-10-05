@@ -1,0 +1,4 @@
+1. In Providers attribute mapping : Before configuring the product, identify the plant for the respective product and send the corresponding attribute values of that plant.
+2. Two scripts have been maintained for cost retrieval - one for adding to the quote and another for updating the quote.
+3. Target quantity and required quantity should be rounded to three decimal places.
+4. Maintaining the each item level status for cost updates as success, error and error-warning in VC Costing Status(LBF_QU_COSTSTATUS) item custom field.

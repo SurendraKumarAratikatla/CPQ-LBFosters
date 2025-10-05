@@ -1,0 +1,6 @@
+<!-- ko if: orderStatusName() != "Submitted" && orderStatusName() != "Order Placed" -->
+    <select class="form-control" data-bind="options: markets, optionsText: 'name', optionsValue: 'id', stringToNumericValue: marketId, disable: isInViewMode() || isChangeContractCorrectonMode()" id="marketsLabelId"></select>
+<!-- /ko -->
+<!-- ko if: orderStatusName() == "Submitted" || orderStatusName() == "Order Placed" -->
+    <select class="form-control" data-bind="options: markets, optionsText: 'name', optionsValue: 'id', stringToNumericValue: marketId" id="marketsLabelId" disabled=""></select>
+<!-- /ko -->

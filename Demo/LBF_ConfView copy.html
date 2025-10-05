@@ -1,0 +1,115 @@
+@using WebSite.Controllers
+<section id="attributesContainer" class="row configurator fiori3-configurator col-md-8" data-bind="visible: isInitialized" style="display: none">
+    <nav class="tabbable show-large fiori3-nav-tabs-container" data-bind="visible: tabs().length > 0" tabindex="-1" id="navTabsContainer" aria-labelledby="productNameHeadingId">
+        <ul class="nav nav-responsive nav-tabs fiori3-nav-tabs" id="configurator-tabs" data-bind="foreach: tabs" role="tablist">
+            <li role="tab" class="nav-tab-item" data-bind="attr: { href: '#tab-' + id() }, click: activateTab, css: { active: isSelected, requiredtab: shouldHaveRequiredIndicator, conflictedTab: shouldHaveConflictedIndicator }, style: { 'margin-left': $index() == 0 ? '0' : '32px' }">
+                <a href="#" data-bind="attr: { id: 'tab-' + id(), 'aria-label': name() + ' Tab' }">
+                    <span data-bind="text: displayName"></span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div class="fiori3-configurator-view" role="tabpanel">
+        <div class="tabdrop-cover"></div>
+        <div>
+            <!-- ko if : currentTab -->
+            <div class="show-small">
+                <div class="row">
+                    <div class="nav-mobile clearfix">
+                        <ul class="nav pull-left">
+                            <li data-bind="css: { requiredtab: currentTab().shouldHaveRequiredIndicator(), conflictedTab: currentTab().shouldHaveConflictedIndicator() }"><a href="#"><span data-bind="text: currentTab().displayName"></span></a></li>
+                        </ul>
+                        @*Show tab picker button only if there is more than one tab*@
+                        <button data-bind="visible: tabs().length > 1" data-target=".tabs-collapse" data-toggle="collapse" class="navbar-toggle collapsed pull-right" type="button">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="tabs-collapse collapse row clearfix">
+                        <div class="navbar-inner">
+                            <ul class="nav" data-bind="foreach: tabs">
+                                <li data-bind="attr: { href: '#tab-' + id() }, click: activateTab, css: { active: isSelected, requiredtab: isIncomplete && $root.highlightIncomplete() }">
+                                    <a href="#">
+                                        <span data-bind="text: displayName"></span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /ko -->
+            
+            <!-- ko template: currentTemplateName()-->
+            <!-- /ko -->
+
+            @if (ShowNextAndPreviousTabButtons)
+            {
+                <!-- ko if : tabs().length > 0 -->
+                <div class="row bottomnav flex flex-end">
+                    <!--bottom actions -->
+                    <button class="btn btn-secondary fiori3-btn-secondary" data-bind="click: previousTab, css: { disabled: !hasPreviousTab() }, attr: { tabindex: !hasPreviousTab() ? '-1' : '0' }"><span class="sap-icon">&#xe067;</span>@Translation.Get("Configurator.PreviousTab")</button>
+                    <button class="btn btn-secondary fiori3-btn-secondary" data-bind="click: nextTab, css: { disabled: !hasNextTab() }, attr: { tabindex: !hasNextTab() ? '-1' : '0' }">@Translation.Get("Configurator.NextTab")<span class="sap-icon">&#xe066;</span></button>
+                </div>
+                <!-- /ko -->
+            }
+        </div>
+          @if (ConfiguratorController.CanAccessProductDebugger()) {
+              @Html.PartialWithNameAsComment("Debugger")
+          }
+    </div>
+</section>
+
+
+@* here will tabs and attributes be generated dynamically *@
+<div id="templates" style="display: none">
+    @* we are loading all custom tab templates at once because we cannot figure out what tab templates we will need(Parent/Child -> Child can have their own tab layout)*@
+      <script type='text/html' id='Tab'>
+          @Html.PartialWithNameAsComment("Tab")
+      </script>
+    @foreach (string customTemplateName in ConfiguratorController.GetAllTabsCustomTemplateNames())
+    {
+        <script type='text/html' id='@customTemplateName'>
+            @Html.PartialCustomTemplate(customTemplateName)
+        </script>
+    }
+    @Html.PartialWithNameAsComment("Editors/LabelTemplate")
+    @Html.PartialWithNameAsComment("Editors/AttributeQuantityTemplate")
+    @Html.PartialWithNameAsComment("Editors/DropDownTemplate")
+    @Html.PartialWithNameAsComment("Editors/RadioButtonTemplate")
+    @Html.PartialWithNameAsComment("Editors/CheckboxTemplate")
+    @Html.PartialWithNameAsComment("Editors/ImageButtonTemplate")
+    @Html.PartialWithNameAsComment("Editors/ListBoxTemplate")
+    @Html.PartialWithNameAsComment("Editors/ListBoxMultiSelectTemplate")
+    @Html.PartialWithNameAsComment("Editors/DisplayOnlyTextTemplate")
+    @Html.PartialWithNameAsComment("Editors/TextboxTemplate")
+    @Html.PartialWithNameAsComment("Editors/ButtonTemplate")
+    @Html.PartialWithNameAsComment("Editors/MultilineTextBoxTemplate")
+    @Html.PartialWithNameAsComment("Editors/DatePickerTemplate")
+    @Html.PartialWithNameAsComment("Editors/AttachmentTemplate")
+    @Html.PartialWithNameAsComment("Editors/ConfigurationImportTemplate");
+    @Html.PartialWithNameAsComment("Editors/AutoCompleteInputTemplate");
+
+    @Html.PartialWithNameAsComment("Editors/DrillDown/DrillDownTemplate");
+    @Html.PartialWithNameAsComment("Editors/DrillDown/DrillDownDropDownTemplate");
+    @Html.PartialWithNameAsComment("Editors/DrillDown/DrillDownRadioButtonTemplate");
+    @Html.PartialWithNameAsComment("Editors/DrillDown/DrillDownImageButtonTemplate");
+    
+    @Html.PartialWithNameAsComment("PagerTemplate")
+
+    @Html.PartialWithNameAsComment("Editors/Container/ContainerTemplate")
+    @Html.PartialWithNameAsComment("Editors/Container/ContainerCheckboxTemplate")
+    @Html.PartialWithNameAsComment("Editors/Container/ContainerDropDownTemplate") 
+    @Html.PartialWithNameAsComment("Editors/Container/ContainerLabelTemplate")
+    @Html.PartialWithNameAsComment("Editors/Container/ContainerMultilineTemplate")
+    @Html.PartialWithNameAsComment("Editors/Container/ContainerRadioTemplate")
+    @Html.PartialWithNameAsComment("Editors/Container/ContainerRowSelectorTemplate")
+    @Html.PartialWithNameAsComment("Editors/Container/ContainerListBoxTemplate")
+    @Html.PartialWithNameAsComment("Editors/Container/ContainerTextBoxTemplate")
+    @Html.PartialWithNameAsComment("Editors/Container/ContainerCurrencyTemplate")
+    @Html.PartialWithNameAsComment("Editors/Container/ContainerDatePickerTemplate")
+    @Html.PartialWithNameAsComment("Editors/Container/ContainerAutocompleteTemplate")
+    @Html.PartialWithNameAsComment("Editors/Container/AddContainerRowModalTemplate");
+    @Html.PartialWithNameAsComment("Editors/Container/ContainerCopyRowModalTemplate");
+</div>

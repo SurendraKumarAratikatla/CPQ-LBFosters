@@ -1,0 +1,30 @@
+@using WebSite.Controllers
+
+<section class="row" id="CustomFields">
+    <div id="custom-fields-section" class="fiori3-cart-section clearfix" data-bind="css: { 'section-toggled': isSectionCollapsed('custom-fields-section') }">
+        @*Custom fields*@
+        <div data-bind="visible: customFieldsAndQuoteTables().length > 0">
+            <div class="fiori3-quote-section-header" data-bind="click: function() { toggleQuoteSection('custom-fields-section') }">
+                <h3>@Translation.Get("xsltQuoteCartCustomFields")</h3>
+                <a role="button" href="#" class="fiori3-quote-section-toggle" data-bind="css: { 'fiori3-rotated-quote-section-toggle': isSectionCollapsed('custom-fields-section') },
+                                                                  event: { keypress: function() { toggleQuoteSectionOnKeypress(event, 'custom-fields-section') } }, tooltip: { title: '@Translation.GetJS("Quote.CollapseExpandSection")' }">&#xe1c5;</a>
+            </div>
+            <div id="cartCustomFields" class="fiori3-quote-section-container fiori3-custom-fields-container">
+                <div data-bind="foreach: customFieldsAndQuoteTables" class="custom-fields fiori3-custom-fields">
+                    <!-- ko ifnot: $data.name == 'LBF_CF_INCOTERMS' || $data.name == 'LBF_CF_PAYTERMS' || $data.name == 'Quote Expiration Date' || $data.name == 'LBF_CF_SHIPPING' || $data.name == 'LBF_CF_PONUMBER' || $data.name == 'LBF_CF_NOTES' || $data.name == 'LBF_CF_PODATE' || $data.name == 'LBF_CF_INCOTERMS2'-->
+                        <!-- ko template: template -->
+                        <!--/ko -->
+                    <!--/ko -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@Html.PartialWithNameAsComment("Templates/CartCustomFieldTemplates")
+
+@if (CartController.HasQuoteTablesOnCurrentTab())
+{
+    @Html.PartialWithNameAsComment("Templates/CartTableTemplate")
+    @Html.PartialWithNameAsComment("Templates/CartTableCellTemplates")
+}

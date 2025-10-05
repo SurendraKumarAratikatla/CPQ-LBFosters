@@ -1,0 +1,174 @@
+<style>
+	td:nth-child(2){
+    	width: 20px !important;
+	}
+    .read-only-container-cell span {
+  display : block;
+  text-align: left;
+    }
+    .config-container table {
+        min-width:50%;
+    }
+    table#containerTable_2297 td:nth-child(3),
+table#containerTable_2297 th:nth-child(3) {
+  width: 3px;
+}
+</style>
+
+<script type="text/html" id="ContainerTemplate">
+
+    @*Label*@
+    <!-- ko template: { name: 'LabelTemplate' } -->
+    <!-- /ko -->
+
+    @*Failed validations*@
+    <div class="fiori3-failed-validation col-xs-12" data-bind="visible: container.failedValidations().length > 0">
+        <div class="alert fiori3-alert-danger">
+            <div>
+                <div><span class="sap-icon">&#xe1ec;</span></div>
+                <div><ul data-bind="foreach: container.failedValidations" style="display: inline-block;">
+                    <li data-bind="text: $data"></li>
+                </ul></div>
+            </div>
+        </div>
+    </div>
+    <div class="fiori3-container-actions flex flex-end col-xs-6" data-bind="style: { width: container.failedValidations().length > 0 ? '100%' : '50%' }">
+        <div class="fiori3-add-container-row flex flex-end">
+            @*Add row link*@
+            <!-- ko if: container.canAddNewRows  -->
+            <button class="btn btn-tertiary fiori3-btn-tertiary" data-bind="enable: isEnabled, event: { focusin: function() { window.lastActiveElementId = $element.id; } }, hasFocus: window.lastActiveElementId == $element.id, click: container.addNewContainerRow, attr: {'id': 'addRowBtn_' + stdAttrCode(), 'aria-label': '@Translation.GetJS("Configurator.AddNewRowTo") ' + label() }">@Translation.Get("Configurator.Add")</button>
+            <!-- /ko -->
+        </div>
+        <div class="fiori3-check-clear-actions flex flex-end" data-bind="visible: container.totalNumberOfRows">
+            @*Selected rows filter*@
+            <!-- ko if : container.hasSelectionColumn -->
+            <label class="fiori3-show-selected-rows fiori3-checkbox-group">
+                <input type="checkbox" data-bind="checked : container.showOnlySelectedRows, attr: { id: 'showOnlySelected_' + stdAttrCode() }, event: { focusin: function() { window.lastActiveElementId = $element.id; } }, hasFocus: window.lastActiveElementId == $element.id">
+                <span>@Translation.Get("Configurator.ShowOnlySelected") (<span data-bind="text : container.numberOfSelectedRows"></span>/<span data-bind="text : container.totalNumberOfRows"></span>)</span>
+            </label>
+            <!-- /ko -->
+            <a href="#" class="fiori3-clear-sorting" data-bind="visible: container.sortColumnId(), click: container.clearSorting">@Translation.Get("Configurator.ClearSorting")</a>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div id="no-more-tables" class="config-container cpq-scroll">
+        <table class="table table-bordered fiori3-table fiori3-configuration-container-table" data-bind="attr: { 'aria-label': label, id: 'containerTable_' + stdAttrCode() }">
+            @*Header*@
+            <thead>
+            <tr>
+                <th class="column-with-actions-header" data-bind="attr: { 'id': 'actionsCell_' + id() }, visible: container.hasActions">
+                    <div>
+                        @Translation.Get("Container.Actions")
+                    </div>                                
+                </th>
+
+                <!-- ko foreach : container.columns -->
+					<!-- ko if: headerLabel == 'Select' || headerLabel == 'Quantity' -->
+						<th data-bind="click: function () { sort($parent.id() + '_' + columnId) }" style="width:20px;">
+							<div class="sortable-display-icon fiori3-sortable-display-icon">
+									<span data-bind="text: headerLabel"></span>
+									<span class="sortable-icon-position" data-bind="attr: { id: $parent.id() + '_' + columnId, 'aria-label': sortTooltipTitle }, event: { keyup: function() { sortOnEnter(event, $parent.id() + '_' + columnId); }, focusin: function() { window.lastActiveElementId = $element.id; } }, hasFocus: window.lastActiveElementId == $element.id,
+										  tooltip: { title: sortTooltipTitle }, css: { 'sorting_asc': isAscSort(), 'sorting_desc': isDescSort(), 'sorting': !isAscSort() && !isDescSort() }" tabindex="0"></span>
+							 </div>
+						</th>
+					<!-- /ko -->
+					<!-- ko ifnot: headerLabel == 'Select' || headerLabel == 'Quantity' -->
+						<th data-bind="click: function () { sort($parent.id() + '_' + columnId) }">
+							<div class="sortable-display-icon fiori3-sortable-display-icon">
+									<span data-bind="text: headerLabel"></span>
+									<span class="sortable-icon-position" data-bind="attr: { id: $parent.id() + '_' + columnId, 'aria-label': sortTooltipTitle }, event: { keyup: function() { sortOnEnter(event, $parent.id() + '_' + columnId); }, focusin: function() { window.lastActiveElementId = $element.id; } }, hasFocus: window.lastActiveElementId == $element.id,
+										  tooltip: { title: sortTooltipTitle }, css: { 'sorting_asc': isAscSort(), 'sorting_desc': isDescSort(), 'sorting': !isAscSort() && !isDescSort() }" tabindex="0"></span>
+							</div>
+						</th>
+					<!-- /ko -->	
+                <!-- /ko -->
+            </tr>
+            </thead>
+            <tbody data-bind="visible: container.totalNumberOfRows">
+            @*Rows*@
+            <!-- ko foreach: container.rows -->
+            <tr>
+                @*Row actions column*@
+                <td data-bind="visible: $parent.container.hasActions" class="column-with-actions dropdown">
+                    <div class="btn-group dropdown" role="group">
+                        <button class="fiori3-icon-button dropdown-toggle" data-bind="attr: { id: 'actionsBtn_' + $parent.stdAttrCode() + '_' + rowIndex }, enable: $parent.container.hasActions() && $parent.isEnabled, popover: { templateId: 'actionsTemplate', autoClose: true, placement: 'auto bottom', container: '.fiori3-attributes', closeOnClick: true },
+                                                                                        tooltip: { trigger: 'hover', title: '@Translation.GetJS("Container.Actions")', placement: 'top', delay: { 'show': 150, 'hide': 50 } },
+                                                                                        event: { keyup: function() { $parent.container.selectContainerRowAction(event); } }" aria-label="@Translation.Get("Container.Actions")">
+                                <span class="sap-icon">&#xe1f2;</span>
+                            </button>
+                        </div>
+                    </td>
+
+                    <td data-bind="visible: $parent.container.hasActions" class="column-with-actions show-all">
+
+                        <button class="btn fiori3-icon-button flex" data-bind="visible : canEdit, click: edit, enable: $parent.isEnabled, tooltip: { trigger: 'hover', title: '@Translation.GetJS("Container.Edit")', placement: 'top', delay: { 'show': 150, 'hide': 50 } }"><span class="sap-icon">&#xe038;</span></button>
+                        <button class="btn fiori3-icon-button flex" data-bind="visible : canCopy, click: copy, enable: $parent.isEnabled, tooltip: { trigger: 'hover', title: '@Translation.GetJS("Container.Copy")', placement: 'top', delay: { 'show': 150, 'hide': 50 } }"><span class="sap-icon">&#xe245;</span></button>
+                        <button class="btn fiori3-icon-button flex" data-bind="visible : canDelete, click: remove, enable: $parent.isEnabled, tooltip: { trigger: 'hover', title: '@Translation.GetJS("Container.Delete")', placement: 'top', delay: { 'show': 150, 'hide': 50 } }"><span class="sap-icon">&#xe03d;</span></button>
+                        <button class="btn fiori3-icon-button flex" data-bind="visible : canReorderRows, click: moveUp, enable: $parent.isEnabled, tooltip: { trigger: 'hover', title: '@Translation.GetJS("Container.MoveUp")', placement: 'top', delay: { 'show': 150, 'hide': 50 } }"><span class="sap-icon">&#xe04b;</span></button>
+                        <button class="btn fiori3-icon-button flex" data-bind="visible : canReorderRows, click: moveDown, enable: $parent.isEnabled, tooltip: { trigger: 'hover', title: '@Translation.GetJS("Container.MoveDown")', placement: 'top', delay: { 'show': 150, 'hide': 50 } }"><span class="sap-icon">&#xe04e;</span></button>
+
+
+
+                    </td>
+                    <!-- ko foreach: values -->
+                    <td data-bind="ifnot : isEmpty, attr : { 'data-title' : headerLabel}">
+                        <!-- ko template : { name : template , data : $data } -->
+                        <!-- /ko -->
+                    </td>
+                    <!-- /ko -->
+                </tr>
+                <!-- /ko -->
+
+            </tbody>
+            @*Footer*@
+            <tfoot>
+                <tr data-bind="visible: container.hasAnyFooterLabel">
+                    <td data-bind="visible: container.hasActions"></td>
+                    <!-- ko foreach : container.columns -->
+                    <td data-bind="text: footerLabel, attr : { 'data-title' : headerLabel}"></td>
+                    <!-- /ko -->
+                </tr>
+                @*Totals*@
+                <tr data-bind="visible: container.hasAnyTotal, attr: { title: container.pager && container.pager.lastPage() > 1 ? '@Translation.GetJS("xstlContainerTotalTip")'  : '' }">
+                    <td data-bind="visible: container.hasActions"></td>
+                    <!-- ko foreach : container.columns -->
+                    <td data-bind="text: totalValue, attr : { 'data-title' : headerLabel}"></td>
+                    <!-- /ko -->
+                </tr>
+            </tfoot>
+        </table>
+        <span class="fiori3-no-data-message" data-bind="visible: !container.totalNumberOfRows()">@Translation.GetJS("Configurator.NoDataAvailable")</span>
+    </div>
+
+    @*Pager*@
+    <!-- ko if : container.pager -->
+    <!-- ko template: { name: 'PagerTemplate', data : container.pager } -->
+    <!-- /ko -->
+    <!-- /ko -->
+
+
+</script>
+<script type="text/html" id="actionsTemplate">
+        <ul id="containerActionsDropdown" class="dropdown-menu-cart fiori3-dropdown-menu fiori3-dropdown-icons-menu">
+            <li data-bind="visible : canEdit, click: edit, event: { keyup: function() { editOnEnter(event); } }" tabindex="0">
+                <span class="sap-icon">&#xe038;</span>
+                <span>@Translation.GetJS("Container.Edit")</span>
+            </li>
+            <li data-bind="visible : canCopy, click: copy, event: { keyup: function() { copyOnEnter(event); } }" tabindex="0">
+                <span class="sap-icon">&#xe245</span>
+                <span>@Translation.GetJS("Container.Copy")</span>
+            </li>
+            <li data-bind="visible : canDelete, click: remove, event: { keyup: function() { removeOnEnter(event); } }" tabindex="0">
+                <span class="sap-icon">&#xe03d;</span>
+                <span>@Translation.GetJS("Container.Delete")</span>
+            </li>
+            <li data-bind="visible : canReorderRows, click: moveUp, event: { keyup: function() { moveUpOnEnter(event); } }" tabindex="0">
+                <span class="sap-icon">&#xe04b;</span>
+                <span>@Translation.GetJS("Container.MoveUp")</span>
+            </li>
+            <li data-bind="visible : canReorderRows, click: moveDown, event: { keyup: function() { moveDownOnEnter(event); } }" tabindex="0">
+                <span class="sap-icon">&#xe04e;</span>
+                <span>@Translation.GetJS("Container.MoveDown")</span>
+            </li>
+        </ul>
+</script>

@@ -1,0 +1,66 @@
+RANK: 3 (from bottom)
+
+Description:
+   SP - Simple products Total Cost, Cost/UoM, Ext.Mat.Cost, Sell Price/Unit, Total Sell Price and GP Value
+
+Technical Info:  
+    impacting / changing Item CustomFields: 
+       Total Cost (LBF_QU_TOTAL_COST), 
+       Cost/UoM (LBF_QU_COST_UN), 
+       Ext.Mat.Cost (LBF_QU_ExtCost), 
+       Sell Price/Unit (LBF_QU_SELPRICE_UN),  
+       Total Sell Price (LBF_QU_SELPRICE), 
+       GP Value (LBF_QU_GP_VAL)
+
+INDEX : From bottom = 0 to N
+
+------------------------------------------------------------------------------------------------------
+
+Description:
+   Update CWR Product - COST, LIST PRICE and Total Price
+
+Technical Info:  
+    impacting / changing Item CustomFields: 
+       Mat.Cost (LBF_QU_MAT_CST), 
+       Ext.Mat.Cost (LBF_QU_ExtCost), 
+       Total Cost (LBF_QU_TOTAL_COST), 
+       Sell Price/Unit (LBF_QU_SELPRICE_UN),  
+       Total Sell Price (LBF_QU_SELPRICE), 
+
+
+------------------------------------------------------------------------------------------------------
+
+
+Description:
+   Update the value of Target.UoM item custom field
+
+Technical Info:  
+    impacting / changing Item CustomFields: 
+       Target.UoM (LBF_QU_TARUOM)
+
+------------------------------------------------------------------------------------------------------
+
+Description:
+   When changes UOM standard field, its updates the Mat.Cost and Ext.Mat.Cost based on the changed UOM rates.
+   And its also updates - Net Weight and Weight Unit
+
+Technical Info:  
+    impacting / changing Item CustomFields: 
+       Mat.Cost (LBF_QU_MAT_CST)
+       Ext.Mat.Cost (LBF_QU_ExtCost)
+       Net Weight (LBF_QU_NetWeight)
+       Weight Unit (LBF_QU_WeightUnit)
+
+
+-------------------------------------------------------------------------------------------------------
+
+Description:
+   Checking and Changing UOM of DR : KG1/ KG2 / KG2 mapping fields on Target.UOM.
+   And its also updates - Net Weight and Weight Unit
+   If ProductName = CWR_QI - Then Changing - Mat.Cost, Ext.Mat.Cost, 
+
+Technical Info:  
+    impacting / changing Item CustomFields: 
+       Target.UoM (LBF_QU_TARUOM)
+       Mat.Cost (LBF_QU_MAT_CST)
+       Ext.Mat.Cost (LBF_QU_ExtCost)

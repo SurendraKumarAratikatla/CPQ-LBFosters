@@ -1,0 +1,21 @@
+@using WebSite.Controllers
+<div id="main" class="w960 configurator-width configurator-page-container fiori3-configurator-page-container user-page-container">
+    @if(@ViewBag.IsProductLoaded)
+    {
+        <div class="@(ViewBag.IsABS ? "col-md-12 fiori3-configurator-wrapper" : "col-md-12 fiori3-configurator-wrapper")">
+            <main class="configurator-section-container fiori3-configurator-section-container clearfix">
+                <div id="configuratorHeader">
+                    @*Breadcrumbs*@
+                    @Html.PartialWithNameAsComment("BreadcrumbsView")
+                    @*Actions*@
+                    @Html.PartialWithNameAsComment("ActionsView")
+                    @*Attribute based search*@
+                    @Html.PartialWithNameAsComment("AttributeBasedSearchSummaryView")
+                </div>
+                @*Configurator*@
+                @Html.PartialWithNameAsComment("ConfiguratorView")
+            </main>
+        </div>
+
+    }
+</div>

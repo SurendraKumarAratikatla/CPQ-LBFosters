@@ -1,0 +1,8 @@
+<*CTX( Market.Code )*>
+<*CTX( Quote.CustomField(LBF_CF_CurrentItemPlant) )*>
+<*CTX( Quote.CustomField(LBF_CF_CurrentItemHandling) )*>
+
+curItemPlant = context.Quote.GetCustomField('LBF_CF_CurrentItemPlant').Value
+curItemHandling = context.Quote.GetCustomField('LBF_CF_CurrentItemHandling').Value
+
+SALESORG= '<*CTX( Market.Code )*>' and PLANT='<*CTX( Quote.CustomField(LBF_CF_CurrentItemPlant) )*>' and VARIABLE='<*CTX( Quote.CustomField(LBF_CF_CurrentItemHandling) )*>'

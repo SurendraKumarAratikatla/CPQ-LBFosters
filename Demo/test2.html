@@ -1,0 +1,433 @@
+<div class="attributes fiori3-attributes flex" tabindex="-1" id="attributesWrapper" style="flex-direction: row;">
+    
+
+    <!-- ko template: { name: 'ConfigurationImportTemplate' } -->
+
+    <!-- ko if: importData().AllowConfigurationImport --><!-- /ko -->
+<!-- /ko -->
+
+    <!-- ko foreach: attributes -->
+
+    
+
+    
+    <div>
+                        <div data-bind="attr: { 'class': isWholeRow() ? 'col-xs-12' : 'col-xl-3 col-md-4 col-sm-6 col-xs-12', id: id }, css: { 'fiori3-configuration-container-wrapper': isWholeRow() &amp;&amp; dataType() === 'Container', 'full-width-attribute': isWholeRow() &amp;&amp; dataType() !== 'Container' }" class="col-xl-3 col-md-4 col-sm-6 col-xs-12" id="6531">
+                            <!-- ko template: { name: $root.getAttributeTemplate } -->
+
+                    <!-- ko template: { name: 'LabelTemplate' } -->
+                    <div class="fiori3-container-label flex" data-bind="css: { 'emptyattr': label()=='<!--space-->' || label()=='' },attr: { id: stdAttrCode}" style="width:max-content" id="2740">
+                        <!-- ko if: name() == 'HEIGHT' || name() == 'LENGTH' || name() == 'WIDTH' || name() == 'body_color' || name() == 'door_color' || name() == 'INCLUDE_WINDOW' || name() == 'WINDOW_TYPE' || name() == 'window_color' || name() == 'ROOF_TYPE' || name() == 'roof_color' || name() == 'trim_color' || name() == 'DOOR_TYPE'--><!-- /ko -->
+
+                        <!-- ko ifnot: name() == 'HEIGHT' || name() == 'LENGTH' || name() == 'WIDTH' || name() == 'body_color' || name() == 'door_color' || name() == 'INCLUDE_WINDOW' || name() == 'WINDOW_TYPE' || name() == 'window_color' || name() == 'ROOF_TYPE' || name() == 'roof_color' || name() == 'trim_color' || name() == 'DOOR_TYPE'-->
+
+                            <span class="label-range-hint-wrapper flex">
+                                <label style="display: inline-block;" data-bind="html: label, css: { 'fiori3-incomplete-label': incomplete() &amp;&amp; $root.highlightIncomplete(), 'pull-left': hint(), 'required-attribute': required }, attr: { for: stdAttrCode }" class="fiori3-incomplete-label required-attribute" for="2740">Roof Floor</label>
+                                <span data-bind="visible: validationRangeMessage(), text: validationRangeMessage(), style: { 'margin-bottom': validationRangeMessage() ? '4px' : '0' }" style="overflow-wrap: break-word; display: none; margin-bottom: 0px;" class="grayout"></span>
+                                <a href="#" class="label-hint-icon autoClosePopover" data-bind="attr: { id: 'popover' + id() },visible: !isButtonTemplate() &amp;&amp; hint().length > 0, popover: { templateId: 'HintTemplate', container: '.fiori3-attributes', placement: 'auto top', autoClose: true, html: true }" id="popover6531" style="display: none;" data-original-title="" title=""><span class="sap-icon"></span></a>
+                                <span data-bind="visible: hint().length > 0, css: { 'clearfix': hint() }" style="display: none;"></span>
+                            </span>
+                        <!-- /ko -->
+                    </div>
+                    <!-- /ko -->
+                    <!-- ko if: name() == 'HEIGHT' || name() == 'LENGTH' || name() == 'WIDTH' || name() == 'body_color' || name() == 'door_color' || name() == 'INCLUDE_WINDOW' || name() == 'WINDOW_TYPE' || name() == 'window_color' || name() == 'ROOF_TYPE' || name() == 'roof_color' || name() == 'trim_color' || name() == 'DOOR_TYPE'--><!-- /ko -->
+                    <!-- ko ifnot: name() == 'HEIGHT' || name() == 'LENGTH' || name() == 'WIDTH' || name() == 'body_color' || name() == 'door_color' || name() == 'INCLUDE_WINDOW' || name() == 'WINDOW_TYPE' || name() == 'window_color' || name() == 'ROOF_TYPE' || name() == 'roof_color' || name() == 'trim_color' || name() == 'DOOR_TYPE'-->
+                    
+                        <!-- ko if: name() == "LeadingLBU_Sec" || name() == "LeadingLBU" --><!-- /ko -->
+                        <!-- ko if: name() != "LeadingLBU_Sec" &&  name() != "LeadingLBU"-->
+                        <select data-bind="
+                            options: values,
+                            optionsText: 'displayValueWithPrices',
+                            value: selectedValue,
+                            validateAttribute: selectedValue,
+                            enable: isEnabled,
+                            css: { 'error': hasConflict(), 'validation-error': selectedValue.isValid &amp;&amp; !selectedValue.isValid(), 'validation-initial': !document.dirtyList.has(stdAttrCode() + '') },
+                            attr: { name: name, id: stdAttrCode(), 'aria-required': required() },
+                            event: { change: function() { window.lastActiveElementId = $element.id; } },
+                            hasFocus: window.lastActiveElementId == $element.id" class="form-control validation-error validation-initial" name="ROOF_FLOOR" id="2740" aria-required="true"><option value="">No option selected</option><option value="">Toasted Almond Roof</option><option value="">Sage Green Roof</option><option value="">Saisa Red Floor</option><option value="">Sun Bronze Roof</option></select><span class="validation-message">An entry is required.</span>
+                        <!-- /ko -->
+
+                    <!-- /ko -->
+                    <!-- ko template: { name: 'AttributeQuantityTemplate' } -->
+                        <!-- ko if: dataType() == 'Quantity' -->
+                        <div class="fiori3-input-group input-group qty fiori3-qty-input flex">
+                            <span class="input-group-addon">Qty</span>
+                            <input autocomplete="off" type="text" data-bind="
+                                validateInput: { val: quantity, event: 'keypress input blur' },
+                                value: quantity,
+                                enable: isEnabled,
+                                attr: { name: name, id: 'quantityAttr_' + stdAttrCode(), 'aria-label': name },
+                                event: { focusin: function() { window.lastActiveElementId = $element.id; } },
+                                hasFocus: window.lastActiveElementId == $element.id" class="form-control" name="ROOF_FLOOR" id="quantityAttr_2740" aria-label="ROOF_FLOOR"><span class="validation-message" style="display: none;"></span>
+                        </div>
+                        <!-- /ko -->
+                    <!-- /ko -->
+                    <!-- /ko -->
+                        </div>
+
+                        
+
+                        <div data-bind="attr: { 'class': isWholeRow() ? 'col-xs-12' : 'col-xl-3 col-md-4 col-sm-6 col-xs-12', id: id }, css: { 'fiori3-configuration-container-wrapper': isWholeRow() &amp;&amp; dataType() === 'Container', 'full-width-attribute': isWholeRow() &amp;&amp; dataType() !== 'Container' }" class="col-xl-3 col-md-4 col-sm-6 col-xs-12" id="6533">
+                            <!-- ko template: { name: $root.getAttributeTemplate } -->
+
+                    <!-- ko template: { name: 'LabelTemplate' } -->
+                    <div class="fiori3-container-label flex" data-bind="css: { 'emptyattr': label()=='<!--space-->' || label()=='' },attr: { id: stdAttrCode}" style="width:max-content" id="2741">
+                        <!-- ko if: name() == 'HEIGHT' || name() == 'LENGTH' || name() == 'WIDTH' || name() == 'body_color' || name() == 'door_color' || name() == 'INCLUDE_WINDOW' || name() == 'WINDOW_TYPE' || name() == 'window_color' || name() == 'ROOF_TYPE' || name() == 'roof_color' || name() == 'trim_color' || name() == 'DOOR_TYPE'--><!-- /ko -->
+
+                        <!-- ko ifnot: name() == 'HEIGHT' || name() == 'LENGTH' || name() == 'WIDTH' || name() == 'body_color' || name() == 'door_color' || name() == 'INCLUDE_WINDOW' || name() == 'WINDOW_TYPE' || name() == 'window_color' || name() == 'ROOF_TYPE' || name() == 'roof_color' || name() == 'trim_color' || name() == 'DOOR_TYPE'-->
+
+                            <span class="label-range-hint-wrapper flex">
+                                <label style="display: inline-block;" data-bind="html: label, css: { 'fiori3-incomplete-label': incomplete() &amp;&amp; $root.highlightIncomplete(), 'pull-left': hint(), 'required-attribute': required }, attr: { for: stdAttrCode }" class="fiori3-incomplete-label required-attribute" for="2741">Wall Color</label>
+                                <span data-bind="visible: validationRangeMessage(), text: validationRangeMessage(), style: { 'margin-bottom': validationRangeMessage() ? '4px' : '0' }" style="overflow-wrap: break-word; display: none; margin-bottom: 0px;" class="grayout"></span>
+                                <a href="#" class="label-hint-icon autoClosePopover" data-bind="attr: { id: 'popover' + id() },visible: !isButtonTemplate() &amp;&amp; hint().length > 0, popover: { templateId: 'HintTemplate', container: '.fiori3-attributes', placement: 'auto top', autoClose: true, html: true }" id="popover6533" style="display: none;" data-original-title="" title=""><span class="sap-icon"></span></a>
+                                <span data-bind="visible: hint().length > 0, css: { 'clearfix': hint() }" style="display: none;"></span>
+                            </span>
+                        <!-- /ko -->
+                    </div>
+                    <!-- /ko -->
+                    <!-- ko if: name() == 'HEIGHT' || name() == 'LENGTH' || name() == 'WIDTH' || name() == 'body_color' || name() == 'door_color' || name() == 'INCLUDE_WINDOW' || name() == 'WINDOW_TYPE' || name() == 'window_color' || name() == 'ROOF_TYPE' || name() == 'roof_color' || name() == 'trim_color' || name() == 'DOOR_TYPE'--><!-- /ko -->
+                    <!-- ko ifnot: name() == 'HEIGHT' || name() == 'LENGTH' || name() == 'WIDTH' || name() == 'body_color' || name() == 'door_color' || name() == 'INCLUDE_WINDOW' || name() == 'WINDOW_TYPE' || name() == 'window_color' || name() == 'ROOF_TYPE' || name() == 'roof_color' || name() == 'trim_color' || name() == 'DOOR_TYPE'-->
+                    
+                        <!-- ko if: name() == "LeadingLBU_Sec" || name() == "LeadingLBU" --><!-- /ko -->
+                        <!-- ko if: name() != "LeadingLBU_Sec" &&  name() != "LeadingLBU"-->
+                        <select data-bind="
+                            options: values,
+                            optionsText: 'displayValueWithPrices',
+                            value: selectedValue,
+                            validateAttribute: selectedValue,
+                            enable: isEnabled,
+                            css: { 'error': hasConflict(), 'validation-error': selectedValue.isValid &amp;&amp; !selectedValue.isValid(), 'validation-initial': !document.dirtyList.has(stdAttrCode() + '') },
+                            attr: { name: name, id: stdAttrCode(), 'aria-required': required() },
+                            event: { change: function() { window.lastActiveElementId = $element.id; } },
+                            hasFocus: window.lastActiveElementId == $element.id" class="form-control validation-error validation-initial" name="WALL_CLR" id="2741" aria-required="true"><option value="">No option selected</option><option value="">Liberty Tan Wall</option><option value="">Leaf Green Wall</option><option value="">Charcoal Grey Wall</option><option value="">Granite Rock Wall</option></select><span class="validation-message">An entry is required.</span>
+                        <!-- /ko -->
+
+                    <!-- /ko -->
+                    <!-- ko template: { name: 'AttributeQuantityTemplate' } -->
+                        <!-- ko if: dataType() == 'Quantity' -->
+                        <div class="fiori3-input-group input-group qty fiori3-qty-input flex">
+                            <span class="input-group-addon">Qty</span>
+                            <input autocomplete="off" type="text" data-bind="
+                                validateInput: { val: quantity, event: 'keypress input blur' },
+                                value: quantity,
+                                enable: isEnabled,
+                                attr: { name: name, id: 'quantityAttr_' + stdAttrCode(), 'aria-label': name },
+                                event: { focusin: function() { window.lastActiveElementId = $element.id; } },
+                                hasFocus: window.lastActiveElementId == $element.id" class="form-control" name="WALL_CLR" id="quantityAttr_2741" aria-label="WALL_CLR"><span class="validation-message" style="display: none;"></span>
+                        </div>
+                        <!-- /ko -->
+                    <!-- /ko -->
+                    <!-- /ko -->
+                        </div>
+
+                        
+
+                        <div data-bind="attr: { 'class': isWholeRow() ? 'col-xs-12' : 'col-xl-3 col-md-4 col-sm-6 col-xs-12', id: id }, css: { 'fiori3-configuration-container-wrapper': isWholeRow() &amp;&amp; dataType() === 'Container', 'full-width-attribute': isWholeRow() &amp;&amp; dataType() !== 'Container' }" class="col-xl-3 col-md-4 col-sm-6 col-xs-12" id="6534">
+                            <!-- ko template: { name: $root.getAttributeTemplate } -->
+
+                    <!-- ko template: { name: 'LabelTemplate' } -->
+                    <div class="fiori3-container-label flex" data-bind="css: { 'emptyattr': label()=='<!--space-->' || label()=='' },attr: { id: stdAttrCode}" style="width:max-content" id="2742">
+                        <!-- ko if: name() == 'HEIGHT' || name() == 'LENGTH' || name() == 'WIDTH' || name() == 'body_color' || name() == 'door_color' || name() == 'INCLUDE_WINDOW' || name() == 'WINDOW_TYPE' || name() == 'window_color' || name() == 'ROOF_TYPE' || name() == 'roof_color' || name() == 'trim_color' || name() == 'DOOR_TYPE'--><!-- /ko -->
+
+                        <!-- ko ifnot: name() == 'HEIGHT' || name() == 'LENGTH' || name() == 'WIDTH' || name() == 'body_color' || name() == 'door_color' || name() == 'INCLUDE_WINDOW' || name() == 'WINDOW_TYPE' || name() == 'window_color' || name() == 'ROOF_TYPE' || name() == 'roof_color' || name() == 'trim_color' || name() == 'DOOR_TYPE'-->
+
+                            <span class="label-range-hint-wrapper flex">
+                                <label style="display: inline-block;" data-bind="html: label, css: { 'fiori3-incomplete-label': incomplete() &amp;&amp; $root.highlightIncomplete(), 'pull-left': hint(), 'required-attribute': required }, attr: { for: stdAttrCode }" class="fiori3-incomplete-label required-attribute" for="2742">Wall texture</label>
+                                <span data-bind="visible: validationRangeMessage(), text: validationRangeMessage(), style: { 'margin-bottom': validationRangeMessage() ? '4px' : '0' }" style="overflow-wrap: break-word; display: none; margin-bottom: 0px;" class="grayout"></span>
+                                <a href="#" class="label-hint-icon autoClosePopover" data-bind="attr: { id: 'popover' + id() },visible: !isButtonTemplate() &amp;&amp; hint().length > 0, popover: { templateId: 'HintTemplate', container: '.fiori3-attributes', placement: 'auto top', autoClose: true, html: true }" id="popover6534" style="display: none;" data-original-title="" title=""><span class="sap-icon"></span></a>
+                                <span data-bind="visible: hint().length > 0, css: { 'clearfix': hint() }" style="display: none;"></span>
+                            </span>
+                        <!-- /ko -->
+                    </div>
+                    <!-- /ko -->
+                    <!-- ko if: name() == 'HEIGHT' || name() == 'LENGTH' || name() == 'WIDTH' || name() == 'body_color' || name() == 'door_color' || name() == 'INCLUDE_WINDOW' || name() == 'WINDOW_TYPE' || name() == 'window_color' || name() == 'ROOF_TYPE' || name() == 'roof_color' || name() == 'trim_color' || name() == 'DOOR_TYPE'--><!-- /ko -->
+                    <!-- ko ifnot: name() == 'HEIGHT' || name() == 'LENGTH' || name() == 'WIDTH' || name() == 'body_color' || name() == 'door_color' || name() == 'INCLUDE_WINDOW' || name() == 'WINDOW_TYPE' || name() == 'window_color' || name() == 'ROOF_TYPE' || name() == 'roof_color' || name() == 'trim_color' || name() == 'DOOR_TYPE'-->
+                    
+                        <!-- ko if: name() == "LeadingLBU_Sec" || name() == "LeadingLBU" --><!-- /ko -->
+                        <!-- ko if: name() != "LeadingLBU_Sec" &&  name() != "LeadingLBU"-->
+                        <select data-bind="
+                            options: values,
+                            optionsText: 'displayValueWithPrices',
+                            value: selectedValue,
+                            validateAttribute: selectedValue,
+                            enable: isEnabled,
+                            css: { 'error': hasConflict(), 'validation-error': selectedValue.isValid &amp;&amp; !selectedValue.isValid(), 'validation-initial': !document.dirtyList.has(stdAttrCode() + '') },
+                            attr: { name: name, id: stdAttrCode(), 'aria-required': required() },
+                            event: { change: function() { window.lastActiveElementId = $element.id; } },
+                            hasFocus: window.lastActiveElementId == $element.id" class="form-control validation-error validation-initial" name="WALL_TEXTURE" id="2742" aria-required="true"><option value="">No option selected</option><option value="">Basalt Wall Texture</option><option value="">Mountain Blend Texture</option><option value="">Natural Grey Texture</option><option value="">Romana Wall Texture</option></select><span class="validation-message">An entry is required.</span>
+                        <!-- /ko -->
+
+                    <!-- /ko -->
+                    <!-- ko template: { name: 'AttributeQuantityTemplate' } -->
+                        <!-- ko if: dataType() == 'Quantity' --><!-- /ko -->
+                    <!-- /ko -->
+                    <!-- /ko -->
+                        </div>
+
+                        
+
+                        <div data-bind="attr: { 'class': isWholeRow() ? 'col-xs-12' : 'col-xl-3 col-md-4 col-sm-6 col-xs-12', id: id }, css: { 'fiori3-configuration-container-wrapper': isWholeRow() &amp;&amp; dataType() === 'Container', 'full-width-attribute': isWholeRow() &amp;&amp; dataType() !== 'Container' }" class="col-xl-3 col-md-4 col-sm-6 col-xs-12" id="6535">
+                            <!-- ko template: { name: $root.getAttributeTemplate } -->
+
+                    <!-- ko template: { name: 'LabelTemplate' } -->
+                    <div class="fiori3-container-label flex" data-bind="css: { 'emptyattr': label()=='<!--space-->' || label()=='' },attr: { id: stdAttrCode}" style="width:max-content" id="2743">
+                        <!-- ko if: name() == 'HEIGHT' || name() == 'LENGTH' || name() == 'WIDTH' || name() == 'body_color' || name() == 'door_color' || name() == 'INCLUDE_WINDOW' || name() == 'WINDOW_TYPE' || name() == 'window_color' || name() == 'ROOF_TYPE' || name() == 'roof_color' || name() == 'trim_color' || name() == 'DOOR_TYPE'--><!-- /ko -->
+
+                        <!-- ko ifnot: name() == 'HEIGHT' || name() == 'LENGTH' || name() == 'WIDTH' || name() == 'body_color' || name() == 'door_color' || name() == 'INCLUDE_WINDOW' || name() == 'WINDOW_TYPE' || name() == 'window_color' || name() == 'ROOF_TYPE' || name() == 'roof_color' || name() == 'trim_color' || name() == 'DOOR_TYPE'-->
+
+                            <span class="label-range-hint-wrapper flex">
+                                <label style="display: inline-block;" data-bind="html: label, css: { 'fiori3-incomplete-label': incomplete() &amp;&amp; $root.highlightIncomplete(), 'pull-left': hint(), 'required-attribute': required }, attr: { for: stdAttrCode }" class="required-attribute" for="2743">Off Loading</label>
+                                <span data-bind="visible: validationRangeMessage(), text: validationRangeMessage(), style: { 'margin-bottom': validationRangeMessage() ? '4px' : '0' }" style="overflow-wrap: break-word; display: none; margin-bottom: 0px;" class="grayout"></span>
+                                <a href="#" class="label-hint-icon autoClosePopover" data-bind="attr: { id: 'popover' + id() },visible: !isButtonTemplate() &amp;&amp; hint().length > 0, popover: { templateId: 'HintTemplate', container: '.fiori3-attributes', placement: 'auto top', autoClose: true, html: true }" id="popover6535" style="display: none;" data-original-title="" title=""><span class="sap-icon"></span></a>
+                                <span data-bind="visible: hint().length > 0, css: { 'clearfix': hint() }" style="display: none;"></span>
+                            </span>
+                        <!-- /ko -->
+                    </div>
+                    <!-- /ko -->
+                    <!-- ko if: name() == 'HEIGHT' || name() == 'LENGTH' || name() == 'WIDTH' || name() == 'body_color' || name() == 'door_color' || name() == 'INCLUDE_WINDOW' || name() == 'WINDOW_TYPE' || name() == 'window_color' || name() == 'ROOF_TYPE' || name() == 'roof_color' || name() == 'trim_color' || name() == 'DOOR_TYPE'--><!-- /ko -->
+                    <!-- ko ifnot: name() == 'HEIGHT' || name() == 'LENGTH' || name() == 'WIDTH' || name() == 'body_color' || name() == 'door_color' || name() == 'INCLUDE_WINDOW' || name() == 'WINDOW_TYPE' || name() == 'window_color' || name() == 'ROOF_TYPE' || name() == 'roof_color' || name() == 'trim_color' || name() == 'DOOR_TYPE'-->
+                    
+                        <!-- ko if: name() == "LeadingLBU_Sec" || name() == "LeadingLBU" --><!-- /ko -->
+                        <!-- ko if: name() != "LeadingLBU_Sec" &&  name() != "LeadingLBU"-->
+                        <select data-bind="
+                            options: values,
+                            optionsText: 'displayValueWithPrices',
+                            value: selectedValue,
+                            validateAttribute: selectedValue,
+                            enable: isEnabled,
+                            css: { 'error': hasConflict(), 'validation-error': selectedValue.isValid &amp;&amp; !selectedValue.isValid(), 'validation-initial': !document.dirtyList.has(stdAttrCode() + '') },
+                            attr: { name: name, id: stdAttrCode(), 'aria-required': required() },
+                            event: { change: function() { window.lastActiveElementId = $element.id; } },
+                            hasFocus: window.lastActiveElementId == $element.id" class="form-control validation-initial" name="OFF_LOAD" id="2743" aria-required="true"><option value="">No option selected</option><option value="">FULL INSTALL</option></select><span class="validation-message" style="display: none;"></span>
+                        <!-- /ko -->
+
+                    <!-- /ko -->
+                    <!-- ko template: { name: 'AttributeQuantityTemplate' } -->
+                        <!-- ko if: dataType() == 'Quantity' --><!-- /ko -->
+                    <!-- /ko -->
+                    <!-- /ko -->
+                        </div>
+
+                        
+
+                        <div data-bind="attr: { 'class': isWholeRow() ? 'col-xs-12' : 'col-xl-3 col-md-4 col-sm-6 col-xs-12', id: id }, css: { 'fiori3-configuration-container-wrapper': isWholeRow() &amp;&amp; dataType() === 'Container', 'full-width-attribute': isWholeRow() &amp;&amp; dataType() !== 'Container' }" class="col-xl-3 col-md-4 col-sm-6 col-xs-12" id="6539">
+                            <!-- ko template: { name: $root.getAttributeTemplate } -->
+                        <!-- ko template: { name: 'LabelTemplate' } -->
+                    <div class="fiori3-container-label flex" data-bind="css: { 'emptyattr': label()=='<!--space-->' || label()=='' },attr: { id: stdAttrCode}" style="width:max-content" id="2744">
+                        <!-- ko if: name() == 'HEIGHT' || name() == 'LENGTH' || name() == 'WIDTH' || name() == 'body_color' || name() == 'door_color' || name() == 'INCLUDE_WINDOW' || name() == 'WINDOW_TYPE' || name() == 'window_color' || name() == 'ROOF_TYPE' || name() == 'roof_color' || name() == 'trim_color' || name() == 'DOOR_TYPE'--><!-- /ko -->
+
+                        <!-- ko ifnot: name() == 'HEIGHT' || name() == 'LENGTH' || name() == 'WIDTH' || name() == 'body_color' || name() == 'door_color' || name() == 'INCLUDE_WINDOW' || name() == 'WINDOW_TYPE' || name() == 'window_color' || name() == 'ROOF_TYPE' || name() == 'roof_color' || name() == 'trim_color' || name() == 'DOOR_TYPE'-->
+
+                            <span class="label-range-hint-wrapper flex">
+                                <label style="display: inline-block;" data-bind="html: label, css: { 'fiori3-incomplete-label': incomplete() &amp;&amp; $root.highlightIncomplete(), 'pull-left': hint(), 'required-attribute': required }, attr: { for: stdAttrCode }" class="required-attribute" for="2744">FREIGHT</label>
+                                <span data-bind="visible: validationRangeMessage(), text: validationRangeMessage(), style: { 'margin-bottom': validationRangeMessage() ? '4px' : '0' }" style="overflow-wrap: break-word; display: none; margin-bottom: 0px;" class="grayout"></span>
+                                <a href="#" class="label-hint-icon autoClosePopover" data-bind="attr: { id: 'popover' + id() },visible: !isButtonTemplate() &amp;&amp; hint().length > 0, popover: { templateId: 'HintTemplate', container: '.fiori3-attributes', placement: 'auto top', autoClose: true, html: true }" id="popover6539" style="display: none;" data-original-title="" title=""><span class="sap-icon"></span></a>
+                                <span data-bind="visible: hint().length > 0, css: { 'clearfix': hint() }" style="display: none;"></span>
+                            </span>
+                        <!-- /ko -->
+                    </div>
+                    <!-- /ko -->
+                        <div class="fiori3-chckqty-wrapper">
+                            <ul class="chckqty" data-bind="attr: { id: name(), 'aria-label': name }" id="FREIGHT" aria-label="FREIGHT">
+                                <!-- ko foreach: values -->
+                                <li class="vertical-align">
+                                    <label class="fiori3-radio-button middle" data-bind="attr: { name: $parent.name, id: 'radioButton_' + $parent.stdAttrCode() + pavId }, event: { keyup: function() { $parent.radioButtonHandler(event, $parent.stdAttrCode(), pavId); }, focusin: function() { window.lastActiveElementId = $element.id; } }, hasFocus: window.lastActiveElementId == $element.id" name="FREIGHT" id="radioButton_274416702">
+                                        <input type="radio" data-bind="checked: $parent.selectedPavId, value: pavId, attr: { name: $parent.name, id: 'radioButtonInput_' + $parent.stdAttrCode() + pavId, required: $parent.required }, enable: $parent.isEnabled" value="16702" name="FREIGHT" id="radioButtonInput_274416702" required="true">
+                                        <span data-bind="html: displayValueWithPrices" tabindex="0">Enter Miles</span>
+                                    </label>
+                                </li>
+                                <!-- /ko -->
+                            </ul>
+                            <!-- ko template: { name: 'AttributeQuantityTemplate' } -->
+                        <!-- ko if: dataType() == 'Quantity' -->
+                        <div class="fiori3-input-group input-group qty fiori3-qty-input flex">
+                            <span class="input-group-addon">Qty</span>
+                            <input autocomplete="off" type="text" data-bind="
+                                validateInput: { val: quantity, event: 'keypress input blur' },
+                                value: quantity,
+                                enable: isEnabled,
+                                attr: { name: name, id: 'quantityAttr_' + stdAttrCode(), 'aria-label': name },
+                                event: { focusin: function() { window.lastActiveElementId = $element.id; } },
+                                hasFocus: window.lastActiveElementId == $element.id" class="form-control" name="FREIGHT" id="quantityAttr_2744" aria-label="FREIGHT"><span class="validation-message" style="display: none;"></span>
+                        </div>
+                        <!-- /ko -->
+                    <!-- /ko -->
+                        </div>
+                    <!-- /ko -->
+                        </div>
+
+    </div>
+
+    <div data-bind="attr: { 'class': isWholeRow() ? 'col-xs-12' : 'col-xl-3 col-md-4 col-sm-6 col-xs-12', id: id }, css: { 'fiori3-configuration-container-wrapper': isWholeRow() &amp;&amp; dataType() === 'Container', 'full-width-attribute': isWholeRow() &amp;&amp; dataType() !== 'Container' }" class="col-xs-12 fiori3-configuration-container-wrapper" id="6541">
+        <!-- ko template: { name: $root.getAttributeTemplate } -->
+
+    
+    <!-- ko template: { name: 'LabelTemplate' } -->
+  <div class="fiori3-container-label flex" data-bind="css: { 'emptyattr': label()=='<!--space-->' || label()=='' },attr: { id: stdAttrCode}" style="width:max-content" id="2746">
+    <!-- ko if: name() == 'HEIGHT' || name() == 'LENGTH' || name() == 'WIDTH' || name() == 'body_color' || name() == 'door_color' || name() == 'INCLUDE_WINDOW' || name() == 'WINDOW_TYPE' || name() == 'window_color' || name() == 'ROOF_TYPE' || name() == 'roof_color' || name() == 'trim_color' || name() == 'DOOR_TYPE'--><!-- /ko -->
+
+    <!-- ko ifnot: name() == 'HEIGHT' || name() == 'LENGTH' || name() == 'WIDTH' || name() == 'body_color' || name() == 'door_color' || name() == 'INCLUDE_WINDOW' || name() == 'WINDOW_TYPE' || name() == 'window_color' || name() == 'ROOF_TYPE' || name() == 'roof_color' || name() == 'trim_color' || name() == 'DOOR_TYPE'-->
+
+        <span class="label-range-hint-wrapper flex">
+            <label style="display: inline-block;" data-bind="html: label, css: { 'fiori3-incomplete-label': incomplete() &amp;&amp; $root.highlightIncomplete(), 'pull-left': hint(), 'required-attribute': required }, attr: { for: stdAttrCode }" for="2746">Choose PARCOS</label>
+            <span data-bind="visible: validationRangeMessage(), text: validationRangeMessage(), style: { 'margin-bottom': validationRangeMessage() ? '4px' : '0' }" style="overflow-wrap: break-word; display: none; margin-bottom: 0px;" class="grayout"></span>
+            <a href="#" class="label-hint-icon autoClosePopover" data-bind="attr: { id: 'popover' + id() },visible: !isButtonTemplate() &amp;&amp; hint().length > 0, popover: { templateId: 'HintTemplate', container: '.fiori3-attributes', placement: 'auto top', autoClose: true, html: true }" id="popover6541" style="display: none;" data-original-title="" title=""><span class="sap-icon"></span></a>
+            <span data-bind="visible: hint().length > 0, css: { 'clearfix': hint() }" style="display: none;"></span>
+        </span>
+     <!-- /ko -->
+ </div>
+<!-- /ko -->
+
+    
+    <div class="fiori3-failed-validation col-xs-12" data-bind="visible: container.failedValidations().length > 0" style="display: none;">
+        <div class="alert fiori3-alert-danger">
+            <div>
+                <div><span class="sap-icon"></span></div>
+                <div><ul data-bind="foreach: container.failedValidations" style="display: inline-block;"></ul></div>
+            </div>
+        </div>
+    </div>
+    <div class="fiori3-container-actions flex flex-end col-xs-6" data-bind="style: { width: container.failedValidations().length > 0 ? '100%' : '50%' }" style="width: 50%;">
+        <div class="fiori3-add-container-row flex flex-end">
+            
+            <!-- ko if: container.canAddNewRows  -->
+            <button class="btn btn-tertiary fiori3-btn-tertiary" data-bind="enable: isEnabled, event: { focusin: function() { window.lastActiveElementId = $element.id; } }, hasFocus: window.lastActiveElementId == $element.id, click: container.addNewContainerRow, attr: {'id': 'addRowBtn_' + stdAttrCode(), 'aria-label': 'Add new row to ' + label() }" id="addRowBtn_2746" aria-label="Add new row to Choose PARCOS">Add Row</button>
+            <!-- /ko -->
+        </div>
+        <div class="fiori3-check-clear-actions flex flex-end" data-bind="visible: container.totalNumberOfRows">
+            
+            <!-- ko if : container.hasSelectionColumn --><!-- /ko -->
+            <a href="#" class="fiori3-clear-sorting" data-bind="visible: container.sortColumnId(), click: container.clearSorting" style="display: none;">Clear Sort</a>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div id="no-more-tables" class="config-container cpq-scroll">
+        <table class="table table-bordered fiori3-table fiori3-configuration-container-table" data-bind="attr: { 'aria-label': label, id: 'containerTable_' + stdAttrCode() }" aria-label="Choose PARCOS" id="containerTable_2746">
+            
+            <thead>
+            <tr>
+                <th class="column-with-actions-header" data-bind="attr: { 'id': 'actionsCell_' + id() }, visible: container.hasActions" id="actionsCell_6541">
+                    <div>
+                        Actions
+                    </div>                                
+                </th>
+
+                <!-- ko foreach : container.columns -->
+					<!-- ko if: headerLabel == 'Select' || headerLabel == 'Quantity' --><!-- /ko -->
+					<!-- ko ifnot: headerLabel == 'Select' || headerLabel == 'Quantity' -->
+						<th data-bind="click: function () { sort($parent.id() + '_' + columnId) }">
+							<div class="sortable-display-icon fiori3-sortable-display-icon">
+									<span data-bind="text: headerLabel">PARTS</span>
+									<span class="sortable-icon-position sorting" data-bind="attr: { id: $parent.id() + '_' + columnId, 'aria-label': sortTooltipTitle }, event: { keyup: function() { sortOnEnter(event, $parent.id() + '_' + columnId); }, focusin: function() { window.lastActiveElementId = $element.id; } }, hasFocus: window.lastActiveElementId == $element.id,
+										  tooltip: { title: sortTooltipTitle }, css: { 'sorting_asc': isAscSort(), 'sorting_desc': isDescSort(), 'sorting': !isAscSort() &amp;&amp; !isDescSort() }" tabindex="0" id="6541_1" aria-label="Sort" title="Sort"></span>
+							</div>
+						</th>
+					<!-- /ko -->	
+                
+					<!-- ko if: headerLabel == 'Select' || headerLabel == 'Quantity' --><!-- /ko -->
+					<!-- ko ifnot: headerLabel == 'Select' || headerLabel == 'Quantity' -->
+						<th data-bind="click: function () { sort($parent.id() + '_' + columnId) }">
+							<div class="sortable-display-icon fiori3-sortable-display-icon">
+									<span data-bind="text: headerLabel">COST</span>
+									<span class="sortable-icon-position sorting" data-bind="attr: { id: $parent.id() + '_' + columnId, 'aria-label': sortTooltipTitle }, event: { keyup: function() { sortOnEnter(event, $parent.id() + '_' + columnId); }, focusin: function() { window.lastActiveElementId = $element.id; } }, hasFocus: window.lastActiveElementId == $element.id,
+										  tooltip: { title: sortTooltipTitle }, css: { 'sorting_asc': isAscSort(), 'sorting_desc': isDescSort(), 'sorting': !isAscSort() &amp;&amp; !isDescSort() }" tabindex="0" id="6541_2" aria-label="Sort" title="Sort"></span>
+							</div>
+						</th>
+					<!-- /ko -->	
+                <!-- /ko -->
+            </tr>
+            </thead>
+            <tbody data-bind="visible: container.totalNumberOfRows">
+            
+            <!-- ko foreach: container.rows -->
+            <tr>
+                
+                <td data-bind="visible: $parent.container.hasActions" class="column-with-actions dropdown">
+                    <div class="btn-group dropdown" role="group">
+                        <button class="fiori3-icon-button dropdown-toggle autoClosePopover" data-bind="attr: { id: 'actionsBtn_' + $parent.stdAttrCode() + '_' + rowIndex }, enable: $parent.container.hasActions() &amp;&amp; $parent.isEnabled, popover: { templateId: 'actionsTemplate', autoClose: true, placement: 'auto bottom', container: '.fiori3-attributes', closeOnClick: true },
+                                                                                        tooltip: { trigger: 'hover', title: 'Actions', placement: 'top', delay: { 'show': 150, 'hide': 50 } },
+                                                                                        event: { keyup: function() { $parent.container.selectContainerRowAction(event); } }" aria-label="Actions" id="actionsBtn_2746_0" data-original-title="" title="Actions">
+                                <span class="sap-icon"></span>
+                            </button>
+                        </div>
+                    </td>
+
+                    <td data-bind="visible: $parent.container.hasActions" class="column-with-actions show-all">
+
+                        <button class="btn fiori3-icon-button flex" data-bind="visible : canEdit, click: edit, enable: $parent.isEnabled, tooltip: { trigger: 'hover', title: 'Edit', placement: 'top', delay: { 'show': 150, 'hide': 50 } }" title="Edit" style="display: none;"><span class="sap-icon"></span></button>
+                        <button class="btn fiori3-icon-button flex" data-bind="visible : canCopy, click: copy, enable: $parent.isEnabled, tooltip: { trigger: 'hover', title: 'Copy', placement: 'top', delay: { 'show': 150, 'hide': 50 } }" title="Copy"><span class="sap-icon"></span></button>
+                        <button class="btn fiori3-icon-button flex" data-bind="visible : canDelete, click: remove, enable: $parent.isEnabled, tooltip: { trigger: 'hover', title: 'Delete', placement: 'top', delay: { 'show': 150, 'hide': 50 } }" title="Delete"><span class="sap-icon"></span></button>
+                        <button class="btn fiori3-icon-button flex" data-bind="visible : canReorderRows, click: moveUp, enable: $parent.isEnabled, tooltip: { trigger: 'hover', title: 'Move Up', placement: 'top', delay: { 'show': 150, 'hide': 50 } }" title="Move Up"><span class="sap-icon"></span></button>
+                        <button class="btn fiori3-icon-button flex" data-bind="visible : canReorderRows, click: moveDown, enable: $parent.isEnabled, tooltip: { trigger: 'hover', title: 'Move Down', placement: 'top', delay: { 'show': 150, 'hide': 50 } }" title="Move Down"><span class="sap-icon"></span></button>
+
+
+
+                    </td>
+                    <!-- ko foreach: values -->
+                    <td data-bind="ifnot : isEmpty, attr : { 'data-title' : headerLabel}" data-title="PARTS">
+                        <!-- ko template : { name : template , data : $data } -->
+    <div class="fiori3-input-group">
+        <input autocomplete="off" type="text" data-bind="
+               attr: {'id' : $parents[2].id() + '_' + $parent.columnId + '_' + $parents[1].rowIndex, required: $parent.required },
+               event: { focusin: function() { window.lastActiveElementId = $element.id; } },
+               hasFocus: window.lastActiveElementId == $element.id,
+               value: value,
+               validateAttribute: value,
+               css: { 'validation-error': (value.isValid &amp;&amp; !value.isValid()), 'validation-initial': !document.dirtyList.has($parents[2].id() + '_' + $parent.columnId + '_' + $parents[1].rowIndex) },
+               enable: $parents[2].isEnabled" class="form-control validation-initial" id="6541_1_0"><span class="validation-message" style="display: none;"></span>
+    </div>
+<!-- /ko -->
+                    </td>
+                    
+                    <td data-bind="ifnot : isEmpty, attr : { 'data-title' : headerLabel}" data-title="COST">
+                        <!-- ko template : { name : template , data : $data } -->
+    <div class="fiori3-input-group">
+        <input autocomplete="off" type="text" data-bind="
+               attr: {'id' : $parents[2].id() + '_' + $parent.columnId + '_' + $parents[1].rowIndex, required: $parent.required },
+               event: { focusin: function() { window.lastActiveElementId = $element.id; } },
+               hasFocus: window.lastActiveElementId == $element.id,
+               value: value,
+               validateAttribute: value,
+               css: { 'validation-error': (value.isValid &amp;&amp; !value.isValid()), 'validation-initial': !document.dirtyList.has($parents[2].id() + '_' + $parent.columnId + '_' + $parents[1].rowIndex) },
+               enable: $parents[2].isEnabled" class="form-control validation-initial" id="6541_2_0"><span class="validation-message" style="display: none;"></span>
+    </div>
+<!-- /ko -->
+                    </td>
+                    <!-- /ko -->
+                </tr>
+                <!-- /ko -->
+
+            </tbody>
+            
+            <tfoot>
+                <tr data-bind="visible: container.hasAnyFooterLabel" style="display: none;">
+                    <td data-bind="visible: container.hasActions"></td>
+                    <!-- ko foreach : container.columns -->
+                    <td data-bind="text: footerLabel, attr : { 'data-title' : headerLabel}" data-title="PARTS"></td>
+                    
+                    <td data-bind="text: footerLabel, attr : { 'data-title' : headerLabel}" data-title="COST"></td>
+                    <!-- /ko -->
+                </tr>
+                
+                <tr data-bind="visible: container.hasAnyTotal, attr: { title: container.pager &amp;&amp; container.pager.lastPage() > 1 ? 'This number applies to all values (not only to values displayed on current page).'  : '' }" title="" style="display: none;">
+                    <td data-bind="visible: container.hasActions"></td>
+                    <!-- ko foreach : container.columns -->
+                    <td data-bind="text: totalValue, attr : { 'data-title' : headerLabel}" data-title="PARTS"></td>
+                    
+                    <td data-bind="text: totalValue, attr : { 'data-title' : headerLabel}" data-title="COST"></td>
+                    <!-- /ko -->
+                </tr>
+            </tfoot>
+        </table>
+        <span class="fiori3-no-data-message" data-bind="visible: !container.totalNumberOfRows()" style="display: none;">No data available.</span>
+    </div>
+
+    
+    <!-- ko if : container.pager --><!-- /ko -->
+
+
+<!-- /ko -->
+    </div>
+
+    <!-- /ko -->
+</div>

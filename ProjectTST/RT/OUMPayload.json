@@ -1,0 +1,7 @@
+
+<ns1:ImportMaterialsFromERP xmlns:ns1="http://webcominc.com/"><ns1:action>ADDORUPDATE</ns1:action><ns1:xDoc>
+    
+
+<Products><Product><Identificator>ProductSystemId</Identificator><ProductSystemId>000000000000011161</ProductSystemId><PartNumber>11161</PartNumber><ProductType>01100303</ProductType><IsSyncedFromBackOffice>True</IsSyncedFromBackOffice><UnitOfMeasure>FOT</UnitOfMeasure><Categories PreselectInCPQ="True"><USEnglish>LB005</USEnglish></Categories><ProductName><USEnglish>NEW 25AS RAIL, END DRILLED 2&quot; X 4&quot;</USEnglish></ProductName><SalesUnitsOfMeasure><SalesUnitOfMeasure><Unit>EA</Unit><Denominator>1</Denominator><Numerator>40</Numerator></SalesUnitOfMeasure><SalesUnitOfMeasure><Unit>FOT</Unit><Denominator>1</Denominator><Numerator>1</Numerator></SalesUnitOfMeasure><SalesUnitOfMeasure><Unit>LBR</Unit><Denominator>833</Denominator><Numerator>100</Numerator></SalesUnitOfMeasure></SalesUnitsOfMeasure></Product></Products>
+
+</ns1:xDoc></ns1:ImportMaterialsFromERP>

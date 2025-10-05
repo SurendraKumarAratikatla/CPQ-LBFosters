@@ -1,0 +1,313 @@
+
+condition : [NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+
+action : <*CTX ( Container(LBF_AR_FM_1PUMP).Column(Qty).SetPermission(Hidden) )*>
+
+
+
+
+
+LBF_FR_FM_1PUMP_QTY
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+action : <*CTX ( Container(LBF_AR_FM_1PUMP).Column(Qty).SetPermission(Hidden) )*>
+
+
+LBF_FR_FM_1PUMP_COST
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+action : <*CTX ( Container(LBF_AR_FM_1PUMP).Column(Cost).SetPermission(Hidden) )*>
+
+
+LBF_FR_FM_1PUMP_EXT_COST
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+action : <*CTX ( Container(LBF_AR_FM_1PUMP).Column(Ext Cost).SetPermission(Hidden) )*>
+
+
+LBF_FR_FM_2POWER_QTY
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+action : <*CTX ( Container(LBF_AR_FM_2POWER).Column(Qty).SetPermission(Hidden) )*>
+
+
+LBF_FR_FM_2POWER_COST
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+action : <*CTX ( Container(LBF_AR_FM_2POWER).Column(Cost).SetPermission(Hidden) )*>
+
+
+LBF_FR_FM_2POWER_EXT_COST
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+action : <*CTX ( Container(LBF_AR_FM_2POWER).Column(Ext Cost).SetPermission(Hidden) )*>
+
+
+LBF_FR_FM_3SIZE_QTY
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+action : <*CTX ( Container(LBF_AR_FM_3SIZE).Column(Qty).SetPermission(Hidden) )*>
+
+
+LBF_FR_FM_3SIZE_COST
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+action : <*CTX ( Container(LBF_AR_FM_3SIZE).Column(Cost).SetPermission(Hidden) )*>
+
+
+LBF_FR_FM_3SIZE_EXT_COST
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+action : <*CTX ( Container(LBF_AR_FM_3SIZE).Column(Ext Cost).SetPermission(Hidden) )*>
+
+
+LBF_FR_FM_4BAR_QTY
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+action : <*CTX ( Container(LBF_AR_FM_4BAR).Column(Qty).SetPermission(Hidden) )*>
+
+
+LBF_FR_FM_4BAR_COST
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+action : <*CTX ( Container(LBF_AR_FM_4BAR).Column(Cost).SetPermission(Hidden) )*>
+
+
+LBF_FR_FM_4BAR_EXT_COST
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+action : <*CTX ( Container(LBF_AR_FM_4BAR).Column(Ext Cost).SetPermission(Hidden) )*>
+
+
+LBF_FR_FM_5RLSZCL_QTY
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+action : <*CTX ( Container(LBF_AR_FM_5RLSZCL).Column(Qty).SetPermission(Hidden) )*>
+
+
+LBF_FR_FM_5RLSZCL_COST
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+action : <*CTX ( Container(LBF_AR_FM_5RLSZCL).Column(Cost).SetPermission(Hidden) )*>
+
+
+LBF_FR_FM_5RLSZCL_EXT_COST
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+action : <*CTX ( Container(LBF_AR_FM_5RLSZCL).Column(Ext Cost).SetPermission(Hidden) )*>
+
+
+LBF_FR_FM_6BARQTY_QTY
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+action : <*CTX ( Container(LBF_AR_FM_6BARQTY).Column(Qty).SetPermission(Hidden) )*>
+
+
+LBF_FR_FM_6BARQTY_COST
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+action : <*CTX ( Container(LBF_AR_FM_6BARQTY).Column(Cost).SetPermission(Hidden) )*>
+
+
+LBF_FR_FM_6BARQTY_EXT_COST
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+action : <*CTX ( Container(LBF_AR_FM_6BARQTY).Column(Ext Cost).SetPermission(Hidden) )*>
+
+
+LBF_FR_FM_7SPECIAL1_QTY
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+action : <*CTX ( Container(LBF_AR_FM_7SPECIAL1).Column(Qty).SetPermission(Hidden) )*>
+
+
+LBF_FR_FM_7SPECIAL1_COST
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+action : <*CTX ( Container(LBF_AR_FM_7SPECIAL1).Column(Cost).SetPermission(Hidden) )*>
+
+
+LBF_FR_FM_7SPECIAL1_EXT_COST
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+action : <*CTX ( Container(LBF_AR_FM_7SPECIAL1).Column(Ext Cost).SetPermission(Hidden) )*>
+
+
+LBF_FR_FM_8SENSOR_QTY
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+action : <*CTX ( Container(LBF_AR_FM_8SENSOR).Column(Qty).SetPermission(Hidden) )*>
+
+
+LBF_FR_FM_8SENSOR_COST
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+action : <*CTX ( Container(LBF_AR_FM_8SENSOR).Column(Cost).SetPermission(Hidden) )*>
+
+
+LBF_FR_FM_8SENSOR_EXT_COST
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+action : <*CTX ( Container(LBF_AR_FM_8SENSOR).Column(Ext Cost).SetPermission(Hidden) )*>
+
+
+LBF_FR_FM_9SPL2_QTY
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+action : <*CTX ( Container(LBF_AR_FM_9SPL2).Column(Qty).SetPermission(Hidden) )*>
+
+
+LBF_FR_FM_9SPL2_COST
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+action : <*CTX ( Container(LBF_AR_FM_9SPL2).Column(Cost).SetPermission(Hidden) )*>
+
+
+LBF_FR_FM_9SPL2_EXT_COST_HDN
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+action : <*CTX ( Container(LBF_AR_FM_9SPL2).Column(Ext Cost).SetPermission(Hidden) )*>
+
+
+
+
+___________________________________________________________________________________________________________________________________________
+___________________________________________________________________________________________________________________________________________
+
+
+
+
+
+LBF_FR_FM_1PUMP_QTY_ED
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+<*CTX ( Container(LBF_AR_FM_1PUMP).Column(Qty).SetPermission(Editable) )*>
+
+
+LBF_FR_FM_1PUMP_COST_ED
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+<*CTX ( Container(LBF_AR_FM_1PUMP).Column(Cost).SetPermission(Editable) )*>
+
+
+LBF_FR_FM_1PUMP_EXT_COST_ED
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+<*CTX ( Container(LBF_AR_FM_1PUMP).Column(Ext Cost).SetPermission(Editable) )*>
+
+
+LBF_FR_FM_2POWER_QTY_ED
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+<*CTX ( Container(LBF_AR_FM_2POWER).Column(Qty).SetPermission(Editable) )*>
+
+
+LBF_FR_FM_2POWER_COST_ED
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+<*CTX ( Container(LBF_AR_FM_2POWER).Column(Cost).SetPermission(Editable) )*>
+
+
+LBF_FR_FM_2POWER_EXT_COST_ED
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+<*CTX ( Container(LBF_AR_FM_2POWER).Column(Ext Cost).SetPermission(Editable) )*>
+
+
+LBF_FR_FM_3SIZE_QTY_ED
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+<*CTX ( Container(LBF_AR_FM_3SIZE).Column(Qty).SetPermission(Editable) )*>
+
+
+LBF_FR_FM_3SIZE_COST_ED
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+<*CTX ( Container(LBF_AR_FM_3SIZE).Column(Cost).SetPermission(Editable) )*>
+
+
+LBF_FR_FM_3SIZE_EXT_COST_ED
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+<*CTX ( Container(LBF_AR_FM_3SIZE).Column(Ext Cost).SetPermission(Editable) )*>
+
+
+LBF_FR_FM_4BAR_QTY_ED
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+<*CTX ( Container(LBF_AR_FM_4BAR).Column(Qty).SetPermission(Editable) )*>
+
+
+LBF_FR_FM_4BAR_COST_ED
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+<*CTX ( Container(LBF_AR_FM_4BAR).Column(Cost).SetPermission(Editable) )*>
+
+
+LBF_FR_FM_4BAR_EXT_COST_ED
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+<*CTX ( Container(LBF_AR_FM_4BAR).Column(Ext Cost).SetPermission(Editable) )*>
+
+
+LBF_FR_FM_5RLSZCL_QTY_ED
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+<*CTX ( Container(LBF_AR_FM_5RLSZCL).Column(Qty).SetPermission(Editable) )*>
+
+
+LBF_FR_FM_5RLSZCL_COST_ED
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+<*CTX ( Container(LBF_AR_FM_5RLSZCL).Column(Cost).SetPermission(Editable) )*>
+
+
+LBF_FR_FM_5RLSZCL_EXT_COST_ED
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+<*CTX ( Container(LBF_AR_FM_5RLSZCL).Column(Ext Cost).SetPermission(Editable) )*>
+
+
+LBF_FR_FM_6BARQTY_QTY_ED
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+<*CTX ( Container(LBF_AR_FM_6BARQTY).Column(Qty).SetPermission(Editable) )*>
+
+
+LBF_FR_FM_6BARQTY_COST_ED
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+<*CTX ( Container(LBF_AR_FM_6BARQTY).Column(Cost).SetPermission(Editable) )*>
+
+
+LBF_FR_FM_6BARQTY_EXT_COST_ED
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+<*CTX ( Container(LBF_AR_FM_6BARQTY).Column(Ext Cost).SetPermission(Editable) )*>
+
+
+LBF_FR_FM_7SPECIAL1_QTY_ED
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+<*CTX ( Container(LBF_AR_FM_7SPECIAL1).Column(Qty).SetPermission(Editable) )*>
+
+
+LBF_FR_FM_7SPECIAL1_COST_ED
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+<*CTX ( Container(LBF_AR_FM_7SPECIAL1).Column(Cost).SetPermission(Editable) )*>
+
+
+LBF_FR_FM_7SPECIAL1_EXT_COST_ED
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+<*CTX ( Container(LBF_AR_FM_7SPECIAL1).Column(Ext Cost).SetPermission(Editable) )*>
+
+
+LBF_FR_FM_8SENSOR_QTY_ED
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+<*CTX ( Container(LBF_AR_FM_8SENSOR).Column(Qty).SetPermission(Editable) )*>
+
+
+LBF_FR_FM_8SENSOR_COST_ED
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+<*CTX ( Container(LBF_AR_FM_8SENSOR).Column(Cost).SetPermission(Editable) )*>
+
+
+LBF_FR_FM_8SENSOR_EXT_COST_ED
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+<*CTX ( Container(LBF_AR_FM_8SENSOR).Column(Ext Cost).SetPermission(Editable) )*>
+
+
+LBF_FR_FM_9SPL2_QTY_ED
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+<*CTX ( Container(LBF_AR_FM_9SPL2).Column(Qty).SetPermission(Editable) )*>
+
+
+LBF_FR_FM_9SPL2_COST_ED
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+<*CTX ( Container(LBF_AR_FM_9SPL2).Column(Cost).SetPermission(Editable) )*>
+
+
+LBF_FR_FM_9SPL2_EXT_COST_ED
+[NEQ](<*VALUE(LBF_AR_FM_PARTNUMBER)*>,)
+<*CTX ( Container(LBF_AR_FM_9SPL2).Column(Ext Cost).SetPermission(Editable) )*>
+
+
+-----------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------
+
+Description is NONE
+Description is NOT NONE
+
+
+[OR]([EQ](<*CTX(Container(LBF_AR_FM_7SPECIAL1).Row(1).Column(Description).Get)*>,NONE),[EQ](<*CTX(Container(LBF_AR_FM_7SPECIAL1).Row(2).Column(Description).Get)*>,NONE))
+<*CTX ( Container(LBF_AR_FM_7SPECIAL1).Column(Qty).SetPermission(ReadOnly) )*>
+
+
+[OR]([EQ](<*CTX(Container(LBF_AR_FM_7SPECIAL1).Row(1).Column(Description).Get)*>,NONE),[EQ](<*CTX(Container(LBF_AR_FM_7SPECIAL1).Row(2).Column(Description).Get)*>,NONE))
+<*CTX ( Container(LBF_AR_FM_7SPECIAL1).Column(Cost).SetPermission(ReadOnly) )*>
+
+
+
+[OR]([NEQ](<*CTX(Container(LBF_AR_FM_7SPECIAL1).Row(1).Column(Description).Get)*>,NONE),[EQ](<*CTX(Container(LBF_AR_FM_7SPECIAL1).Row(2).Column(Description).Get)*>,NONE))
+<*CTX ( Container(LBF_AR_FM_7SPECIAL1).Column(Qty).SetPermission(Editable) )*>
+
+
+[OR]([NEQ](<*CTX(Container(LBF_AR_FM_7SPECIAL1).Row(1).Column(Description).Get)*>,NONE),[EQ](<*CTX(Container(LBF_AR_FM_7SPECIAL1).Row(2).Column(Description).Get)*>,NONE))
+<*CTX ( Container(LBF_AR_FM_7SPECIAL1).Column(Cost).SetPermission(Editable) )*>

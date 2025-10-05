@@ -1,0 +1,68 @@
+@using WebSite.Controllers
+<main class="w960 cart-width quote-page-container fiori3-cart-page-container fiori3-cart-tab-container">
+    <div class="row cart" id="cartContainer" data-bind="css: { 'no-action-images': !cartActionsModel().displayImagesForCartActions() } ">
+        <div class="row row-offcanvas row-offcanvas-left quote-page-main-container collapsed-actions-visible" data-bind="visible: isInitalized, css: { 'active': areActionsActive }" style="display: none;">
+            <div class="clearfix cart-wrapper" data-bind="css: { 'cart-view-mode': isInViewMode }">
+                <div class="clearfix"></div>
+                @Html.PartialWithNameAsComment("Sections/Promotions")
+                <scripting-messages params="quoteMessages: $root.quoteMessages"></scripting-messages>
+                @Html.PartialWithNameAsComment("Sections/Notifications")
+                @Html.PartialWithNameAsComment("Sections/InvalidAutocompleteNotification")
+                <div class="cart-content fiori3-cart-content clearfix">
+                    @Html.PartialWithNameAsComment("Sections/Tabs")
+
+
+                    <div id="cartSectionsWrapper" class="cart-sections-wrapper">
+                        @Html.PartialWithNameAsComment("Sections/Proposal")
+                        @{
+                            var i = 0;
+                            IList<string> sections = CartController.GetSections();
+                            while (i < sections.Count)
+                            {
+                                Html.RenderPartialWithNameAsComment("Sections/" + sections[i]);
+                                i += 1;
+                            }
+                        }
+                    </div>
+                    @if (CartController.CanAccessCartDebugger())
+                    {
+                        @Html.PartialWithNameAsComment("Debugger")
+                    }
+                </div>
+                @Html.Partial("~/Views/Favourites/AddToFavoritesDialogTemplate.cshtml")
+
+                <!-- ko if: promosInfo.shouldShowPromotionsInfo -->
+                @Html.PartialWithNameAsComment("/Views/Cart/Dialogs/PromotionDialogTemplate.cshtml")
+                <!-- /ko -->
+                <!-- ko with: filterEditor -->
+                <div style="position: fixed; left: 0; right: 0; top: 0;bottom: 0"></div>
+
+                <div id="filter-editor-content" class="quote-items-filter-editor fiori3-cart-filter slide-in-from-left" data-bind="affixTop: { disableScroll: true }">
+                    <div class="quote-filter-header" style="border-bottom: 1px solid #ededed">
+                        <h4 data-bind="text: $root.filtersLabel"></h4>
+                        <span class="close-filter-editor">
+                            <i tabindex="0" class="fa fa-times" data-bind="click: $parent.toggleFilterEditor, event: { keyup: function() { $parent.toggleFilterEditorOnEnter(event) } }, tooltip: { title: '@Translation.GetJS("Msg.Close")' }, attr: { 'aria-label': '@Translation.GetJS("Msg.Close")' }"></i>
+                        </span>
+                    </div>
+                    <div id="quoteFilterContainer" class="quote-list-editors cpq-scroll" data-bind="foreach: filters">
+                        <div data-bind="template: 'Filter_' + template" class="fiori3-input-group"></div>
+                    </div>
+                    <div class="quote-list-tab-footer">
+                        <button class="btn btn-primary fiori3-btn-primary" data-bind="click: applyFilters, enable: actionEnabled(), executeOnEnter: function() { applyFilters(); }">@Translation.Get("QuoteList.ApplyFilter")</button>
+                        <button class="btn btn-tertiary fiori3-btn-tertiary" data-bind="click: $parent.toggleFilterEditor, event: { keyup: function() { $parent.toggleFilterEditorOnEnter(event) } }">@Translation.Get("QuoteList.Cancel")</button>
+                    </div>
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+    </div>
+</main>
+
+@Html.PartialWithNameAsComment("Templates/CellTemplates")
+@Html.PartialWithNameAsComment("Templates/QuoteFilterTemplates")
+@Html.PartialWithNameAsComment("Templates/TotalsTemplate")
+@Html.PartialWithNameAsComment("/Views/CartList/Dialogs/ReassignCartDialogTemplate.cshtml")
+@Html.PartialWithNameAsComment("/Views/Cart/Dialogs/PricebookMissingForMarketDialogTemplate.cshtml")
+@Html.PartialWithNameAsComment("/Views/Cart/Dialogs/CreatePartialOrderDialogTemplate.cshtml")
+@Html.PartialWithNameAsComment("Dialogs/UpgradeProductsProgressBarTemplate")
+@Html.PartialWithNameAsComment("SliderTemplate")

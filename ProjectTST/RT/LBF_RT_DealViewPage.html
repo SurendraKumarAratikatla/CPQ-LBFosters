@@ -1,0 +1,539 @@
+@using WebSite.Models
+@model DealViewTableModel
+
+<div class="w960 deal-view-container user-page-container fiori3-cart-tab-container" style="height: calc(100% - 80px)">
+    <div class="row cart" id="cartContainer" data-bind="css: { 'no-action-images': !displayImagesForCartActions() } ">
+    <div class="row cart" id="dealViewContainer">
+        <div class="row-offcanvas row-offcanvas-left quote-page-main-container collapsed-actions-visible" data-bind="visible: isInitialized" style="display: none;">
+            <div data-bind="css: { 'cart-view-mode': isInViewMode }">
+                <div class="clearfix"></div>
+                <div class="clearfix">
+                    <scripting-messages></scripting-messages>
+                    @Html.PartialWithNameAsComment("Sections/Tabs")
+                    <div>
+                        <div data-bind="ifnot: hasAnySections() || showSectionBuilder()">
+                            <div data-bind="visible: canAccessSectionBuilder" class="create-deal-options clearfix">
+                                <div class="create-deal-options-title">
+                                    <h3 class="no-bottom-border">@Translation.GetJS("DealStructure.CreateLayout")</h3>
+                                </div>
+                                <div id="dealActions" class="create-deal-actions flex flex-column flex-center">
+                                    <div>
+                                        <button id="uiBuilderButton" class="icon-activity-items ui-builder" data-bind="click: function(){ showSectionBuilder(true); isEditStructure(true); }"></button>
+                                        <label>@Translation.GetJS("DealStructure.UIBuilder")</label>
+                                    </div>
+                                    <div>
+                                        @using (Html.BeginForm("ImportDealStructureExcel", "Cart", new { enctype = "multipart/form-data" }, FormMethod.Post))
+                                        {
+                                           <input type="hidden" data-bind="value: $root.quoteId() || null" name="quoteId">
+                                            @Html.AntiForgeryToken()
+                                            <button type="button" class="icon-excel-attachment excel-upload" data-bind="event: { keypress: function() { $root.openExcelUpload(event) } }"></button>
+                                            <span class="btn-file" data-provides="fileupload">
+                                                <input id="excelUploadInput" tabindex="-1" type="file" accept=".xls,.xlsx,.xltx,.xlt" name="file" class="file-input" data-bind="fileUpload: { onFileUpload: $root.importExcel }">
+                                            </span>
+                                            <label>@Translation.GetJS("DealStructure.ExcelUpload")</label>
+                                        }
+                                    </div>
+                                    <div>
+                                        <button class="icon-excel-attachment excel-template" data-bind="click: $root.downloadSectionsTemplate"></button>
+                                        <label>@Translation.GetJS("DealStructure.ExcelTemplate")</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="create-deal-options clearfix" data-bind="visible: !canAccessSectionBuilder()">
+                                <br>
+                                <label data-bind="ifnot: isInViewMode()">@Translation.GetJS("DealStructure.NoPermissionToCreateLayout")</label>
+                                <label data-bind="if: isInViewMode()">@Translation.Get("Msg.SolutionDesignEditInViewMode")</label>
+
+                            </div>
+                        </div>
+
+                        <section data-bind="if: hasAnySections() || showSectionBuilder()">
+                            <div id="dealStructureViewHeader" class="deal-view-header">
+                                <h3 id="titleDealStructure" data-bind="text: title" class="no-bottom-border"></h3>
+                                <div class="deal-view-actions">
+                                    <button id="filterButton" class="fiori3-icon-button icon-filter" aria-label="@Translation.Get("QuoteList.Filter")" data-bind="css: { 'active': filterEditor() }, click: toggleFilterEditor, enable: $root.anySavedSections() || $root.filterPills().length, tooltip: { title: '@Translation.Get("QuoteList.Filter")' }" onclick="$(this).tooltip('hide')"></button>
+                                    <button id="editButton" class="fiori3-icon-button icon-edit" aria-label="@Translation.Get("DealStructure.EditDealStructure")" data-bind="visible: $root.canAccessSectionBuilder, click: $root.editDealStructure, css: { 'active': isEditStructure() }, tooltip: { title: '@Translation.Get("DealStructure.EditDealStructure")' }" onclick="$(this).tooltip('hide')"></button>
+                                    <button class="fiori3-icon-button icon-excel-attachment" aria-label="@Translation.Get("DealStructure.DownloadExcel")" data-bind="click: $root.exportDealStructure, enable: $root.anySavedSections(), tooltip: { title: '@Translation.Get("DealStructure.DownloadExcel")' }" onclick="$(this).tooltip('hide')"></button>
+                                    <!--<button class="btn-tertiary icon-switch-views"></button>-->
+                                    <span class="disabled-button-tooltip-enabler" data-bind="css: { 'disabled': !$root.hasAnyCustomDistributions() }, tooltip: { title: name }, tooltip: { title: '@Translation.Get("DealStructure.Redistribute")' }, visible: !$root.isInViewMode() && $data.hasAnyCustomDistributions()" onclick="$(this).tooltip('hide')">
+                                        <button class="btn-tertiary icon-share" aria-label="@Translation.Get("DealStructure.Redistribute")" data-bind="executeOnEnter: function() { $root.redistributeButton(); }, enable: $root.hasAnyCustomDistributions(), click: $root.redistribute, visible: !$root.isEditStructure() && $root.customDistributionMaths().length > 1"></button>
+                                    </span>
+                                    <span data-bind="visible: $root.actions.length && !$root.isInViewMode()">
+                                        <span class="actions-separator"></span>
+                                        <!-- ko foreach:  $root.actions -->
+                                        <span class="disabled-button-tooltip-enabler" data-bind="css: { 'disabled': !enabled() }, tooltip: { title: name }" onclick="$(this).tooltip('hide')">
+                                            <button class="fiori3-icon-button d-inline" data-bind="attr: { id: 'actionButton_' + id, 'aria-label': name }, executeOnEnter: function() { $root.activateActionButton(id); }, click: action, css: icon, enable: enabled(), visible: visible()"></button>
+                                        </span>
+                                        <!-- /ko -->
+                                    </span>
+                                </div>
+                            </div>
+                            <div id="dealStructureFilterPills" class="sections-filter-pills-container" data-bind="css: { 'invisible': !displayFilterPills().length }">
+                                <!-- ko foreach: displayFilterPills -->
+                                <div class="section-filter-pill">
+                                    <span style="padding: 0 5px;" data-bind="text: label + ': '"></span>
+                                    <span style="padding: 0 5px;font-weight: bold" data-bind="text: displayValue()"></span>
+                                    <button class="fiori3-icon-button bc-2 icon-sys-cancel pull-right" data-bind="attr: { 'id': 'closeFilter_' + $index() }, click: $root.removeFilterCriteria, executeOnEnter: function() { $parent.closeFilters($index()); }"></button>
+                                </div>
+                                <!-- /ko -->
+                                <span tabindex="0" class="close-filter-pill" data-bind="visible: displayFilterPills().length, executeOnEnter: function() { clickClearFilters() }, click: clearFilters">@Translation.Get("QuoteList.ClearFilters")</span>
+                            </div>
+                            <!-- ko ifnot: isEditStructure() -->
+                            <div id="dealStructureTable" class="cpq-scroll" style="overflow-x: auto; width: 100%">
+                                <table id="no-more-tables" class="table data-structure-table" style="width: 100%">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" data-bind="visible: enableSelection()">
+                                                <label class="fiori3-checkbox-group">
+                                                    <span class="sr-only">@Translation.GetJS("DealStructure.SelectAll")</span>
+                                                    <input type="checkbox" data-bind="enable: !isInViewMode(), checked: allSelected, event: { change: function(){ selectAll(allSelected()); } }">
+                                                    <span class="center-chekbox"></span>
+                                                </label>
+                                            </th>
+                                            <th scope="col" colspan="2">
+                                                @Translation.GetJS("DealStructure.SolutionComponent")
+                                            </th>
+
+                                            @foreach (DealViewTableColumnVm column in Model.Columns)
+                                            {
+                                                if (column.IsComplex)
+                                                {
+                                                        <th scope="col">@column.HeaderLabel @Translation.Get("Quote.Subscription.OneTime")</th>
+                                                        <th scope="col">@column.HeaderLabel @Translation.Get("Quote.Subscription.Recurring")</th>
+                                                }
+                                                else
+                                                {
+                                                    <th scope="col">@column.HeaderLabel</th>
+                                                }
+                                            }
+
+                                        </tr>
+                                    </thead>
+                                    <tbody data-bind="ifnot: $root.useCustomLoader()">
+                                        <!-- ko foreach: sectionsToDisplay() -->
+                                        <tr data-bind="visible: $root.isSectionVisible($data), css: {'selected-section': $root.isSelected($data) }">
+                                            <td data-bind="visible: $root.enableSelection()">
+                                                <label class="fiori3-checkbox-group" data-bind="visible: !distributionParentPath">
+                                                    <span class="sr-only">@Translation.GetJS("DealStructure.Select")</span>
+                                                    <input type="checkbox" data-bind="enable: !$root.isInViewMode() && canManageSection, checked: $root.selectedSections, value: $data">
+                                                    <span class="center-chekbox"></span>
+                                                </label>
+                                            </td>
+                                            <td class="section-name">
+                                                <div>
+                                                    <span data-bind="text: hierarchyId"></span>
+                                                    <button class="fiori3-icon-button d-inline" data-bind="
+                                                        attr: {'id': 'expandCollapseSectionButton_' + $index(), 'aria-label': $root.isCollapsed($data) ? '@Translation.GetJS("xsltExpand")' : '@Translation.GetJS("xsltCollapse")' }, tooltip: { title: ko.computed(function(){ return $root.isCollapsed($data)? '@Translation.GetJS("xsltExpand")': '@Translation.GetJS("xsltCollapse")'; })},
+                                                        visible: $root.hasChildren(hierarchyId(), sectionPath()) || $root.isCollapsed($data),
+														click: function(data, event) { $root.expandCollapseSection(data, event, $index()) },
+														event: { keypress: function() { $root.expandCollapseSection($data, event, $index()) } },
+                                                        css: { 'icon-slim-arrow-right': $root.isCollapsed($data), 'icon-slim-arrow-down': !$root.isCollapsed($data)}"></button>
+                                                    <span style="padding: 12px" data-bind="visible: !$root.hasChildren(hierarchyId(), sectionPath()) && !$root.isCollapsed($data)"></span>
+                                                    <span data-bind="text: sectionName"></span>
+                                                </div>
+                                            </td>
+                                            <td class="section-actions">
+                                                <div class="pull-right">
+                                                    <span style="color: #7ca10c !important" data-bind="attr: {'aria-label': $root.getDistributionTitle($data) }, visible: distributionParentPath, tooltip: { title: $root.getDistributionTitle($data) }" class="fiori3-icon-button d-inline icon-share-2"></span>
+                                                    <button aria-label="@Translation.GetJS("DealStructure.Distribute")" data-bind="attr: {'id': 'distributeButton_' + $index() }, executeOnEnter: function() { $parent.openDistributeSection($index()); }, click: $root.distributeSource, visible: !$root.isInViewMode() && canBeDistributed() && canManageSection(), tooltip: { title: '@Translation.GetJS("DealStructure.Distribute")' }" class="fiori3-icon-button d-inline icon-share-2"></button>
+                                                    <button aria-label="@Translation.GetJS("DealStructure.AddProduct")" data-bind="attr: {'id': 'addProductToSectionButton_' + $data.sectionName()}, executeOnEnter: function() { $parent.openAddProductToSection($data); }, click: $root.addProductToSection, visible: !$root.isInViewMode() && canManageSection() && canContainProducts() && $root.addItemActionAvailable() && $root.isSectionAssignedToMe(id),
+                                                            css: { 'active': $root.newProductToSection() == $data },
+                                                            tooltip: { title: '@Translation.GetJS("DealStructure.AddProduct")' }"
+                                                            class="fiori3-icon-button d-inline icon-add-product"></button>
+                                                </div>
+                                            </td>
+                                            <!-- ko foreach: $root.getSectionItems($data) -->
+                                            <!-- ko foreach: values -->
+                                            <td data-bind="attr: { id:'cell_'+id }">
+                                                <!--ko ifnot: column.name == 'LBF_QU_Notes' -->
+                                                    <div class="flex flex-between">
+                                                        <div class="responsive-label" data-bind="text: column.headerLabel"></div>
+                                                        <!-- ko template : { name : template, data: $data }  -->
+                                                        <!-- /ko -->
+                                                    </div>
+                                                <!-- /ko -->
+                                                <!--ko if: column.name == 'LBF_QU_Notes' -->
+                                                    <textarea data-bind="value: value, event: { change: function(caller) { if($root.onChange) { $root.onChange(caller) } } }, css: { hasError: errorMessage }, attr: { title: errorMessage() ? errorMessage() : '', id: tabId + '_' + editableGroup }" class="form-control" style="height: fit-content !important;width: fit-content !important;"></textarea>
+                                                <!-- /ko -->
+                                            </td>
+                                            <!-- /ko -->
+                                            <!-- /ko -->
+                                        </tr>
+                                        <!-- ko if: $root.newProductToSection() == $data -->
+                                        <tr data-bind="template: { name: 'addProductTemplate', data: $root.newProductToSection }"></tr>
+                                        <!-- /ko -->
+                                        <!-- ko foreach: $root.getItems($data) -->
+                                        <tr>
+                                            <td data-bind="visible: $root.enableSelection()"></td>
+                                            <td class="section-name">
+                                                <div>
+                                                    <div style="display: inline-block" data-bind="style: { width: ($parent.hierarchyId().length * 7) + 'px' }"></div>
+                                                    <span style="padding: 12px"></span>
+                                                    <div style="display: inline-block;line-height: 16px;max-width: 440px;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;" data-bind="with: itemDescription">
+                                                        <div style="font-size: 14px;color: #0a6ed1;" data-bind="text: partNumber"></div>
+                                                        <div style="font-size: 12px" data-bind="text: description"></div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="section-actions">
+                                                <div data-bind="visible: $parent.canManageSection() && !$root.isInViewMode()">
+                                                    <button aria-label="@Translation.GetJS("DealStructure.ItemActions")" data-bind="attr: {'id': 'settings_' + $parent.sectionName() + '_' + $index() }, event: { keyup: function() { $root.onKeyUpSettingsProduct($data, event); }, click: function() { $root.settingsProductOnClick($parent, $index()); } },
+															executeOnEnter: function() { $root.settingsProduct($parent, $index()); },
+															popover: { offset: 50, templateId: 'itemActionsTemplate', autoClose: true, closeOnClick: true, placement: 'bottom', moduleFactory: function(){ return $context; } },
+															tooltip: {title: '@Translation.GetJS("DealStructure.ItemActions")'}, visible: $root.isSectionAssignedToMe($root.getSectionId(section()))" class="fiori3-icon-button d-inline icon-action-settings tooltip-trigger">
+                                                    </button>
+                                                </div>
+                                            </td>
+                                            <!-- ko foreach: values -->
+                                            <td>
+                                                <div class="flex flex-between">
+                                                    <div class="responsive-label" data-bind="text: column.headerLabel"></div>
+                                                    <!-- ko template : { name : template, data: $data }  -->
+                                                    <!-- /ko -->
+                                                </div>
+                                            </td>
+                                            <!-- /ko -->
+                                        </tr>
+                                        <!-- ko if: $root.productToRelocate() == $data -->
+                                        <tr style="text-align: center" data-bind="template: { name: 'relocateSectionTemplate', data: $root.productToRelocate() }"></tr>
+                                        <!-- /ko -->
+                                        <!-- /ko -->
+                                        <!-- /ko -->
+                                        <!-- ko if: filterPills().length -->
+                                        <!-- ko component: { name: 'deal-view-total', params: { leadingColumnVisible: $root.enableSelection, label: 'Filtered Items Total', getTotal: $root.getTotal, filters: $root.filterQuery(), quoteId: $root.quoteId(), currencySign: $root.currencySign } }-->
+                                        <!-- /ko -->
+                                        <!-- /ko -->
+                                        <!-- ko component: { name: 'deal-view-total', params: { leadingColumnVisible: $root.enableSelection, label: 'Total', getTotal: $root.getTotal, filters: [], quoteId: $root.quoteId(), currencySign: $root.currencySign } }-->
+                                        <!-- /ko -->
+
+                                        <tr>
+                                            <td data-bind="visible: $root.enableSelection()"></td>
+                                            <td class="section-name" data-bind="template: 'page-size-selector'"></td>
+                                            <td class="section-actions">
+                                                <button aria-label="@Translation.GetJS("DealStructure.PreviousPage")" id="prevPageButton" class="icon-navigation-left-arrow btn-tertiary no-home-end-keys" data-bind="executeOnEnter: function() { $root.prevPage(); }, click: $root.prevPage, enable: canNavigatePrev() && !isLoading(), tooltip: { title: '@Translation.GetJS("DealStructure.PreviousPage")', trigger: 'click hover focus' }" onclick="$(this).tooltip('hide')"></button>
+                                                <button aria-label="@Translation.GetJS("DealStructure.NextPage")" id="nextPageButton" class="icon-navigation-right-arrow btn-tertiary no-home-end-keys" data-bind="executeOnEnter: function() { $root.nextPage(); }, click: $root.nextPage, enable: canNavigateNext() && !isLoading(), tooltip: { title: '@Translation.GetJS("DealStructure.NextPage")', trigger: 'click hover focus' }" onclick="$(this).tooltip('hide')"></button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div style="background-color: white; z-index: 1000" data-bind="visible: $root.useCustomLoader()">
+                                    <div class="custom-spinner">
+                                        <div class="rect1"></div>
+                                        <div class="rect2"></div>
+                                        <div class="rect3"></div>
+                                        <div class="rect4"></div>
+                                    </div>
+                                    <div style="text-align: center" data-bind="text: '@Translation.GetJS("DealStructure.BulkEditMessage")'"></div>
+                                </div>
+                            </div>
+                            <!-- /ko -->
+                            <!-- ko if: isEditStructure() -->
+                            <div id="dealStructureTable" style="overflow-x: auto; width: 100%">
+                                @Html.PartialWithNameAsComment("DealStructureEditor")
+                            </div>
+                            <!-- /ko -->
+                        </section>
+                </div>
+            </div>
+        </div>
+        <div id="filterEditorDialog" data-bind="with: $root.filterEditor">
+            <div style="position: fixed; left: 0; right: 0; top: 0;bottom: 0;z-index:15" data-bind="click: $parent.toggleFilterEditor"></div>
+
+            <div class="sections-filter-editor fixed">
+                <div class="quote-filter-header" style="border-bottom: 1px solid #ededed">
+                    <h4 id="titleFilterEditor">@Translation.GetJS("QuoteItemsFilter.Filters")</h4>
+                    <span class="close-filter-editor">
+                        <i tabindex="0" class="fa fa-times" data-bind="executeOnEnter: function() { $parent.closeFilterEditor(event); }, click: $parent.toggleFilterEditor, tooltip: { title: '@Translation.GetJS("xsltClose")', autoClose: true, closeOnClick: true, placement: 'top auto', trigger: 'hover focus', container: 'body' }"></i>
+                    </span>
+                </div>
+                <div>
+                    <div class="quote-list-editors cpq-scroll" data-bind="foreach: filters">
+                        <div data-bind="template: 'Filter_' + template"></div>
+                    </div>
+                    <div class="quote-list-tab-footer">
+                        <button id="applyFilterButton" class="btn btn-primary fiori3-btn-primary" data-bind="event: { keyup: function() { $parent.focusTabHandler('applyFilterButton', 'titleFilterEditor')}}, executeOnEnter: function() { $parent.applyFilterEditor(); }, click: function(){ applyFilters(); }">@Translation.Get("QuoteList.ApplyFilter")</button>
+                        <button class="btn btn-tertiary fiori3-btn-tertiary" data-bind="executeOnEnter: function() { $parent.closeFilterEditor(event); }, click: function(){ cancel(); }">@Translation.Get("QuoteList.Cancel")</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ko with: $root.popup -->
+    <div style="display: none" class="modal-overlay" data-bind="visible: $root.popup(), click: function(){$root.popup(null)}"></div>
+    <div style="display: none" class="modal-container" data-bind="template: template, visible: $root.popup()"></div>
+    <!-- /ko -->
+
+</div>
+    </div>
+</div>
+
+
+
+@Html.PartialWithNameAsComment("Templates/QuoteFilterTemplates")
+@Html.PartialWithNameAsComment("/Views/CartList/Dialogs/ReassignCartDialogTemplate.cshtml")
+@Html.PartialWithNameAsComment("/Views/Cart/Dialogs/CreatePartialOrderDialogTemplate.cshtml")
+@Html.PartialWithNameAsComment("Dialogs/UpgradeProductsProgressBarTemplate")
+
+<script type="text/html" id="page-size-selector">
+    <div id="solutionDesignPager" class="fiori3-items-per-page-container" data-bind="dropdown: { position: 'fixed', menu: '.pager-drop-down-menu', maxHeight: 132 }">
+        <div id="itemsPerPageDropdown" data-toggle-button="dropdown" style="display: inline-block;padding-left: 10px" data-bind="event: { keyup: function() { $root.pagerDropdownFocus(event); } }">
+            <a id="pageSize" href="#" class="no-home-end-keys">
+                <span data-bind="text: $root.pageSize" class="items-per-page-number"></span>
+            </a>
+        </div>
+        <span>@Translation.Get("Pager.ItemsPerPage")</span>
+        <div class="pager-drop-down-menu">
+            <ul>
+                <li class="no-home-end-keys" tabindex="0" data-bind="event: { keyup: function() { $root.changePage(event, 5) }}, click: function() { $root.pageSize(5); }, css: { 'selected': $root.pageSize() === 5 }">5</li>
+                <li class="no-home-end-keys" tabindex="0" data-bind="event: { keyup: function() { $root.changePage(event, 10) }}, click: function() { $root.pageSize(10); }, css: { 'selected': $root.pageSize() === 10 }">10</li>
+                <li class="no-home-end-keys" tabindex="0" data-bind="event: { keyup: function() { $root.changePage(event, 20) }}, click: function() { $root.pageSize(20); }, css: { 'selected': $root.pageSize() === 20 }">20</li>
+                <li class="no-home-end-keys" tabindex="0" data-bind="event: { keyup: function() { $root.changePage(event, 50) }}, click: function() { $root.pageSize(50); }, css: { 'selected': $root.pageSize() === 50 }">50</li>
+                <li class="no-home-end-keys" tabindex="0" data-bind="event: { keyup: function() { $root.changePage(event, 100) }}, click: function() { $root.pageSize(100); }, css: { 'selected': $root.pageSize() === 100 }">100</li>
+            </ul>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="distribution-dialog">
+    <div id="distributeSectionDialog" class="deal-view-dialog">
+        <div class="deal-view-dialog-header">
+            <h4 id="titleDistributeSection" class="modal-dialog-header">@Translation.Get("DealStructure.DistributeSectionDialogTitle")</h4>
+            <button class="fiori3-icon-button close tooltip-trigger" data-bind="executeOnEnter: function() { $parent.closeDistributeSection(); }, click: $root.cancelDistribution, tooltip: { title: '@Translation.GetJS("xsltClose")', autoClose: true, closeOnClick: true, placement: 'top auto', trigger: 'hover focus', container: 'body' }">
+                <span>&#xe03e;</span>
+            </button>
+        </div>
+        <div class="deal-view-dialog-content-wrapper">
+            <div class="deal-view-dialog-content">
+                <div class="row">
+                    <div class="form-group">
+                        <label for="sectionsToDistribute">@Translation.Get("DealStructure.SelectSectionToDistribute")</label>
+                        <!-- ko ifnot: $root.editDistribution() -->
+                        <div class="fiori3-input-group">
+                            <select id="sectionsToDistribute" class="form-control" tabindex="0" data-bind="options: $root.availableDistributedSections(), optionsText: function(s){ if(!s) return '';return s.hierarchyId() + ' ' + s.sectionName() }, optionsValue: 'id', value: $root.selectedDistributedSection"></select>
+                        </div>
+                        <!-- /ko -->
+                        <!-- ko with: $root.editDistribution() -->
+                        <div class="form-control dropdown-container disabled" data-toggle-button="dropdown">
+                            <span data-bind="text: hierarchyId() + ' ' + sectionName()"></span>
+                            <span class="pull-right icon-navigation-down-arrow"></span>
+                        </div>
+                        <!-- /ko-->
+                    </div>
+                    <!-- ko if: $root.customDistributionMaths().length > 1 -->
+                    <div class="form-group">
+                        <label for="distributionMethod">@Translation.Get("DealStructure.SelectDistributionMethod")</label>
+                        <div class="dropdown-container" data-bind="dropdown: {}">
+                            <button id="distributionMethod" class="btn form-control btn-select" data-toggle-button="dropdown" data-bind="with: $root.getDistributionMethod(), event: { keyup: function() { $root.onKeyUpDistributionMethod($data, event); } }">
+                                <span data-bind="text: Name"></span>
+                                <a href="#" class="icon-alert" style="color: red" data-bind="visible: !IsActive" title="@Translation.Get("DealStructure.DistributionMethodDisabled")"></a>
+                                <span class="pull-right icon-navigation-down-arrow"></span>
+                            </button>
+                            <div class="custom-dropdown-menu cpq-scroll" data-bind="foreach: $root.customDistributionMaths()">
+                                <div tabindex="0" class="option" data-bind="attr: {'id': 'optionDistributionMethod_' + $index() }, text: Name, css: {'inactive': !IsActive }, event: { keyup: function() { if(IsActive) $root.chooseDistributeMethod(event, $index()); } }, click: function(){ if(IsActive) $root.selectedDistributionMethod(Id); }"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /ko-->
+                </div>
+                <div style="height: 40px">
+                    <div class="col-md-6">
+                        @Translation.Get("DealStructure.DistributeTo")
+                    </div>
+                    <div class="col-md-5">
+                        <button id="splitEvenlyButton" style="white-space: nowrap;" class="btn btn-tertiary fiori3-btn-tertiary" data-bind="executeOnEnter: function() { $root.distributionsSplitEvenly(); }, click: $root.splitEvenly, visible: !$root.selectedDistributionMethod()">@Translation.Get("DealStructure.SplitEvenly")</button>
+                    </div>
+                    <div class="col-md-1">
+                        <button id="addSectionButton" class="fiori3-icon-button icon-add" data-bind="executeOnEnter: function() { $root.addSectionToDistribute(); }, click: function(){ $root.newDistributionTarget(true); }, visible: $root.newDistributionSuggestions().length, tooltip: { title: '@Translation.Get("DealStructure.AddSectionToDistribute")' }"></button>
+                    </div>
+                </div>
+                <!-- ko if: $root.newDistributionTarget -->
+                <div data-bind="template: 'newDistributionTarget'"></div>
+                <!-- /ko -->
+                <div style="overflow-y: auto" data-bind="foreach: $root.sectionsToDistribute, style: {'max-height': $root.newDistributionTarget() ? '205px' : '240px' }">
+                    <div class="distribution-target">
+                        <span>
+                            <span data-bind="text: hierarchyId"></span>
+                            <span data-bind="text: sectionName"></span>
+                        </span>
+                        <span style="display: flex">
+                            <span data-bind="visible: !$root.selectedDistributionMethod()">
+                                <input id="distributionPercent" type="text" class="form-control" style="width: 50px; display: inline-block" data-bind="textInput: distributionPercent, validateInput: { val: distributionPercent, event: 'keypress input blur' },
+                                       css: { 'validation-error': distributionPercent.isValid && !distributionPercent.isValid(), 'validation-initial': !document.dirtyList.has('distributionPercent') }"> %
+                            </span>
+                            <span style="width: 70px; text-align: center" data-bind="visible: $root.selectedDistributionMethod()">--</span>
+                            <button class="fiori3-icon-button icon-sys-cancel-2" data-bind="attr: {'id': 'removeSection_' + $index() }, executeOnEnter: function() { $root.removeSectionToDistribute($index()); }, click: function(s){ $root.sectionsToDistribute.remove(s); }, tooltip: { title: '@Translation.Get("DealStructure.RemoveSectionFromDistribute")' }"></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="distribution-total" data-bind="text: 'Total: ' + (!$root.selectedDistributionMethod() ? Math.round($root.totalDistributionPercent()) + '%' : '--')"></div>
+            </div>
+        </div>
+        <div class="deal-view-dialog-footer">
+            <button id="retractButton" style="margin-left: 10px;" class="btn btn-tertiary fiori3-btn-tertiary" data-bind="executeOnEnter: function() { $parent.retractDistributeSection(); }, click: $root.retractDistribution, visible: $root.editDistribution() && $root.getDistributedSections($root.editDistribution().sectionPath()).length">@Translation.GetJS("DealStructure.Retract")</button>
+            <span>
+                <button id="distributeSectionButton" class="btn btn-primary fiori3-btn-primary" data-bind="executeOnEnter: function() { $parent.distributeSection(); }, click: $root.saveDistribution, enable: $root.sectionsToDistribute().length">@Translation.GetJS("DealStructure.Distribute")</button>
+                <button id="cancelDistributionButton" class="btn btn-tertiary fiori3-btn-tertiary" data-bind="event: { keyup: function() { $parent.focusTabHandler('cancelDistributionButton', 'titleDistributeSection')}}, executeOnEnter: function() { $parent.closeDistributeSection(); }, click: $root.cancelDistribution">@Translation.GetJS("DealStructure.Cancel")</button>
+            </span>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="newDistributionTarget">
+    <div id="divAddSection" style="position: relative; display: inline-block;width: 360px" data-bind="dropdown: { position: 'fixed', event: 'mousedown' }, event: { keyup: function() { $root.onKeyUpInputSection(event); } }">
+        <input id="inputAddSection" data-toggle-button="dropdown" type="text" class="form-control" data-bind="executeOnEnter: function() { $root.openSuggestions(); }, textInput: $root.searchNewSectionName" />
+        <!-- ko if: $root.newDistributionSuggestions().length -->
+        <div class="custom-dropdown-menu sections-suggestions" style="width: 340px">
+            <table>
+                <tbody data-bind="foreach: $root.newDistributionSuggestions">
+                    <tr class="row-section-suggestions" tabindex="0" data-bind="event: { mousedown: $root.addNewDistributionTarget, keyup: $root.addSectionsFromInput }">
+                        <td class="section-path" style="width: 350px" data-bind="text: $root.resolveSectionSuggestionName(sectionPath() || sectionName())"></td>
+                        <td class="hierarchy" data-bind="text: hierarchyId"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- /ko -->
+    </div>
+    <button id="cancelAddSectionButton" class="btn btn-tertiary fiori3-btn-tertiary" data-bind="executeOnEnter: function() { $root.cancelAddSectionToDistribute(); }, click: function(){ $root.newDistributionTarget(false) }">@Translation.GetJS("DealStructure.Cancel")</button>
+</script>
+
+<script type="text/html" id="itemActionsTemplate">
+    <ul style="min-width: 150px" data-bind="foreach: $root.getItemActions($data)" class="dropdown-menu-cart" id="itemActionsDropdown">
+        <li tabindex="0" style="width: 100%" data-bind="attr: {'id': 'action_' + $parent.section() + '_' + $index()}, event: { keyup: function() { $root.productItemActions($data, event, $parent); } }, click: function(){ $root.invokeItemAction($data, $parent); }">
+            <div class="deal-item-action">
+                <span style="padding: 10px 5px" data-bind="attr: { 'class' : 'icon-deal-item-action-' + Id }"></span>
+                <span style="padding: 10px 5px" data-bind="text: Name"></span>
+            </div>
+        </li>
+    </ul>
+</script>
+
+<script type="text/html" id="relocateSectionTemplate">
+    <td class="item-column" style="border-right: none" colspan="2">
+        <div style="text-align: right">
+            <div style="display: inline-block">
+                <label for="sectionToRelocate" style="padding: 15px" data-bind="visible: $root.productToRelocate()">@Translation.GetJS("DealStructure.MoveProductTo")</label>
+                <label for="sectionToRelocate" style="padding: 15px" data-bind="visible: $root.sectionToRelocate()">@Translation.GetJS("DealStructure.MoveSectionTo")</label>
+            </div>
+            <!-- ko ifnot: $root.relocateSectionParent()-->
+            <div class="fiori3-input-group search-input" style="position: relative; display: inline-block;width: 300px;margin-bottom: 0 !important" data-bind="dropdown: { position: 'fixed', isOpen: $root.sectionMenuOpen }">
+                <input id="sectionToRelocate" autocomplete="off" data-toggle-button="dropdown" type="text" class="form-control" data-bind="textInput: $root.searchNewSectionName" placeholder="@Translation.GetJS("DealStructure.SectionLabel")" />
+                <!-- ko if: $root.relocateSuggestions().length -->
+                <div class="custom-dropdown-menu sections-suggestions">
+                    <ul data-bind="foreach: $root.relocateSuggestions"> 
+                        <li class="deal-view-drop-down" data-bind="event: { mousedown: function(){ $root.relocateSectionParent($data); $root.searchNewSectionName(''); $root.focusNextRelocateElement(); } },
+                                                            executeOnEnter: function(){ $root.relocateSectionParent($data); $root.searchNewSectionName(''); $root.focusNextRelocateElement(); }" tabindex="0">
+                            <span class="section-path" data-bind="text: $root.resolveSectionSuggestionName(sectionPath() || sectionName())"></span>
+                            <span class="hierarchy" data-bind="text: hierarchyId"></span>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /ko -->
+            </div>
+            <!-- /ko-->
+            <!-- ko if: $root.relocateSectionParent() -->
+            <div class="allocation-parent-section" data-bind="with: $root.relocateSectionParent">
+                <div class="section-title">
+                    <span data-bind="text: hierarchyId"></span>
+                    <span data-bind="text: sectionName"></span>
+                </div>
+                <button class="fiori3-icon-button bc-1 icon-sys-cancel pull-right" data-bind="click: $root.cancelRelocate"></button>
+            </div>
+            <!-- /ko-->
+        </div>
+    </td>
+    <td colspan="100%" class="section-actions" style="text-align: left">
+        <button id="moveSectionButton" data-bind="click: function(){ $root.moveToSection($data); }, enable: $root.relocateSectionParent" class="btn btn-tertiary fiori3-btn-tertiary">@Translation.GetJS("DealStructure.Move")</button>
+        <button data-bind="click: $root.cancelSection" class="btn btn-tertiary fiori3-btn-tertiary">@Translation.GetJS("DealStructure.Cancel")</button>
+    </td>
+</script>
+
+<script type="text/html" id="addProductTemplate">
+    <td colspan="2" style="text-align: right;border-right: none">
+        <div style="display: inline-block; margin-bottom: 0 !important" class="custom-dropdown fiori3-input-group search-input" data-bind="dropdown: { position: 'fixed', isOpen: $root.suggestionsMenuOpen }">
+            <input autocomplete="off" id="searchProductInSection" style="width: 300px" type="text" class="form-control" data-toggle-button="dropdown" placeholder="@Translation.Get("DealStructure.FindProuct")"
+                   data-bind="textInput: $root.quickAdd.quickAddSearch, hasfocus: $root.quickAdd.quickAddHasFocus" />
+            <div class="custom-dropdown-menu quick-add-item-suggestions cpq-scroll" data-bind="visible: $root.quickAdd.quickAddProducts().length">
+                <table>
+                    <tbody>
+                        <!-- ko foreach: $root.quickAdd.quickAddProducts -->
+                        <tr>
+                            <td class="add-suggestion">
+                                <div style="font-weight: bold" data-bind="text: name"></div>
+                                <div data-bind="html: description"></div>
+                            </td>
+                            <td class="action">
+                                <a class="btn btn-tertiary fiori3-btn-tertiary" href="#" data-bind="click: $root.addToQuoteWithSection, visible: canAddToQuote">@Translation.Get("Msg.Add")</a>
+                                <a class="btn btn-tertiary fiori3-btn-tertiary" data-bind="attr: { href: $root.resolveConfiguratorUrl(configuratorUrl)  }, visible: canConfigure ">@Translation.Get("Msg.Configure")</a>
+                            </td>
+                        </tr>
+                        <!-- /ko -->
+                        <tr>
+                            <td colspan="100%" class="quick-add-footer">
+                                <button aria-label="@Translation.Get("DealStructure.BrowseCatalog")" class="btn btn-tertiary fiori3-btn-tertiary" data-bind="click: $root.navigateToCatalogueWithSearch">@Translation.Get("DealStructure.BrowseCatalog")</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </td>
+    <td colspan="100%" class="section-actions" style="text-align: left">
+        <div class="flex">
+            <button aria-label="@Translation.Get("DealStructure.BrowseCatalog")" class="fiori3-icon-button d-inline icon-product" data-bind="click: $root.navigateToCatalogue, tooltip: { title: '@Translation.Get("DealStructure.BrowseCatalog")' }"></button>
+            <button aria-label="@Translation.Get("DealStructure.Cancel")" id="cancelAddProductToSectionButton" class="btn btn-tertiary fiori3-btn-tertiary" data-bind="executeOnEnter: function() { $root.cancelAddProductToSection($data); }, click: $root.cancelAddProduct">@Translation.GetJS("DealStructure.Cancel")</button>
+        </div>
+    </td>
+</script>
+
+<script type="text/html" id="bulk-assign-dialog">
+    <div id="bulkEditDialog" class="deal-view-dialog">
+        <div class="deal-view-dialog-header">
+            <span id="titleBulkEdit">@Translation.GetJS("DealStructure.BulkEdit")</span>
+            <button aria-label="@Translation.GetJS("xsltClose")" class="fiori3-icon-button close tooltip-trigger" data-bind="executeOnEnter: function() { $parent.cancelBulkEdit(); }, click: $root.cancelBulkAssignDialog, tooltip: { title: '@Translation.GetJS("xsltClose")', autoClose: true, closeOnClick: true, placement: 'top auto', trigger: 'hover focus', container: 'body' }">
+                <span>&#xe03e;</span>
+            </button>
+        </div>
+        <div class="deal-view-dialog-content-wrapper">
+            <div class="deal-view-dialog-content">
+                <div class="row">
+                    <div class="fiori3-input-group">
+                        <label>@Translation.GetJS("DealStructure.FieldToEdit")</label>
+                        <select class="form-control" tabindex="0" data-bind="options: $root.availableEditableFields(), optionsText: 'headerLabel', optionsValue: 'name', value: $root.selectedEditableField"></select>
+                    </div>
+                    <div class="fiori3-input-group" data-bind="with: $root.selectedEditableFieldEditor">
+                        <label>@Translation.GetJS("DealStructure.EnterNewValue")</label>
+                        <!-- ko template: { name: template }-->
+                        <!-- /ko -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="deal-view-dialog-footer">
+            <span>
+                <button aria-label="@Translation.GetJS("DealStructure.Save")" class="btn btn-primary fiori3-btn-primary" data-bind="executeOnEnter: function() { $parent.saveBulkEdit(); }, click: $root.doAssignValue">@Translation.GetJS("DealStructure.Save")</button>
+                <button aria-label="@Translation.GetJS("DealStructure.Cancel")" id="cancelBulkEdit" class="btn btn-tertiary fiori3-btn-tertiary" data-bind="executeOnEnter: function() { $parent.cancelBulkEdit(); }, event: { keyup: function() { $parent.focusTabHandler('cancelBulkEdit', 'titleBulkEdit'); } }, click: $root.cancelBulkAssignDialog">@Translation.GetJS("DealStructure.Cancel")</button>
+            </span>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="editableTextFieldEditor">
+    <input type="text" class="form-control" style="display: inline-block" data-bind="textInput: value" />
+</script>
+
+<script type="text/html" id="editableNumberFieldEditor">
+    <input type="text" class="form-control" style="display: inline-block" data-bind="numericValue: value" />
+</script>
+
+<script type="text/html" id="editableDateFieldEditor">
+    <div class="input-group date-field">
+        <input style="border-top-right-radius: 0 !important;border-bottom-right-radius: 0 !important;" type="text" class="form-control" data-bind="value: value" />
+        <a class="input-group-addon btn btn-default" href="#" data-date-format="@Environment.DateFormatString" data-bind="datepicker: value"><span class="sap-icon">&#xe0ae;</span></a>
+    </div>
+</script>
+
+<script type="text/html" id="editableAttributeFieldEditor">
+    <select class="form-control" data-bind="select2: { selectedOptions: value, ajax: getSearchResults, onSelect: onSelect, onUnselect: onUnselect, placeholder: '', allowClear: true, minimumInputLength: 0, closeOnSelect: true, disabled: false }" tabindex="-1" style="display: block; width: 100%;"></select>
+</script>

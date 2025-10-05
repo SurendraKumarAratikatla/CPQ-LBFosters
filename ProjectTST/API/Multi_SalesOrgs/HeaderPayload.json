@@ -1,0 +1,11 @@
+{
+    "CompositeNumber": "01570012",
+    "QuoteId": "505",
+    "OwnerId": "157",
+    "QuoteStatusId": 38,
+    "EventType": "QuoteEvent.OnPlaceOrder",
+    "Domain": "LBFOSTER_TST",
+    "Environment": "default-us1-sbx-01.cpq.cloud.sap",
+    "FilterData": {},
+    "TimeStamp": "2024-12-19T11:33:43.9713672Z"
+}

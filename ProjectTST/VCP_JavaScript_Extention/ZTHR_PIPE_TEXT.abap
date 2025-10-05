@@ -1,0 +1,559 @@
+FUNCTION ZTHR_PIPE_TEXT.
+*"----------------------------------------------------------------------
+*"*"Local Interface:
+*"  IMPORTING
+*"     VALUE(GLOBALS) TYPE  CUOV_00
+*"  TABLES
+*"      QUERY STRUCTURE  CUOV_01
+*"      MATCH STRUCTURE  CUOV_01
+*"  EXCEPTIONS
+*"      FAIL
+*"      INTERNAL_ERROR
+*"----------------------------------------------------------------------
+
+*Inputs
+*TH_PIPE_OD	            Pipe Outer Diameter
+*TH_PIPE_WALL_THICKNESS	Pipe Wall Thickness
+*TH_PIPE_LENGTH	        Pipe Length
+*TH_PIPE_LENGTH_INCH    Pipe Length in Inches
+*TH_PIPE_CAP_TYPE	      Pipe Coupling Type
+*TH_PIPE_THREAD_TYPE    Pipe Thread Type
+*TH_PIPE_END            Pipe End
+*TH_PIPE_TYPE	          Pipe Type
+*TH_PIPE_SPECIAL        Pipe Welded/Seamless
+*TH_PIPE_SOURCE	        Pipe Source
+*TH_OUTSIDE_OP          Threaded Outside Operation
+
+*Outputs
+*TH_PIPE_TEXT	          Short Text for Sales Order Ite
+
+DATA :   TH_PIPE_TEXT  LIKE CUOV_01-ATWRT,    "FOR THE RESULT OF THE CONCATENATE OF PRODUCT HIERARCHY
+         VALUE1        LIKE CUOV_01-ATWRT,    "FOR THE CHARACTERISTIC TH_PIPE_OD
+         VALUE1_NUM    LIKE CUOV_01-ATFLV,    "Numeric value of TH_PIPE_OD
+         VALUE2        LIKE CUOV_01-ATWRT,    "FOR THE CHARACTERISTIC TH_PIPE_WALL_THICKNESS
+         VALUE2_NUM    LIKE CUOV_01-ATFLV,    "Numeric value of TH_PIPE_WALL_THICKNESS
+         VALUE3        LIKE CUOV_01-ATWRT,    "FOR THE CHARACTERISTIC TH_PIPE_LENGTH
+         VALUE3_1      LIKE CUOV_01-ATWRT,    "FOR THE CHARACTERISTIC TH_PIPE_LENGTH_INCH
+         VALUE3_NUM    LIKE CUOV_01-ATFLV,    "Numeric value of TH_PIPE_LENGTH
+         VALUE3_1_NUM  LIKE CUOV_01-ATFLV,    "Numeric value of TH_PIPE_LENGTH_INCH
+         VALUE4        LIKE CUOV_01-ATWRT,    "FOR THE CHARACTERISTIC TH_PIPE_CAP_TYPE
+*         VALUE4_NUM    LIKE CUOV_01-ATFLV,    "Numeric value of CTG_COATING_1_MIL
+         VALUE5        LIKE CUOV_01-ATWRT,    "FOR THE CHARACTERISTIC TH_THREAD_TYPE
+*         VALUE5_NUM    LIKE CUOV_01-ATFLV,    "Numeric value of CTG_COATING_1_MIL
+         VALUE6        LIKE CUOV_01-ATWRT,    "FOR THE CHARACTERISTIC TH_PIPE_END
+         VALUE7        LIKE CUOV_01-ATWRT,    "FOR THE CHARACTERISTIC TH_PIPE_TYPE
+         VALUE8        LIKE CUOV_01-ATWRT,    "FOR THE CHARACTERISTIC TH_PIPE_SPECIAL
+         vALUE9        LIKE CUOV_01-ATWRT,    "FOR THE CHARACTERISTIC TH_PIPE_SOURCE
+         vALUE10        LIKE CUOV_01-ATWRT,    "FOR THE CHARACTERISTIC TH_OUTSIDE_OP
+         VALUEX_NUM    LIKE CUOV_01-ATFLV,    "FOR THE NUMERIC CHARACTERISTIC
+         VALUEX_INT(3) TYPE N,
+         TH_PIPE_TEXT30   LIKE CUOV_01-ATWRT.
+
+data: value1_p(16) type p, " decimals 1,
+      value1_p1(16) type p decimals 1,
+      value1_p2(16) type p decimals 2,
+      value1_p3(16) type p decimals 3,
+      value2_p(16) type p,
+      value2_p3(16) type p decimals 3,
+      value3_p2(16) type p decimals 2,
+      value3_1_p2(16) type p decimals 2,
+      value4_p(16) type p,
+      value5_p(16) type p,
+      value1_c(6) type c,
+      value2_c(6) type c,
+      value3_c(6) type c,
+      value3_1_c(6) type c,
+      value4_c(5) type c,
+      value5_c(5) type c,
+      char_apostrophe type c value `'`.
+
+*if sy-tcode eq 'VA01' or sy-tcode eq 'VA02'.
+
+
+
+*  CLEAR QUERY. REFRESH QUERY.
+  CALL FUNCTION 'CUOV_GET_FUNCTION_ARGUMENT'
+    EXPORTING
+      ARGUMENT      = 'TH_PIPE_OD'
+    IMPORTING
+*      SYM_VAL       = VALUE1
+       NUM_VAL       = VALUE1_NUM
+    TABLES
+      QUERY         = QUERY
+    EXCEPTIONS
+      ARG_NOT_FOUND = 1
+      OTHERS        = 2.
+  IF SY-SUBRC <> 0.
+*   MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+*           WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+  ENDIF.
+
+  value1_p3 = value1_num.
+
+write value1_p3 to value1_c LEFT-JUSTIFIED.
+if value1_p3 lt 10.
+  value1_c = value1_c+0(1).
+else.
+  value1_c = value1_c+0(2).
+endif.
+
+*if value1_c+3(2) = '00'.
+*  value1_c = value1_c+0(2).
+*elseif value1_c+4(1) = '0'.
+*  value1_c = value1_c+0(4).
+*endif.
+
+*  value1_c = value1_p.
+
+*  CASE VALUE1_NUM.
+*    WHEN 20.
+*      VALUE1 = '20'.
+*    WHEN 24.
+*      VALUE1 = '24'.
+*    WHEN OTHERS.
+*      VALUE1 = 'OTH'.
+*  ENDCASE.
+*
+*  IF VALUE1 = 'OTH'.
+*    IF VALUE1_NUM LE 14.
+*      VALUE1 = 'SM'.
+*    ELSEIF VALUE1_NUM GT 14 AND VALUE1_NUM LT 20.
+*      VALUE1 = 'MD'.
+*    ELSE.
+*      VALUE1 = 'LG'.
+*    ENDIF.
+*  ENDIF.
+
+*  CLEAR QUERY. REFRESH QUERY.
+  CALL FUNCTION 'CUOV_GET_FUNCTION_ARGUMENT'
+    EXPORTING
+      ARGUMENT      = 'TH_PIPE_WALL_THICKNESS'
+    IMPORTING
+*      SYM_VAL       = VALUE2
+      NUM_VAL       = VALUE2_NUM
+    TABLES
+      QUERY         = QUERY
+    EXCEPTIONS
+      ARG_NOT_FOUND = 1
+      OTHERS        = 2.
+  IF SY-SUBRC <> 0.
+*   MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+*           WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+  ENDIF.
+
+value2_p3 = value2_num.
+
+write value2_p3 to value2_c LEFT-JUSTIFIED.
+if value2_c+3(2) = '00'.
+  value2_c = value2_c+1(3).  "Remove leading zero from Pipe Wall Thickness
+elseif value2_c+4(1) = '0'.
+  value2_c = value2_c+1(4).  "Remove leading zero from Pipe Wall Thickness
+else.
+  value2_c = value2_c+1(4).
+endif.
+
+*VALUE2 = VALUE2_NUM.
+
+*  CASE ( VALUE2_NUM * 1000 ).
+*    WHEN 312.
+*      VALUE2 = '.312'.
+*    WHEN 375.
+*      VALUE2 = '.375'.
+*    WHEN OTHERS.
+*      VALUE2 = 'OTH'.
+*  ENDCASE.
+
+*  CLEAR QUERY. REFRESH QUERY.
+  CALL FUNCTION 'CUOV_GET_FUNCTION_ARGUMENT'
+    EXPORTING
+      ARGUMENT      = 'TH_PIPE_LENGTH'
+    IMPORTING
+*      SYM_VAL       = VALUE3
+      NUM_VAL       = VALUE3_NUM
+    TABLES
+      QUERY         = QUERY
+    EXCEPTIONS
+      ARG_NOT_FOUND = 1
+      OTHERS        = 2.
+  IF SY-SUBRC <> 0.
+*   MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+*           WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+  ENDIF.
+
+  value3_p2 = value3_num.
+
+write value3_p2 to value3_c LEFT-JUSTIFIED.
+
+*  CLEAR QUERY. REFRESH QUERY.
+  CALL FUNCTION 'CUOV_GET_FUNCTION_ARGUMENT'
+    EXPORTING
+      ARGUMENT      = 'TH_PIPE_LENGTH_INCH'
+    IMPORTING
+*      SYM_VAL       = VALUE3
+      NUM_VAL       = VALUE3_1_NUM
+    TABLES
+      QUERY         = QUERY
+    EXCEPTIONS
+      ARG_NOT_FOUND = 1
+      OTHERS        = 2.
+  IF SY-SUBRC <> 0.
+*   MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+*           WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+  ENDIF.
+
+  value3_1_p2 = value3_1_num.
+
+write value3_1_p2 to value3_1_c LEFT-JUSTIFIED.
+
+
+*  CLEAR QUERY. REFRESH QUERY.
+  CALL FUNCTION 'CUOV_GET_FUNCTION_ARGUMENT'
+    EXPORTING
+      ARGUMENT      = 'TH_PIPE_CAP_TYPE'
+    IMPORTING
+      SYM_VAL       = VALUE4
+*      NUM_VAL       = VALUE4_NUM
+    TABLES
+      QUERY         = QUERY
+    EXCEPTIONS
+      ARG_NOT_FOUND = 1
+      OTHERS        = 2.
+  IF SY-SUBRC <> 0.
+*   MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+*           WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+  ENDIF.
+
+*value4_p = value4_num.
+
+*write value4_p to value4_c LEFT-JUSTIFIED.
+
+
+*  CLEAR QUERY. REFRESH QUERY.
+  CALL FUNCTION 'CUOV_GET_FUNCTION_ARGUMENT'
+    EXPORTING
+      ARGUMENT      = 'TH_THREAD_TYPE'
+    IMPORTING
+      SYM_VAL       = VALUE5
+*      NUM_VAL       = VALUE5_NUM
+    TABLES
+      QUERY         = QUERY
+    EXCEPTIONS
+      ARG_NOT_FOUND = 1
+      OTHERS        = 2.
+  IF SY-SUBRC <> 0.
+*   MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+*           WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+  ENDIF.
+
+*  CLEAR QUERY. REFRESH QUERY.
+  CALL FUNCTION 'CUOV_GET_FUNCTION_ARGUMENT'
+    EXPORTING
+      ARGUMENT      = 'TH_PIPE_END'
+    IMPORTING
+      SYM_VAL       = VALUE6
+*      NUM_VAL       = VALUE5_NUM
+    TABLES
+      QUERY         = QUERY
+    EXCEPTIONS
+      ARG_NOT_FOUND = 1
+      OTHERS        = 2.
+  IF SY-SUBRC <> 0.
+*   MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+*           WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+  ENDIF.
+
+
+*  CLEAR QUERY. REFRESH QUERY.
+  CALL FUNCTION 'CUOV_GET_FUNCTION_ARGUMENT'
+    EXPORTING
+      ARGUMENT      = 'TH_PIPE_TYPE'
+    IMPORTING
+      SYM_VAL       = VALUE7
+*      NUM_VAL       = VALUE5_NUM
+    TABLES
+      QUERY         = QUERY
+    EXCEPTIONS
+      ARG_NOT_FOUND = 1
+      OTHERS        = 2.
+  IF SY-SUBRC <> 0.
+*   MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+*           WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+  ENDIF.
+
+*  CLEAR QUERY. REFRESH QUERY.
+  CALL FUNCTION 'CUOV_GET_FUNCTION_ARGUMENT'
+    EXPORTING
+      ARGUMENT      = 'TH_PIPE_SPECIAL'
+    IMPORTING
+      SYM_VAL       = VALUE8
+*      NUM_VAL       = VALUE5_NUM
+    TABLES
+      QUERY         = QUERY
+    EXCEPTIONS
+      ARG_NOT_FOUND = 1
+      OTHERS        = 2.
+  IF SY-SUBRC <> 0.
+*   MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+*           WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+  ENDIF.
+
+
+
+*  CLEAR QUERY. REFRESH QUERY.
+  CALL FUNCTION 'CUOV_GET_FUNCTION_ARGUMENT'
+    EXPORTING
+      ARGUMENT      = 'TH_PIPE_SOURCE'
+    IMPORTING
+      SYM_VAL       = VALUE9
+*      NUM_VAL       = VALUE5_NUM
+    TABLES
+      QUERY         = QUERY
+    EXCEPTIONS
+      ARG_NOT_FOUND = 1
+      OTHERS        = 2.
+  IF SY-SUBRC <> 0.
+*   MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+*           WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+  ENDIF.
+
+*  CLEAR QUERY. REFRESH QUERY.
+  CALL FUNCTION 'CUOV_GET_FUNCTION_ARGUMENT'
+    EXPORTING
+      ARGUMENT      = 'TH_OUTSIDE_OP'
+    IMPORTING
+      SYM_VAL       = VALUE10
+*      NUM_VAL       = VALUE5_NUM
+    TABLES
+      QUERY         = QUERY
+    EXCEPTIONS
+      ARG_NOT_FOUND = 1
+      OTHERS        = 2.
+  IF SY-SUBRC <> 0.
+*   MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+*           WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+  ENDIF.
+
+
+
+
+*value5_p = value5_num.
+
+*write value5_p to value5_c LEFT-JUSTIFIED.
+
+
+**  CLEAR QUERY. REFRESH QUERY.
+*  CALL FUNCTION 'CUOV_GET_FUNCTION_ARGUMENT'
+*    EXPORTING
+*      ARGUMENT      = 'OA_LENGTH_STRING'
+*    IMPORTING
+*      SYM_VAL       = VALUE5
+*    TABLES
+*      QUERY         = QUERY
+*    EXCEPTIONS
+*      ARG_NOT_FOUND = 1
+*      OTHERS        = 2.
+*  IF SY-SUBRC <> 0.
+**   MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+**           WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+*  ENDIF.
+*
+*
+**  CLEAR QUERY. REFRESH QUERY.
+*  CALL FUNCTION 'CUOV_GET_FUNCTION_ARGUMENT'
+*    EXPORTING
+*      ARGUMENT      = 'ARP_FASTENER_TYPE'
+*    IMPORTING
+*      SYM_VAL       = VALUE6
+*    TABLES
+*      QUERY         = QUERY
+*    EXCEPTIONS
+*      ARG_NOT_FOUND = 1
+*      OTHERS        = 2.
+*  IF SY-SUBRC <> 0.
+**   MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+**           WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+*  ENDIF.
+
+*CONCATENATE '#' VALUE2 INTO VALUE2.
+*CONCATENATE VALUE1 'RE' INTO VALUE1.
+
+*iF VALUE4 = 'W'.
+*  VALUE4 = 'WLD'.
+*ELSEIF VALUE4 = 'S'.
+*  VALUE4 = 'SLS'.
+*ELSE.
+*  CLEAR VALUE4.
+*ENDIF.
+*
+*iF VALUE5 = 'I'.
+*  VALUE5 = 'IMP'.
+*ELSEIF VALUE5 = 'D'.
+*  VALUE5 = 'DOM'.
+*ELSE.
+*  CLEAR VALUE5.
+*ENDIF.
+
+IF VALUE6 = 'T&C'.
+  VALUE6 = 'TC'.
+ENDIF.
+
+if value6 = 'TC'.
+  CASE VALUE4.
+    WHEN '8RDS'.
+      VALUE4 = 'API 8RD STC'.
+    WHEN '8RDL'.
+      VALUE4 = 'API 8RD LTC'.
+    WHEN '8VLP'.
+      VALUE4 = 'API LP'.
+    WHEN 'JS-D'.
+      VALUE4 = 'JS DOM'.
+    WHEN 'TS-D'.
+      VALUE4 = 'TS DOM'.
+    WHEN 'JNAB'.
+      VALUE4 = 'J NAB'.
+    WHEN 'TNAB'.
+      VALUE4 = 'T NAB'.
+    WHEN OTHERS.
+      "Do Nothing
+  ENDCASE.
+ELSE.
+  CLEAR VALUE4.
+ENDIF.
+
+IF VALUE6 = 'TBE' OR VALUE6 = 'TOE' OR VALUE6 = 'TC'.
+  CASE VALUE5.
+    WHEN 'APILP'.
+      VALUE5 = 'API LP'.
+    WHEN '8RDS'.
+      VALUE5 = 'API 8RD SH'.
+    WHEN '8RDL'.
+      VALUE5 = 'API 8RD LG'.
+    WHEN 'BUTT'.
+      VALUE5 = 'BTC'.
+    WHEN 'TXW'.
+      VALUE5 = 'T X W'.
+    WHEN 'TX8RDS'.
+      VALUE5 = 'T X 8RD SH'.
+    WHEN 'TX8RDL'.
+      VALUE5 = 'T X 8RD LG'.
+    WHEN OTHERS.
+      "DO NOTHING
+  ENDCASE.
+ELSE.
+  CLEAR VALUE5.
+ENDIF.
+
+CASE VALUE7.
+  WHEN 'SS 304'.
+    VALUE7 = '304SS'.
+    IF VALUE8 = 'S'.
+      VALUE8 = 'SMLS'.
+    ELSE.
+      CLEAR VALUE8.
+    ENDIF.
+  WHEN 'SS 316'.
+    VALUE7 = '316SS'.
+        IF VALUE8 = 'S'.
+      VALUE8 = 'SMLS'.
+    ELSE.
+      CLEAR VALUE8.
+    ENDIF.
+  WHEN 'A106B-SLS'.
+    VALUE7 = 'SMLS'.
+    CLEAR VALUE8.
+  WHEN 'ERW'.
+    CLEAR VALUE7.
+    CLEAR VALUE8.
+  WHEN 'STU'.
+    VALUE7 = 'STU'.
+    CLEAR VALUE8.
+  WHEN OTHERS.
+      "DO NOTHING
+ENDCASE.
+
+IF VALUE9 = 'D'.
+  VALUE9 = 'DOM'.
+ELSE.
+  CLEAR VALUE9.
+ENDIF.
+
+IF VALUE10 = 'C'.
+  VALUE10 = 'CTD'.
+ELSEIF VALUE10 = 'G'.
+  VALUE10 = 'GALV'.
+ELSEIF VALUE10 = 'S'.
+  VALUE10 = 'SB'.
+ELSE.
+  CLEAR VALUE10.
+ENDIF.
+
+*IF VALUE3 = 'FBE'.
+  IF VALUE3_C GT 0.
+    CONCATENATE VALUE1_C  VALUE2_C VALUE3_C INTO TH_pipe_TEXT SEPARATED BY SPACE.
+    CONCATENATE TH_PIPE_TEXT `'` INTO TH_PIPE_TEXT.
+  ELSE.
+    CONCATENATE VALUE1_C  VALUE2_C VALUE3_1_C INTO TH_pipe_TEXT SEPARATED BY SPACE.
+    CONCATENATE TH_PIPE_TEXT '"' INTO TH_PIPE_TEXT.
+  ENDIF.
+
+  IF VALUE5 IS NOT INITIAL.   "Thread Type
+    CONCATENATE TH_PIPE_TEXT VALUE5 INTO TH_PIPE_TEXT SEPARATED BY SPACE.
+  ENDIF.
+
+*  CONCATENATE TH_PIPE_TEXT VALUE4 VALUE5 VALUE6 VALUE7 VALUE8 VALUE9 VALUE10 INTO TH_PIPE_TEXT SEPARATED BY SPACE.
+  IF VALUE4 IS NOT INITIAL.  "Coupling Type
+    CONCATENATE TH_PIPE_TEXT VALUE4 INTO TH_PIPE_TEXT SEPARATED BY SPACE.
+  ENDIF.
+
+  IF VALUE6 IS NOT INITIAL. "Pipe End
+    CONCATENATE TH_PIPE_TEXT VALUE6 INTO TH_PIPE_TEXT SEPARATED BY SPACE.
+  ENDIF.
+
+  IF VALUE7 IS NOT INITIAL.  "Pipe Type
+    CONCATENATE TH_PIPE_TEXT VALUE7 INTO TH_PIPE_TEXT SEPARATED BY SPACE.
+  ENDIF.
+
+  IF VALUE8 IS NOT INITIAL.   "Pipe Seamless or Welded (No Output if Welded)
+    CONCATENATE TH_PIPE_TEXT VALUE8 INTO TH_PIPE_TEXT SEPARATED BY SPACE.
+  ENDIF.
+
+  IF VALUE9 IS NOT INITIAL.  "Pipe Source - Output only Domestic
+    CONCATENATE TH_PIPE_TEXT VALUE9 INTO TH_PIPE_TEXT SEPARATED BY SPACE.
+  ENDIF.
+
+  IF VALUE10 IS NOT INITIAL.   "Outside Operation
+    CONCATENATE TH_PIPE_TEXT VALUE10 INTO TH_PIPE_TEXT SEPARATED BY SPACE.
+  ENDIF.
+
+
+
+
+*ELSE.
+*  CONCATENATE VALUE1_C 'X' VALUE2_C VALUE3 'Mil' VALUE4_C '/' VALUE5_C INTO TH_pipe_TEXT SEPARATED BY SPACE.
+*ENDIF.
+*PRODH_TEXT30 = TURNOUT_TEXT+0(30).
+
+  REFRESH MATCH.
+  CALL FUNCTION 'CUOV_SET_FUNCTION_ARGUMENT'
+    EXPORTING
+      ARGUMENT                      = 'TH_PIPE_TEXT'
+      VTYPE                         = 'CHAR'
+      SYM_VAL                       = TH_pipe_TEXT
+*         NUM_VAL                       =
+    TABLES
+      MATCH                         = MATCH
+* EXCEPTIONS
+*   EXISTING_VALUE_REPLACED       = 1
+*   OTHERS                        = 2
+            .
+  IF SY-SUBRC <> 0.
+* MESSAGE ID SY-MSGID TYPE SY-MSGTY NUMBER SY-MSGNO
+*         WITH SY-MSGV1 SY-MSGV2 SY-MSGV3 SY-MSGV4.
+  ENDIF.
+
+*endif.
+
+
+
+
+ENDFUNCTION.

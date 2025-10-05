@@ -1,0 +1,85 @@
+<script type="text/html" id="PagerTemplate">
+    <!-- ko if: totalItemCount() !== 0 -->
+    <!-- ko if: pagerId === '3' || pagerId === 3 -->
+        <div class="fiori3-pagination-container vertical-align" data-bind="attr: { id: pagerId }">
+            <!-- ko if: showPageSizeOptions -->
+            <div class="fiori3-items-per-page-container">
+                <div id="itemsPerPageDropdown" data-toggle="dropdown" data-bind="click: checkDropdownPosition, event: { keyup: function(){ pagerDropdownFocus(event); } }">
+                    <button class="pager-items-per-page-number" aria-haspopup="true" data-bind="attr: { 'aria-label': pageSize() + ' ' + '@Translation.GetJS("Pager.ItemsPerPage")', id: pagerId + '_pagerDropDown' }"><span data-bind="text: pageSize" class="items-per-page-number"></span></button>
+                </div>
+                <span class="items-per-page-label">@Translation.Get("Pager.ItemsPerPage")</span>
+                <div class="dropdown-menu" role="menu" data-bind="attr: { id: pagerId + '_itemsPerPageDropdownMenu'}">
+                    <ul data-bind="foreach: pageSizeOptions">
+                        <li data-bind="click: function() { $parent.pageSize($data); }, event: { keyup: function() { $parent.selectPageSizeOnEnter(event, $data); }}, css: { 'selected': $parent.pageSize() === $data }" tabindex="0" role="button">
+                            <a data-bind="text: $data, attr: { 'aria-label': $data + ' ' + '@Translation.GetJS("Pager.ItemsPerPage")', 'aria-current': $data ==  $parent.pageSize() ? 'true' : 'false' }"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /ko -->
+            <!-- ko if: showNumberOfItems -->
+            <div class="pager-number-of-items-message" data-bind="visible: totalItemCount">
+                <label class="pager-number-of-items-item">@Translation.Get("GenericTable.Number of items"): </label>
+                <!-- ko if: totalItemCount() >= 0 -->
+                <label class="pager-number-of-items-item" data-bind="text: totalItemCount"></label>
+                <!-- /ko -->
+                <!-- ko if: totalItemCount() == -1 -->
+                <label class="pager-number-of-items-item">...&nbsp;</label>
+                <a href="#" aria-label="Description Popover" class="pull-right hide-no-more-tables autoClosePopover tooltip-trigger" data-bind="popover : { autoClose: true, container: 'body', placement: 'auto right' }, tooltip: { title: $parent.noTotalNumberOfItemsTooltip }" data-original-title="" title="">
+                    <span class="sap-icon">?</span>
+                </a>
+                <!-- /ko -->
+            </div>
+            <!-- /ko -->
+            <ul class="fiori3-pagination fiori3-input-group">
+                <li data-bind="css: { disabled: isOnFirstPage() }">
+                    <span class="sap-icon" data-bind="click: goToFirstPage, css: { disabledPage: isOnFirstPage() }, tooltip: { title: '@Translation.GetJS("PagerTemplate.FirstPage")', placement: 'auto top' }">
+                        <a href="#" data-bind="attr: { id: pagerId + '_firstPage', tabindex: isOnFirstPage() ? '-1' : '0' }" aria-label="@Translation.Get("PagerTemplate.FirstPage")">&#xe14e;</a>
+                    </span>
+                </li>
+                <li data-bind="css: { disabled: !hasPrevPage() }">
+                    <span class="sap-icon" data-bind="click: goToPreviousPage, css: { disabledPage: !hasPrevPage() }, tooltip: { title: '@Translation.GetJS("PagerTemplate.PreviousPage")', placement: 'auto top' }">
+                        <a href="#" data-bind="attr: { id: pagerId + '_previousPage', tabindex: !hasPrevPage() ? '-1' : '0' }" aria-label="@Translation.Get("PagerTemplate.PreviousPage")">&#xe067;</a>
+                    </span>
+                </li>
+
+                <li class="pages">
+                    <!-- ko if: totalItemCount() >= 0 -->
+                    <input aria-label="@Translation.Get("PagerTemplate.CurrentPage")" data-bind="validateInput: { val: currentPage, event: 'keypress input blur' }, valueUpdatedOnEnter: currentPage, attr: { id: pagerId + '_currentPage' }" class="active current-page-input">&nbsp;/&nbsp;<span data-bind="text: lastPage"></span>
+                    <!-- /ko -->
+                    <!-- ko if: totalItemCount() == -1 -->
+                    <input aria-label="@Translation.Get("PagerTemplate.CurrentPage")" data-bind="validateInput: { val: currentPage, event: 'keypress input blur' }, valueUpdatedOnEnter: currentPage, attr: { id: pagerId + '_currentPage' }" class="active current-page-input">&nbsp;/&nbsp;<span>...&nbsp;</span>
+                    <!-- /ko -->
+                </li>
+
+
+                <!-- ko if: totalItemCount() >= 0 -->
+                <li data-bind="css: { disabled: !hasNextPage() }">
+                    <span class="sap-icon" data-bind="click: goToNextPage, css: { disabledPage: !hasNextPage() }, tooltip: { title: '@Translation.GetJS("PagerTemplate.NextPage")', placement: 'auto top' }">
+                        <a href="#" data-bind="attr: { id: pagerId + '_nextPage', tabindex: !hasNextPage() ? '-1' : '0' }" aria-label="@Translation.Get("PagerTemplate.NextPage")">&#xe066;</a>
+                    </span>
+                </li>
+                <li data-bind="css: { disabled: isOnLastPage() }">
+                    <span class="sap-icon" data-bind="click: goToLastPage, css: { disabledPage: isOnLastPage() }, tooltip: { title: '@Translation.GetJS("PagerTemplate.LastPage")', placement: 'auto top' }">
+                        <a href="#" data-bind="attr: { id: pagerId + '_lastPage', tabindex: isOnLastPage() ? '-1' : '0' }" aria-label="@Translation.Get("PagerTemplate.LastPage")">&#xe14a;</a>
+                    </span>
+                </li>
+                <!-- /ko -->
+                <!-- ko if: totalItemCount() == -1 -->
+                <li data-bind="css: { disabled: !hasNextPage() }">
+                    <span class="sap-icon" data-bind="click: goToNextPage, css: { disabledPage: !hasNextPage() }, tooltip: { title: '@Translation.GetJS("PagerTemplate.NextPage")', placement: 'auto top' }">
+                        <a href="#" data-bind="attr: { id: pagerId + '_nextPage', tabindex: !hasNextPage() ? '-1' : '0' }" aria-label="@Translation.Get("PagerTemplate.NextPage")">&#xe066;</a>
+                    </span>
+                </li>
+                <li class="disabled">
+                    <span class="sap-icon disabled" data-bind="tooltip: { title: '@Translation.GetJS("PagerTemplate.LastPage")' , placement: 'auto top' }">
+                        <a href="#" data-bind="attr: { id: pagerId + '_lastPage', tabindex: isOnLastPage() ? '-1' : '0' }" aria-label="@Translation.Get("PagerTemplate.LastPage")">&#xe14a;</a>
+                    </span>
+                </li>
+                <!-- /ko -->
+
+            </ul>
+        </div>
+    <!-- /ko -->
+    <!-- /ko -->
+</script>
