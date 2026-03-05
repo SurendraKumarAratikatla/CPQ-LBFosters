@@ -1,0 +1,49 @@
+# total cost = LBF_QU_TOTAL_COST
+# margin % = LBF_QU_GP_PER
+# Sell Price/Unit = LBF_QU_SELPRICE_UN
+# margin value = LBF_QU_GP_VAL
+# Total Sell Price = LBF_QU_SELPRICE
+
+
+LBF_QU_TOTAL_COST = float(item['LBF_QU_FREIGHT_CST_EXT']) + float(item['LBF_QU_HANDLING_CST_EXT']) + float(item['LBF_QU_ExtCost']) # LBF_QC_InforMatCheck
+                  = str(float(item['LBF_QU_ExtCost']) + float(item['LBF_QU_FREIGHT_CST_EXT']) + float(item['LBF_QU_HANDLING_CST_EXT'])) #LBF_QC_CWR_UPDATE
+
+LBF_QU_GP_PER = ((float(total_price) - float(total_cost)) / float(total_price)) * 100 #### total_price = str(round((float(selling_price) * quantity), 2)) ### total_cost = float(item['LBF_QU_FREIGHT_CST_EXT']) + float(item['LBF_QU_HANDLING_CST_EXT']) + float(item['LBF_QU_ExtCost'])
+
+LBF_QU_SELPRICE_UN = item['LBF_QU_SELPRICE_UN'] = str(round(float(selling_price),2)) ### selling_price = round(float(inforData.UNIT_PRICE_USD)) ### inforData = SqlHelper.GetFirst("select PART_SITE_ID,UNIT_COST_USD,UNIT_PRICE_USD from LBF_QU_INFOR_MAT_COST where PART_SITE_ID = '{0}'".format(proSystemId))
+                   = str(item.ListPrice) # for fm 
+                   = item['LBF_QU_SELPRICE_UN'] = str(total_cost / (1 - (float(gp_per)/100))) #### total_cost = float(item['LBF_QU_TOTAL_COST']) / quantity
+
+LBF_QU_GP_VAL = item['LBF_QU_GP_VAL'] = str(round(gross_profit_value, 2)) ### gross_profit_value = float(item['LBF_QU_SELPRICE']) - float(item['LBF_QU_TOTAL_COST']) if gp_per != 0 else 0.0
+              = item['LBF_QU_GP_VAL'] = str(round(gross_profit_value, 2))  ### gross_profit_value = (float(total_price) - float(total_cost)) * quantity
+              = item['LBF_QU_GP_VAL'] = str(round(gross_profit_value, 2)) ### gross_profit_value = (selling_price - total_cost) * quantity ### selling_price = float(item['LBF_QU_SELPRICE_UN']) ### total_cost = float(item['LBF_QU_TOTAL_COST']) / quantity if quantity != 0 else 0.0
+
+LBF_QU_SELPRICE = item["LBF_QU_SELPRICE"] = item.ListPrice * item.Quantity
+                = item['LBF_QU_SELPRICE'] = str(round(selling_price * quantity, 2)) ### selling_price = float(item['LBF_QU_SELPRICE_UN'])
+
+
+
+LBF_QU_TOTAL_COST = LBF_QU_FREIGHT_CST_EXT + LBF_QU_HANDLING_CST_EXT + LBF_QU_ExtCost
+Total Cost = Ext.Frt.Cost + Ext.Han.Cost + Ext.Mat.Cost
+
+LBF_QU_GP_PER = ((float(UNIT_PRICE_USD from MAT TBL)*Quantity) - float(float(item['LBF_QU_FREIGHT_CST_EXT']) + float(item['LBF_QU_HANDLING_CST_EXT']) + float(item['LBF_QU_ExtCost']))) / float((float(UNIT_PRICE_USD from MAT TBL)*Quantity))
+Margin % = ((UNIT_PRICE_USD from MAT TBL*Quantity) - ((Ext.Frt.Cost + Ext.Han.Cost + Ext.Mat.Cost))) / (UNIT_PRICE_USD from MAT TBL*Quantity)
+
+LBF_QU_SELPRICE_UN = str(((item['LBF_QU_TOTAL_COST']) / quantity) / (1 - (float(item['LBF_QU_GP_PER'])/100)))
+Sell Price/Unit = ((Total Cost) / quantity) / (1 - (Margin % / 100))
+
+LBF_QU_GP_VAL = float(item['LBF_QU_SELPRICE']) - float(item['LBF_QU_TOTAL_COST'])
+Margin Value = Total Sell Price - Total Cost
+
+LBF_QU_SELPRICE = LBF_QU_SELPRICE_UN * quantity
+
+Total Sell Price = Sell Price/Unit * quantity
+
+
+
+
+Total Cost = Ext.Frt.Cost + Ext.Han.Cost + Ext.Mat.Cost
+Margin % = ((UNIT_PRICE_USD from MAT TBL*Quantity) - ((Ext.Frt.Cost + Ext.Han.Cost + Ext.Mat.Cost))) / (UNIT_PRICE_USD from MAT TBL*Quantity)
+Sell Price/Unit = ((Total Cost) / quantity) / (1 - (Margin % / 100))
+Margin Value = Total Sell Price - Total Cost
+Total Sell Price = Sell Price/Unit * quantity

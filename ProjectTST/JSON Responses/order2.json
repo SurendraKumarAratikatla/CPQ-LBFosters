@@ -1,0 +1,1957 @@
+{
+    "Root": {
+        "Quotes": {
+            "Comments": [],
+            "IsPrimary": false,
+            "CustomFields": [
+                {
+                    "Name": "Quote Expiration Date",
+                    "Content": ""
+                },
+                {
+                    "Name": "Customer's Language",
+                    "Content": ""
+                },
+                {
+                    "Name": "LBF_CF_PAYTERMS",
+                    "Content": "0001"
+                },
+                {
+                    "Name": "LBF_CF_INCOTERMS",
+                    "Content": "CPT, Carriage paid to"
+                },
+                {
+                    "Name": "LBF_CF_CurrentItemPlant",
+                    "Content": "2002"
+                },
+                {
+                    "Name": "LBF_CF_CurrentItemHandling",
+                    "Content": "MAN"
+                },
+                {
+                    "Name": "LBF_CF_ProjectDescription",
+                    "Content": ""
+                },
+                {
+                    "Name": "LBF_CF_FM_PartNumber",
+                    "Content": ""
+                },
+                {
+                    "Name": "LBF_CF_GLOCUST",
+                    "Content": "LACMTA"
+                },
+                {
+                    "Name": "LBF_CF_CUSID",
+                    "Content": "LACMTA"
+                },
+                {
+                    "Name": "LBF_CF_FM_TOT_COST",
+                    "Content": ""
+                },
+                {
+                    "Name": "LBF_CF_Transit_Notes",
+                    "Content": ""
+                },
+                {
+                    "Name": "LBF_CF_ItemNumber",
+                    "Content": ""
+                },
+                {
+                    "Name": "LBF_CF_FOB_TERMS",
+                    "Content": ""
+                },
+                {
+                    "Name": "LBF_CF_Transit_Shipment",
+                    "Content": ""
+                },
+                {
+                    "Name": "LBF_CF_SAL_Validity"
+                },
+                {
+                    "Name": "LBF_CF_SAL_PAYSCH"
+                },
+                {
+                    "Name": "LBF_CF_SAL_LEADTIME"
+                },
+                {
+                    "Name": "LBF_CF_SAL_INOTE",
+                    "Content": ""
+                },
+                {
+                    "Name": "LBF_CF_SAL_SPOP",
+                    "Content": ""
+                },
+                {
+                    "Name": "LBF_CF_ADDINCO",
+                    "Content": "Bidding Contractor"
+                },
+                {
+                    "Name": "LBF_CF_SHIPPING",
+                    "Content": ""
+                },
+                {
+                    "Name": "LBF_CF_NOTES",
+                    "Content": ""
+                },
+                {
+                    "Name": "LBF_CF_PONUMBER",
+                    "Content": "01310240"
+                },
+                {
+                    "Name": "LBF_CF_PODATE",
+                    "Content": "2025-11-04T00:00:00Z"
+                },
+                {
+                    "Name": "LBF_CF_DISCLAIMER",
+                    "Content": ""
+                },
+                {
+                    "Name": "LBF_CF_UOM",
+                    "Content": ""
+                },
+                {
+                    "Name": "LBF_CF_INCOTERMS2",
+                    "Content": "Test, Test"
+                },
+                {
+                    "Name": "LBF_CF_OpportunityID",
+                    "Content": "1080"
+                },
+                {
+                    "Name": "LBF_CF_BRDG_Broker_Scope",
+                    "Content": "Stay-In-Place Metal Deck Forms\nGross Area:0 Sq.Ft."
+                },
+                {
+                    "Name": "LBF_CF_BRDG_Con_Scope",
+                    "Content": "Stay-In-Place Metal Deck Forms\nGross Area:0 Sq.Ft."
+                },
+                {
+                    "Name": "LBF_CF_BRDG_Con_Item",
+                    "Content": ""
+                },
+                {
+                    "Name": "LBF_CF_BRDG_Broker_Item",
+                    "Content": ""
+                },
+                {
+                    "Name": "LBF_CF_BRDG_Broker_Desc",
+                    "Content": ""
+                },
+                {
+                    "Name": "LBF_CF_BRDG_Con_Desc",
+                    "Content": ""
+                },
+                {
+                    "Name": "LBF_CF_SAL_PAYSCH2",
+                    "Content": ""
+                },
+                {
+                    "Name": "LBF_CF_OpportunityName",
+                    "Content": "Prospect Opp to Quote - Test VC"
+                },
+                {
+                    "Name": "LBF_CF_OpportunityURL",
+                    "Content": "<a href=\"https://my1000689.us1.test.crm.cloud.sap/go/detail/guidedselling?displayId=1080\" target=\"_blank\">Click here to View Opportunity </a>"
+                },
+                {
+                    "Name": "LBF_CF_SAL_PAYSCHPRNT",
+                    "Content": ""
+                },
+                {
+                    "Name": "LBF_CF_InConfigScreen",
+                    "Content": ""
+                },
+                {
+                    "Name": "LBF_CF_Dist",
+                    "Content": ""
+                },
+                {
+                    "Name": "LBF_CF_Itemtype_Alternative",
+                    "Content": ""
+                },
+                {
+                    "Name": "LBF_CF_Itemtype_Optional",
+                    "Content": ""
+                },
+                {
+                    "Name": "LBF_CF_Itemtype_Optional_TotalPrice",
+                    "Content": ""
+                },
+                {
+                    "Name": "LBF_CF_Itemtype_Alternative_TotalPrice",
+                    "Content": ""
+                },
+                {
+                    "Name": "LBF_CF_WOT",
+                    "Content": "No"
+                },
+                {
+                    "Name": "LBF_CF_Prospect",
+                    "Content": "Yes"
+                },
+                {
+                    "Name": "LBF_CF_Address",
+                    "Content": "L. B. Foster Company\n415 Holiday Drive\nSuite 100\nPittsburgh, PA 15220\n"
+                },
+                {
+                    "Name": "LBF_CF_FM_Signature",
+                    "Content": "L.B. FOSTER COMPANY"
+                },
+                {
+                    "Name": "Quote_Owner",
+                    "Content": ""
+                },
+                {
+                    "Name": "LBF_CF_PrintP",
+                    "Content": "No"
+                },
+                {
+                    "Name": "LB_HH",
+                    "Content": ""
+                },
+                {
+                    "Name": "LBF_CF_SALOP",
+                    "Content": ""
+                },
+                {
+                    "Name": "LBF_CF_QuoteTotal_Voilated",
+                    "Content": ""
+                },
+                {
+                    "Name": "LBF_CF_QuoteMargin_Voilated",
+                    "Content": ""
+                },
+                {
+                    "Name": "LBF_CF_QuoteNumbertoCopyLines",
+                    "Content": ""
+                },
+                {
+                    "Name": "LBF_CF_BRDG_Broker_Item - Copy",
+                    "Content": ""
+                },
+                {
+                    "Name": "LBF_CF_QuoteName",
+                    "Content": ""
+                },
+                {
+                    "Name": "LBF_CF_MarketSegment",
+                    "Content": "RAIL"
+                },
+                {
+                    "Name": "LBF_AR_SOFF",
+                    "Content": "2040"
+                },
+                {
+                    "Name": "LBF_CF_SALSS",
+                    "Content": "Shipping Terms: ExWorks (Origin), Dublin, OH.\nARO: Allow 30 days to ship. Parts require purchase and assembly to ship."
+                },
+                {
+                    "Name": "LBF_CF_OtherNotes",
+                    "Content": "No"
+                }
+            ],
+            "OpportunityId": "1080",
+            "TotalAmount": {
+                "Value": "80128.360000",
+                "Currency": "USD"
+            },
+            "Cost": {
+                "Value": "0.000000",
+                "Currency": "USD"
+            },
+            "MarketId": 7,
+            "ErrorMessage": "",
+            "DateCreated": "2025-11-05T10:57:00Z",
+            "Division": "20",
+            "DistributionChannel": "10",
+            "PriceBookId": 2,
+            "OpportunityName": "Prospect Opp to Quote - Test VC",
+            "EffectiveDate": "2025-11-03T00:00:00Z",
+            "AverageProductDiscountPercent": {
+                "Value": "0.000000",
+                "Currency": "USD"
+            },
+            "CurrencyCode": "USD",
+            "MarketCode": "2100",
+            "QuoteId": 3538,
+            "TotalListPrice": {
+                "Value": "0.000000",
+                "Currency": "USD"
+            },
+            "AverageGrossMarginPercent": {
+                "Value": "0.000000",
+                "Currency": "USD"
+            },
+            "OwnerId": 135,
+            "StatusName": "Preparing",
+            "QuoteTables": [
+                "LBF_QT_OTHER",
+                "ADDITIONAL_INFO",
+                "Market_Notes",
+                "Total_Summary",
+                "ItemType_Summary",
+                "ProfitCenter_Summary",
+                "Backend_Market_table"
+            ],
+            "TotalProductDiscountAmount": {
+                "Value": "0.000000",
+                "Currency": "USD"
+            },
+            "DateModified": "2025-11-05T10:57:07Z",
+            "TotalNetPrice": {
+                "Value": "0.000000",
+                "Currency": "USD"
+            },
+            "QuoteNumber": "01350964",
+            "StatusId": 32,
+            "RevisionNumber": "0",
+            "InvolvedParties": [
+                {
+                    "AddressName4": "",
+                    "StreetName": "Gateway Plz",
+                    "Id": 7275,
+                    "SystemId": "LACMTA_cpq",
+                    "AdditionalStreetSuffixName": "",
+                    "ExternalId": "100652",
+                    "Name": "LACMTA",
+                    "Name4": "",
+                    "Name2": "",
+                    "Name3": "",
+                    "Phone": "",
+                    "MobilePhone": "",
+                    "PartnerId": "678",
+                    "PartnerFunctionId": 7,
+                    "BusinessPartnerId": 503,
+                    "AdditionalStreetPrefixName": "",
+                    "PostalCode": "90012-3745",
+                    "PrimaryIndustry": "",
+                    "StreetSuffixName": "",
+                    "PartnerNumber": "",
+                    "HouseNumber": "1",
+                    "Fax": "",
+                    "Country": "",
+                    "PartnerFunctionName": "Sold-to party",
+                    "TransportZone": "900",
+                    "CorrespondenceLanguage": "EN",
+                    "InvolvedPartyCustomFields": [
+                        {
+                            "Name": "SalesOrg",
+                            "Value": "1000.0000000000"
+                        }
+                    ],
+                    "LastName": "",
+                    "FirstName": "",
+                    "District": "Los Angeles",
+                    "AddressName": "",
+                    "EmailAddress": "invoice@lbfoster.com",
+                    "FormOfAddress": "",
+                    "PartnerFunctionKey": "SP",
+                    "CityName": "Los Angeles",
+                    "TimeZone": "",
+                    "POBox": "",
+                    "AddressName3": "",
+                    "StreetPrefixName": "",
+                    "AddressAdditionalName": "",
+                    "POBoxPostalCode": "",
+                    "State": "",
+                    "Region": ""
+                },
+                {
+                    "AddressName4": "",
+                    "StreetName": "Gateway Plz",
+                    "Id": 7276,
+                    "SystemId": "LACMTA_cpq",
+                    "AdditionalStreetSuffixName": "",
+                    "ExternalId": "100652",
+                    "Name": "LACMTA",
+                    "Name4": "",
+                    "Name2": "",
+                    "Name3": "",
+                    "Phone": "",
+                    "MobilePhone": "",
+                    "PartnerId": "678",
+                    "PartnerFunctionId": 8,
+                    "BusinessPartnerId": 503,
+                    "AdditionalStreetPrefixName": "",
+                    "PostalCode": "90012-3745",
+                    "PrimaryIndustry": "",
+                    "StreetSuffixName": "",
+                    "PartnerNumber": "",
+                    "HouseNumber": "1",
+                    "Fax": "",
+                    "Country": "",
+                    "PartnerFunctionName": "Ship-to party",
+                    "TransportZone": "900",
+                    "CorrespondenceLanguage": "EN",
+                    "InvolvedPartyCustomFields": [
+                        {
+                            "Name": "SalesOrg",
+                            "Value": "1000.0000000000"
+                        }
+                    ],
+                    "LastName": "",
+                    "FirstName": "",
+                    "District": "Los Angeles",
+                    "AddressName": "",
+                    "EmailAddress": "invoice@lbfoster.com",
+                    "FormOfAddress": "",
+                    "PartnerFunctionKey": "SH",
+                    "CityName": "Los Angeles",
+                    "TimeZone": "",
+                    "POBox": "",
+                    "AddressName3": "",
+                    "StreetPrefixName": "",
+                    "AddressAdditionalName": "",
+                    "POBoxPostalCode": "",
+                    "State": "",
+                    "Region": ""
+                },
+                {
+                    "InvolvedPartyCustomFields": [
+                        {
+                            "Name": "SalesOrg",
+                            "Value": ""
+                        }
+                    ],
+                    "PartnerFunctionId": 11,
+                    "Id": 7277,
+                    "PartnerFunctionKey": "CP",
+                    "PartnerFunctionName": "Contact person"
+                },
+                {
+                    "InvolvedPartyCustomFields": [
+                        {
+                            "Name": "SalesOrg",
+                            "Value": ""
+                        }
+                    ],
+                    "Phone": "+1 216-255-7197",
+                    "PartnerFunctionId": 12,
+                    "Name": "Morgan Jacob",
+                    "Id": 7278,
+                    "State": "",
+                    "EmailAddress": "mjacob@lbfoster.com",
+                    "PartnerFunctionKey": "SR",
+                    "Country": "",
+                    "PartnerFunctionName": "Sales representative"
+                },
+                {
+                    "AddressName4": "",
+                    "StreetName": "Gateway Plz",
+                    "Id": 7279,
+                    "SystemId": "LACMTA_cpq",
+                    "AdditionalStreetSuffixName": "",
+                    "ExternalId": "100652",
+                    "Name": "LACMTA",
+                    "Name4": "",
+                    "Name2": "",
+                    "Name3": "",
+                    "Phone": "",
+                    "MobilePhone": "",
+                    "PartnerId": "678",
+                    "PartnerFunctionId": 15,
+                    "BusinessPartnerId": 503,
+                    "AdditionalStreetPrefixName": "",
+                    "PostalCode": "90012-3745",
+                    "PrimaryIndustry": "",
+                    "StreetSuffixName": "",
+                    "PartnerNumber": "",
+                    "HouseNumber": "1",
+                    "Fax": "",
+                    "Country": "",
+                    "PartnerFunctionName": "End Customer",
+                    "TransportZone": "900",
+                    "CorrespondenceLanguage": "EN",
+                    "InvolvedPartyCustomFields": [
+                        {
+                            "Name": "SalesOrg",
+                            "Value": "1000.0000000000"
+                        }
+                    ],
+                    "LastName": "",
+                    "FirstName": "",
+                    "District": "Los Angeles",
+                    "AddressName": "",
+                    "EmailAddress": "invoice@lbfoster.com",
+                    "FormOfAddress": "",
+                    "PartnerFunctionKey": "EC",
+                    "CityName": "Los Angeles",
+                    "TimeZone": "",
+                    "POBox": "",
+                    "AddressName3": "",
+                    "StreetPrefixName": "",
+                    "AddressAdditionalName": "",
+                    "POBoxPostalCode": "",
+                    "State": "",
+                    "Region": ""
+                },
+                {
+                    "InvolvedPartyCustomFields": [
+                        {
+                            "Name": "SalesOrg",
+                            "Value": ""
+                        }
+                    ],
+                    "Phone": "",
+                    "PartnerFunctionId": 16,
+                    "Name": "Bryan McSorley",
+                    "Id": 7280,
+                    "State": "",
+                    "EmailAddress": "bmcsorley@lbfoster.com",
+                    "PartnerFunctionKey": "ZO",
+                    "Country": "",
+                    "PartnerFunctionName": "LBF Outside Sales"
+                },
+                {
+                    "InvolvedPartyCustomFields": [
+                        {
+                            "Name": "SalesOrg",
+                            "Value": ""
+                        }
+                    ],
+                    "PartnerFunctionId": 13,
+                    "Name": "Nathan Weir",
+                    "Id": 7281,
+                    "State": "",
+                    "PartnerFunctionKey": "ZE",
+                    "Country": "",
+                    "PartnerFunctionName": "Estimator "
+                }
+            ],
+            "TotalTaxAmount": {
+                "Value": "0.000000",
+                "Currency": "USD"
+            }
+        },
+        "Quoteitems": [
+            {
+                "ItemType": "0",
+                "ExternalConfigurationId": "a3ac3dc5-3363-46dc-a6f0-2df746d1d569",
+                "ContractAutoRenewalIndicator": false,
+                "Comment": "",
+                "CustomFields": [
+                    {
+                        "Name": "LBF_QU_COST",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_PRICE",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_GP_PER",
+                        "Content": "-10.738810"
+                    },
+                    {
+                        "Name": "LBF_QU_UoM",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_FREIGHT",
+                        "AttibuteValueCode": "FC",
+                        "Content": "FC"
+                    },
+                    {
+                        "Name": "LBF_QU_HANDLING_OB",
+                        "AttibuteValueCode": "QT",
+                        "Content": "QT"
+                    },
+                    {
+                        "Name": "LBF_QU_PLANT",
+                        "Content": "2002"
+                    },
+                    {
+                        "Name": "LBF_QU_MAT_CST",
+                        "Content": "36439.200000"
+                    },
+                    {
+                        "Name": "LBF_QU_MAT_CST_OVR",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_FREIGHT_CST",
+                        "Content": "7800.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_FREIGHT_CST_EXT",
+                        "Content": "7800.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_HANDLING_CST",
+                        "Content": "30.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_HANDLING_CST_EXT",
+                        "Content": "734.400000"
+                    },
+                    {
+                        "Name": "LBF_QU_BU",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_SELPRICE",
+                        "Content": "40612.320000"
+                    },
+                    {
+                        "Name": "LBF_QU_GP_VAL",
+                        "Content": "-4361.280000"
+                    },
+                    {
+                        "Name": "LBF_QU_TOTAL_COST",
+                        "Content": "44973.600000"
+                    },
+                    {
+                        "Name": "LBF_QU_SELPRICE_UN",
+                        "Content": "1659.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_ITEMDESC",
+                        "Content": "Head Hardened Configurable Rail"
+                    },
+                    {
+                        "Name": "LBF_QU_ITEMNOTE",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_COST_UN",
+                        "Content": "44269.200000"
+                    },
+                    {
+                        "Name": "LBF_QU_FM_PLANT",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_FM_CUR",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_FM_PWRCSTRT",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_FM_PRTCST",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LB_QU_FM_INTRCO",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LB_QU_FM_INTRPR",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_FM_FOREX",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LB_QU_FM_SPCAD",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LB_QU_FM_SPUSD",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_FM_COST",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_TARUOM",
+                        "Content": "TON"
+                    },
+                    {
+                        "Name": "LBF_QU_CXT_HlItm",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_CXT_ICAT",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_CXT_FDATE",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_Notes",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_ExtCost",
+                        "Content": "36439.200000"
+                    },
+                    {
+                        "Name": "LBF_QU_FREIGHT_CST_UN",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_SalesOrg",
+                        "AttibuteValueCode": "1000",
+                        "Content": "1000"
+                    },
+                    {
+                        "Name": "LBF_QU_DC",
+                        "AttibuteValueCode": "10",
+                        "Content": "10"
+                    },
+                    {
+                        "Name": "LBF_QU_PLANT1",
+                        "AttibuteValueCode": "2002",
+                        "Content": "2002"
+                    },
+                    {
+                        "Name": "LBF_QU_FreightFB",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_Engineering",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_PRODUCTSTATUS",
+                        "Content": "complete"
+                    },
+                    {
+                        "Name": "LBF_QU_CXT_DDATE",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_DIV",
+                        "AttibuteValueCode": "20",
+                        "Content": "20"
+                    },
+                    {
+                        "Name": "LBF_QU_SO_STATUS",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_SO_ORDERNO",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_SO_ITEMNO",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_COSTSTATUS",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_COSTERROR",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_ITEMCONFIG",
+                        "Content": "Rail Section\nAbove Base Dimension\nLength of Rail for Batch\nTolerance Code\nShorts allowed?\nPercentage of Shorts Allowed\nAssumed Shorts Length\nRail Grade\nRegion of Origin\nEnd 1 Drill Pattern\nEnd 2 Drill Pattern\nNumber of Cuts\nNum of Holes or Ends Drilled\nSpecial Instructions\nLength of Raw Rail (ft)\nCold Hole Expansion\nOverall Lg- Feet\nOverall Lg- Inches\nOverall Lg- Fraction of Inch\nOverall Length (TOTAL IN)\nOverall Length"
+                    },
+                    {
+                        "Name": "LBF_QU_ITEMCONFIG1",
+                        "Content": ": 136RE\n: 3.094\n: 80\n: No Tolerance Specified\n: Yes - Shorts Allowed\n: 10\n: 54\n: Head Hardened\n: United States\n: 3 Hole AREMA STD 3 1/2 x 6 x 6\n: 3 Hole AREMA STD 3 1/2 x 6 x 6\n: 0\n: 1669\n: 1669\n: 80\n: No\n: No\n: No\n: 0\n: 960\n: 80'_0-0''"
+                    },
+                    {
+                        "Name": "LBF_QU_IsVCPFieldsChanged",
+                        "Content": "Yes"
+                    },
+                    {
+                        "Name": "LBF_QU_CXT_GASF",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_CXT_Broker",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_CXT_State",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_CXT_Coat",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_CXT_STRU",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_CXT_SMPVCP",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_OP",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_NetWeight",
+                        "Content": "48960.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_WeightUnit",
+                        "Content": "LB"
+                    },
+                    {
+                        "Name": "LBF_QU_Currency1",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_Currency",
+                        "Content": "USD"
+                    },
+                    {
+                        "Name": "LBF_QU_InternalCostNotes",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_TotalGrossProfitPercent",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_TotalGrossProfitMarginamount",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_SAL_QTY",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_SAL_Type",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_ProfitCenter",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_SALITEMDESC",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_CXT_BroScope",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_RAIL_ICAT",
+                        "Content": ""
+                    }
+                ],
+                "HasUsageBasedPricing": false,
+                "UnitOfMeasure": "LBR",
+                "GeneralItemCategoryGroup": "",
+                "ProductTypeNameTranslated": "01100304",
+                "DateAdded": "2025-11-05T10:57:01Z",
+                "ProductTypeName": "01100304",
+                "Description": "Head Hardened Configurable Rail",
+                "PricingDetails": {
+                    "Fixed": {
+                        "TaxAmount": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "TaxPercent": {
+                            "Value": "0.000000"
+                        },
+                        "RolledUpExtendedAmount": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "MinDiscountPercent": {
+                            "Value": "0.000000"
+                        },
+                        "ShippingCost": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "MaxDiscountPercent": {
+                            "Value": "0.000000"
+                        },
+                        "Cost": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "RolledUpNetPrice": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "MarginPercent": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "UnitDiscountAmount": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "RolledUpExtendedListPrice": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "ExtendedListPrice": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "DiscountAmount": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "DiscountPercent": {
+                            "Value": "0.000000"
+                        },
+                        "RolledUpDiscountPercent": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "ExtendedCost": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "RolledUpDiscountAmount": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "RolledUpCost": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "RolledUpGrossMargin": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "DefaultDiscountPercent": {
+                            "Value": "0.000000"
+                        },
+                        "ExtendedAmount": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "NetPrice": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "RolledUpExtendedCost": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "RolledUpListPrice": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "ListPrice": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        }
+                    }
+                },
+                "ProductName": "Head Hardened Configurable Rail",
+                "IsOptional": false,
+                "ParentItemId": 0,
+                "IsSubItem": false,
+                "IsLineItem": false,
+                "IsSubscriptionItem": false,
+                "SyncedFromBackOffice": true,
+                "Quantity": "24.480000",
+                "PartNumber": "HH_NEW_T_RAIL",
+                "RolledUpItemNumber": "1",
+                "ConfigurationId": "e078f03c-9e25-41dd-9a64-fb2105d462b0",
+                "ProductExternalId": "",
+                "IsAlternative": false,
+                "ConfigurationType": "Variant",
+                "E1BPCUCFG": {
+                    "ROOT_ID": "00000001",
+                    "POSEX": 1,
+                    "CONFIG_ID": "000001"
+                },
+                "ParentRolledUpItemNumber": "",
+                "IsVariant": false,
+                "OrderItemType": "Sales",
+                "ProductNameTranslated": "Head Hardened Configurable Rail",
+                "ItemNumber": 1,
+                "ItemId": 11995,
+                "DisplayType": "Configurable",
+                "ReferencedItemId": 0,
+                "ParentItemNumber": 0,
+                "ExternalConfigurationItemId": 1,
+                "ProductTypeId": 38,
+                "IsMainItem": true,
+                "E1BPCUVAL": [
+                    {
+                        "VALUE": "136RE",
+                        "INST_ID": "00000001",
+                        "CONFIG_ID": "000001",
+                        "CHARC": "RAIL_SECTION"
+                    },
+                    {
+                        "VALUE": "N",
+                        "INST_ID": "00000001",
+                        "CONFIG_ID": "000001",
+                        "CHARC": "NR_TOLCODE"
+                    },
+                    {
+                        "VALUE": "Y",
+                        "INST_ID": "00000001",
+                        "CONFIG_ID": "000001",
+                        "CHARC": "NR_SHORT_ALLOW"
+                    },
+                    {
+                        "VALUE": "3HA",
+                        "INST_ID": "00000001",
+                        "CONFIG_ID": "000001",
+                        "CHARC": "NR_TEE_HVY_DRILL_END_1"
+                    },
+                    {
+                        "VALUE": "3HA",
+                        "INST_ID": "00000001",
+                        "CONFIG_ID": "000001",
+                        "CHARC": "NR_TEE_HVY_DRILL_END_2"
+                    },
+                    {
+                        "VALUE": "0",
+                        "INST_ID": "00000001",
+                        "CONFIG_ID": "000001",
+                        "CHARC": "NR_NC"
+                    },
+                    {
+                        "VALUE": "1669",
+                        "INST_ID": "00000001",
+                        "CONFIG_ID": "000001",
+                        "CHARC": "NR_NH"
+                    },
+                    {
+                        "VALUE": "14",
+                        "INST_ID": "00000001",
+                        "CONFIG_ID": "000001",
+                        "CHARC": "NR_NL"
+                    },
+                    {
+                        "VALUE": "80",
+                        "INST_ID": "00000001",
+                        "CONFIG_ID": "000001",
+                        "CHARC": "PLANNED_CONSUMED_LG"
+                    },
+                    {
+                        "VALUE": "N",
+                        "INST_ID": "00000001",
+                        "CONFIG_ID": "000001",
+                        "CHARC": "NR_CHE"
+                    },
+                    {
+                        "VALUE": "80",
+                        "INST_ID": "00000001",
+                        "CONFIG_ID": "000001",
+                        "CHARC": "OA_LENGTH_FT"
+                    },
+                    {
+                        "VALUE": "0",
+                        "INST_ID": "00000001",
+                        "CONFIG_ID": "000001",
+                        "CHARC": "OA_LENGTH_IN"
+                    },
+                    {
+                        "VALUE": "0",
+                        "INST_ID": "00000001",
+                        "CONFIG_ID": "000001",
+                        "CHARC": "VT_FRACTION"
+                    }
+                ],
+                "ProductSystemId": "HH_NEW_T_RAIL",
+                "ItemClassificationType": "4",
+                "ProductId": 1048,
+                "IsInvalid": false,
+                "CollaborationComments": [],
+                "DescriptionLong": ""
+            },
+            {
+                "ItemType": "0",
+                "ExternalConfigurationId": "",
+                "ContractAutoRenewalIndicator": false,
+                "Comment": "",
+                "CustomFields": [
+                    {
+                        "Name": "LBF_QU_COST",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_PRICE",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_GP_PER",
+                        "Content": "10.183150"
+                    },
+                    {
+                        "Name": "LBF_QU_UoM",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_FREIGHT",
+                        "AttibuteValueCode": "FC",
+                        "Content": "FC"
+                    },
+                    {
+                        "Name": "LBF_QU_HANDLING_OB",
+                        "AttibuteValueCode": "MAN",
+                        "Content": "MAN"
+                    },
+                    {
+                        "Name": "LBF_QU_PLANT",
+                        "Content": "1020"
+                    },
+                    {
+                        "Name": "LBF_QU_MAT_CST",
+                        "Content": "1.420000"
+                    },
+                    {
+                        "Name": "LBF_QU_MAT_CST_OVR",
+                        "Content": "2.420000"
+                    },
+                    {
+                        "Name": "LBF_QU_FREIGHT_CST",
+                        "Content": "500.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_FREIGHT_CST_EXT",
+                        "Content": "500.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_HANDLING_CST",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_HANDLING_CST_EXT",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_BU",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_SELPRICE",
+                        "Content": "1365.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_GP_VAL",
+                        "Content": "139.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_TOTAL_COST",
+                        "Content": "1226.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_SELPRICE_UN",
+                        "Content": "4.550000"
+                    },
+                    {
+                        "Name": "LBF_QU_ITEMDESC",
+                        "Content": "NEW DOMESTIC 6\" BASE RAIL ANCHORS"
+                    },
+                    {
+                        "Name": "LBF_QU_ITEMNOTE",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_COST_UN",
+                        "Content": "502.420000"
+                    },
+                    {
+                        "Name": "LBF_QU_FM_PLANT",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_FM_CUR",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_FM_PWRCSTRT",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_FM_PRTCST",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LB_QU_FM_INTRCO",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LB_QU_FM_INTRPR",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_FM_FOREX",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LB_QU_FM_SPCAD",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LB_QU_FM_SPUSD",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_FM_COST",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_TARUOM",
+                        "Content": "EA"
+                    },
+                    {
+                        "Name": "LBF_QU_CXT_HlItm",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_CXT_ICAT",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_CXT_FDATE",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_Notes",
+                        "Content": "DRIVE ON"
+                    },
+                    {
+                        "Name": "LBF_QU_ExtCost",
+                        "Content": "726.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_FREIGHT_CST_UN",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_SalesOrg",
+                        "AttibuteValueCode": "1000",
+                        "Content": "1000"
+                    },
+                    {
+                        "Name": "LBF_QU_DC",
+                        "AttibuteValueCode": "10",
+                        "Content": "10"
+                    },
+                    {
+                        "Name": "LBF_QU_PLANT1",
+                        "AttibuteValueCode": "1020",
+                        "Content": "1020"
+                    },
+                    {
+                        "Name": "LBF_QU_FreightFB",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_Engineering",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_PRODUCTSTATUS",
+                        "Content": "complete"
+                    },
+                    {
+                        "Name": "LBF_QU_CXT_DDATE",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_DIV",
+                        "AttibuteValueCode": "20",
+                        "Content": "20"
+                    },
+                    {
+                        "Name": "LBF_QU_SO_STATUS",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_SO_ORDERNO",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_SO_ITEMNO",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_COSTSTATUS",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_COSTERROR",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_ITEMCONFIG",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_ITEMCONFIG1",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_IsVCPFieldsChanged",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_CXT_GASF",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_CXT_Broker",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_CXT_State",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_CXT_Coat",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_CXT_STRU",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_CXT_SMPVCP",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_OP",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_NetWeight",
+                        "Content": "564.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_WeightUnit",
+                        "Content": "LBR"
+                    },
+                    {
+                        "Name": "LBF_QU_Currency1",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_Currency",
+                        "Content": "USD"
+                    },
+                    {
+                        "Name": "LBF_QU_InternalCostNotes",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_TotalGrossProfitPercent",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_TotalGrossProfitMarginamount",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_SAL_QTY",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_SAL_Type",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_ProfitCenter",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_SALITEMDESC",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_CXT_BroScope",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_RAIL_ICAT",
+                        "Content": ""
+                    }
+                ],
+                "HasUsageBasedPricing": false,
+                "UnitOfMeasure": "EA",
+                "GeneralItemCategoryGroup": "",
+                "ProductTypeNameTranslated": "01090301",
+                "DateAdded": "2025-11-05T10:57:01Z",
+                "ProductTypeName": "01090301",
+                "Description": "NEW DOMESTIC 6\" BASE RAIL ANCHORS",
+                "PricingDetails": {
+                    "Fixed": {
+                        "TaxAmount": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "TaxPercent": {
+                            "Value": "0.000000"
+                        },
+                        "RolledUpExtendedAmount": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "MinDiscountPercent": {
+                            "Value": "0.000000"
+                        },
+                        "ShippingCost": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "MaxDiscountPercent": {
+                            "Value": "0.000000"
+                        },
+                        "Cost": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "RolledUpNetPrice": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "MarginPercent": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "UnitDiscountAmount": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "RolledUpExtendedListPrice": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "ExtendedListPrice": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "DiscountAmount": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "DiscountPercent": {
+                            "Value": "0.000000"
+                        },
+                        "RolledUpDiscountPercent": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "ExtendedCost": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "RolledUpDiscountAmount": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "RolledUpCost": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "RolledUpGrossMargin": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "DefaultDiscountPercent": {
+                            "Value": "0.000000"
+                        },
+                        "ExtendedAmount": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "NetPrice": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "RolledUpExtendedCost": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "RolledUpListPrice": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "ListPrice": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        }
+                    }
+                },
+                "ProductName": "NEW DOMESTIC 6\" BASE RAIL ANCHORS",
+                "IsOptional": false,
+                "ParentItemId": 0,
+                "IsSubItem": false,
+                "IsLineItem": false,
+                "IsSubscriptionItem": false,
+                "SyncedFromBackOffice": true,
+                "Quantity": "300.000000",
+                "PartNumber": "38036",
+                "RolledUpItemNumber": "2",
+                "ConfigurationId": "1089201c-a382-45fc-baab-dc23e4d90b78",
+                "ProductExternalId": "",
+                "IsAlternative": false,
+                "ConfigurationType": "Variant",
+                "ParentRolledUpItemNumber": "",
+                "IsVariant": false,
+                "OrderItemType": "Sales",
+                "ProductNameTranslated": "NEW DOMESTIC 6\" BASE RAIL ANCHORS",
+                "ItemNumber": 2,
+                "ItemId": 11994,
+                "DisplayType": "Simple",
+                "ReferencedItemId": 0,
+                "ParentItemNumber": 0,
+                "ExternalConfigurationItemId": 1,
+                "ProductTypeId": 118,
+                "IsMainItem": true,
+                "ProductSystemId": "38036",
+                "ItemClassificationType": "4",
+                "ProductId": 6079,
+                "IsInvalid": false,
+                "CollaborationComments": [],
+                "DescriptionLong": ""
+            },
+            {
+                "ItemType": "0",
+                "ExternalConfigurationId": "",
+                "ContractAutoRenewalIndicator": false,
+                "Comment": "",
+                "CustomFields": [
+                    {
+                        "Name": "LBF_QU_COST",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_PRICE",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_GP_PER",
+                        "Content": "18.829768"
+                    },
+                    {
+                        "Name": "LBF_QU_UoM",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_FREIGHT",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_HANDLING_OB",
+                        "AttibuteValueCode": "QT",
+                        "Content": "QT"
+                    },
+                    {
+                        "Name": "LBF_QU_PLANT",
+                        "Content": "2002"
+                    },
+                    {
+                        "Name": "LBF_QU_MAT_CST",
+                        "Content": "131.060000"
+                    },
+                    {
+                        "Name": "LBF_QU_MAT_CST_OVR",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_FREIGHT_CST",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_FREIGHT_CST_EXT",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_HANDLING_CST",
+                        "Content": "10.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_HANDLING_CST_EXT",
+                        "Content": "9.440000"
+                    },
+                    {
+                        "Name": "LBF_QU_BU",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_SELPRICE",
+                        "Content": "2595.040000"
+                    },
+                    {
+                        "Name": "LBF_QU_GP_VAL",
+                        "Content": "488.640000"
+                    },
+                    {
+                        "Name": "LBF_QU_TOTAL_COST",
+                        "Content": "2106.400000"
+                    },
+                    {
+                        "Name": "LBF_QU_SELPRICE_UN",
+                        "Content": "162.190000"
+                    },
+                    {
+                        "Name": "LBF_QU_ITEMDESC",
+                        "Content": "NEW DOMESTIC 132/136 ANGLE BARS 6H 1-1/8"
+                    },
+                    {
+                        "Name": "LBF_QU_ITEMNOTE",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_COST_UN",
+                        "Content": "141.060000"
+                    },
+                    {
+                        "Name": "LBF_QU_FM_PLANT",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_FM_CUR",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_FM_PWRCSTRT",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_FM_PRTCST",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LB_QU_FM_INTRCO",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LB_QU_FM_INTRPR",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_FM_FOREX",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LB_QU_FM_SPCAD",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LB_QU_FM_SPUSD",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_FM_COST",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_TARUOM",
+                        "Content": "PAA"
+                    },
+                    {
+                        "Name": "LBF_QU_CXT_HlItm",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_CXT_ICAT",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_CXT_FDATE",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_Notes",
+                        "Content": "PUNCHED 6\" X 6\" X 7-1/8\" X 6\" X 6\" FOR 1-1/8\" TRACK BOLT"
+                    },
+                    {
+                        "Name": "LBF_QU_ExtCost",
+                        "Content": "2096.960000"
+                    },
+                    {
+                        "Name": "LBF_QU_FREIGHT_CST_UN",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_SalesOrg",
+                        "AttibuteValueCode": "1000",
+                        "Content": "1000"
+                    },
+                    {
+                        "Name": "LBF_QU_DC",
+                        "AttibuteValueCode": "10",
+                        "Content": "10"
+                    },
+                    {
+                        "Name": "LBF_QU_PLANT1",
+                        "AttibuteValueCode": "2002",
+                        "Content": "2002"
+                    },
+                    {
+                        "Name": "LBF_QU_FreightFB",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_Engineering",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_PRODUCTSTATUS",
+                        "Content": "complete"
+                    },
+                    {
+                        "Name": "LBF_QU_CXT_DDATE",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_DIV",
+                        "AttibuteValueCode": "20",
+                        "Content": "20"
+                    },
+                    {
+                        "Name": "LBF_QU_SO_STATUS",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_SO_ORDERNO",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_SO_ITEMNO",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_COSTSTATUS",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_COSTERROR",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_ITEMCONFIG",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_ITEMCONFIG1",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_IsVCPFieldsChanged",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_CXT_GASF",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_CXT_Broker",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_CXT_State",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_CXT_Coat",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_CXT_STRU",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_CXT_SMPVCP",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_OP",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_NetWeight",
+                        "Content": "1888.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_WeightUnit",
+                        "Content": "LBR"
+                    },
+                    {
+                        "Name": "LBF_QU_Currency1",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_Currency",
+                        "Content": "USD"
+                    },
+                    {
+                        "Name": "LBF_QU_InternalCostNotes",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_TotalGrossProfitPercent",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_TotalGrossProfitMarginamount",
+                        "Content": "0.000000"
+                    },
+                    {
+                        "Name": "LBF_QU_SAL_QTY",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_SAL_Type",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_ProfitCenter",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_SALITEMDESC",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_CXT_BroScope",
+                        "Content": ""
+                    },
+                    {
+                        "Name": "LBF_QU_RAIL_ICAT",
+                        "Content": ""
+                    }
+                ],
+                "HasUsageBasedPricing": false,
+                "UnitOfMeasure": "PR",
+                "GeneralItemCategoryGroup": "",
+                "ProductTypeNameTranslated": "01090302",
+                "DateAdded": "2025-11-05T10:57:01Z",
+                "ProductTypeName": "01090302",
+                "Description": "NEW DOMESTIC 132/136 ANGLE BARS 6H 1-1/8",
+                "PricingDetails": {
+                    "Fixed": {
+                        "TaxAmount": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "TaxPercent": {
+                            "Value": "0.000000"
+                        },
+                        "RolledUpExtendedAmount": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "MinDiscountPercent": {
+                            "Value": "0.000000"
+                        },
+                        "ShippingCost": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "MaxDiscountPercent": {
+                            "Value": "0.000000"
+                        },
+                        "Cost": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "RolledUpNetPrice": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "MarginPercent": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "UnitDiscountAmount": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "RolledUpExtendedListPrice": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "ExtendedListPrice": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "DiscountAmount": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "DiscountPercent": {
+                            "Value": "0.000000"
+                        },
+                        "RolledUpDiscountPercent": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "ExtendedCost": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "RolledUpDiscountAmount": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "RolledUpCost": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "RolledUpGrossMargin": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "DefaultDiscountPercent": {
+                            "Value": "0.000000"
+                        },
+                        "ExtendedAmount": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "NetPrice": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "RolledUpExtendedCost": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "RolledUpListPrice": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        },
+                        "ListPrice": {
+                            "Value": "0.000000",
+                            "Currency": "USD"
+                        }
+                    }
+                },
+                "ProductName": "NEW DOMESTIC 132/136 ANGLE BARS 6H 1-1/8",
+                "IsOptional": false,
+                "ParentItemId": 0,
+                "IsSubItem": false,
+                "IsLineItem": false,
+                "IsSubscriptionItem": false,
+                "SyncedFromBackOffice": true,
+                "Quantity": "16.000000",
+                "PartNumber": "30007",
+                "RolledUpItemNumber": "3",
+                "ConfigurationId": "06cf986d-e532-477b-9132-c79289a90ec6",
+                "ProductExternalId": "",
+                "IsAlternative": false,
+                "ConfigurationType": "Variant",
+                "ParentRolledUpItemNumber": "",
+                "IsVariant": false,
+                "OrderItemType": "Sales",
+                "ProductNameTranslated": "NEW DOMESTIC 132/136 ANGLE BARS 6H 1-1/8",
+                "ItemNumber": 3,
+                "ItemId": 11996,
+                "DisplayType": "Simple",
+                "ReferencedItemId": 0,
+                "ParentItemNumber": 0,
+                "ExternalConfigurationItemId": 1,
+                "ProductTypeId": 120,
+                "IsMainItem": true,
+                "ProductSystemId": "30007",
+                "ItemClassificationType": "4",
+                "ProductId": 5246,
+                "IsInvalid": false,
+                "CollaborationComments": [],
+                "DescriptionLong": ""
+            }
+        ]
+    }
+}

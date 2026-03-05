@@ -1,0 +1,1745 @@
+{
+  "Root": {
+    "Quotes": {
+      "Comments": [],
+      "IsPrimary": false,
+      "CustomFields": [
+        {
+          "Name": "Quote Expiration Date",
+          "Content": ""
+        },
+        {
+          "Name": "Customer's Language",
+          "Content": ""
+        },
+        {
+          "Name": "LBF_CF_PAYTERMS",
+          "Content": "0002"
+        },
+        {
+          "Name": "LBF_CF_INCOTERMS",
+          "Content": "CFR, Costs and freight"
+        },
+        {
+          "Name": "LBF_CF_CurrentItemPlant",
+          "Content": ""
+        },
+        {
+          "Name": "LBF_CF_CurrentItemHandling",
+          "Content": ""
+        },
+        {
+          "Name": "LBF_CF_ProjectDescription",
+          "Content": ""
+        },
+        {
+          "Name": "LBF_CF_FM_PartNumber",
+          "Content": ""
+        },
+        {
+          "Name": "LBF_CF_GLOCUST",
+          "Content": "Miller LS Bridge Construction, LLC"
+        },
+        {
+          "Name": "LBF_CF_CUSID",
+          "Content": "Miller LS Bridge Construction, LLC"
+        },
+        {
+          "Name": "LBF_CF_FM_TOT_COST",
+          "Content": ""
+        },
+        {
+          "Name": "LBF_CF_Transit_Notes",
+          "Content": ""
+        },
+        {
+          "Name": "LBF_CF_ItemNumber",
+          "Content": ""
+        },
+        {
+          "Name": "LBF_CF_FOB_TERMS",
+          "Content": ""
+        },
+        {
+          "Name": "LBF_CF_Transit_Shipment",
+          "Content": ""
+        },
+        {
+          "Name": "LBF_CF_SAL_Validity"
+        },
+        {
+          "Name": "LBF_CF_SAL_PAYSCH"
+        },
+        {
+          "Name": "LBF_CF_SAL_LEADTIME"
+        },
+        {
+          "Name": "LBF_CF_SAL_INOTE",
+          "Content": ""
+        },
+        {
+          "Name": "LBF_CF_SAL_SPOP",
+          "Content": ""
+        },
+        {
+          "Name": "LBF_CF_ADDINCO",
+          "Content": ""
+        },
+        {
+          "Name": "LBF_CF_SHIPPING",
+          "Content": ""
+        },
+        {
+          "Name": "LBF_CF_NOTES",
+          "Content": ""
+        },
+        {
+          "Name": "LBF_CF_PONUMBER",
+          "Content": "POBRDG1"
+        },
+        {
+          "Name": "LBF_CF_PODATE",
+          "Content": "2025-10-16T00:00:00Z"
+        },
+        {
+          "Name": "LBF_CF_DISCLAIMER",
+          "Content": ""
+        },
+        {
+          "Name": "LBF_CF_UOM",
+          "Content": ""
+        },
+        {
+          "Name": "LBF_CF_INCOTERMS2",
+          "Content": "Testinc1"
+        },
+        {
+          "Name": "LBF_CF_OpportunityID",
+          "Content": ""
+        },
+        {
+          "Name": "LBF_CF_BRDG_Broker_Scope",
+          "Content": "Stay-In-Place Metal Deck Forms\r\nGross Area:22000 Sq.Ft."
+        },
+        {
+          "Name": "LBF_CF_BRDG_Con_Scope",
+          "Content": "Stay-In-Place Metal Deck Forms\r\nGross Area:22000 Sq.Ft."
+        },
+        {
+          "Name": "LBF_CF_BRDG_Con_Item",
+          "Content": "Includes stay-in-Place metal deck forms, support angles, closures, cut-to-length weld straps, related accessory items and Shop drawings. Support angles are based on a 5 feet maximum haunch dimension at beam edges.Price includes closures down to diaphragm and over to backwall at Abatment 1. Plate to backwall will require shoring(Not by LBF)"
+        },
+        {
+          "Name": "LBF_CF_BRDG_Broker_Item",
+          "Content": "Freight is not Included. \r\n Pricing is FOB Bedford, PA"
+        },
+        {
+          "Name": "LBF_CF_BRDG_Broker_Desc",
+          "Content": "Stay-In Place Metal Deck Forms Will be per OH DOT Specifications. Material to be structural quality steel conforming to ASTM A-653. Galvanized coating to conform to ASTM A-924 coating class G235"
+        },
+        {
+          "Name": "LBF_CF_BRDG_Con_Desc",
+          "Content": "Stay-In Place Metal Deck Forms Will be per OH DOT Specifications. Material to be structural quality steel conforming to ASTM A-653. Galvanized coating to conform to ASTM A-924 coating class G235"
+        },
+        {
+          "Name": "LBF_CF_SAL_PAYSCH2",
+          "Content": ""
+        },
+        {
+          "Name": "LBF_CF_OpportunityName",
+          "Content": ""
+        },
+        {
+          "Name": "LBF_CF_OpportunityURL",
+          "Content": "<a href=\"https://my1000689.us1.test.crm.cloud.sap/go/detail/guidedselling?displayId=\" target=\"_blank\">Click here to View Opportunity </a>"
+        },
+        {
+          "Name": "LBF_CF_SAL_PAYSCHPRNT",
+          "Content": ""
+        },
+        {
+          "Name": "LBF_CF_InConfigScreen",
+          "Content": "Yes"
+        },
+        {
+          "Name": "LBF_CF_Dist",
+          "Content": ""
+        },
+        {
+          "Name": "LBF_CF_Itemtype_Alternative",
+          "Content": ""
+        },
+        {
+          "Name": "LBF_CF_Itemtype_Optional",
+          "Content": ""
+        },
+        {
+          "Name": "LBF_CF_Itemtype_Optional_TotalPrice",
+          "Content": ""
+        },
+        {
+          "Name": "LBF_CF_Itemtype_Alternative_TotalPrice",
+          "Content": ""
+        },
+        {
+          "Name": "LBF_CF_WOT",
+          "Content": "No"
+        },
+        {
+          "Name": "LBF_CF_Prospect",
+          "Content": "No"
+        },
+        {
+          "Name": "LBF_CF_Address",
+          "Content": "L. B. Foster Company\n415 Holiday Drive\nSuite 100\nPittsburgh, PA 15220\n"
+        },
+        {
+          "Name": "LBF_CF_FM_Signature",
+          "Content": "L.B. FOSTER COMPANY"
+        },
+        {
+          "Name": "Quote_Owner",
+          "Content": ""
+        },
+        {
+          "Name": "LBF_CF_PrintP",
+          "Content": "No"
+        },
+        {
+          "Name": "LB_HH",
+          "Content": ""
+        },
+        {
+          "Name": "LBF_CF_SALOP",
+          "Content": ""
+        },
+        {
+          "Name": "LBF_CF_QuoteTotal_Voilated",
+          "Content": ""
+        },
+        {
+          "Name": "LBF_CF_QuoteMargin_Voilated",
+          "Content": ""
+        },
+        {
+          "Name": "LBF_CF_QuoteNumbertoCopyLines",
+          "Content": ""
+        },
+        {
+          "Name": "LBF_CF_BRDG_Broker_Item - Copy",
+          "Content": ""
+        }
+      ],
+      "TotalAmount": {
+        "Value": "0.000000",
+        "Currency": "USD"
+      },
+      "Cost": {
+        "Value": "46255.970000",
+        "Currency": "USD"
+      },
+      "MarketId": 9,
+      "ErrorMessage": "",
+      "DateCreated": "2025-10-15T04:19:23Z",
+      "Division": "30",
+      "DistributionChannel": "10",
+      "PriceBookId": 6,
+      "EffectiveDate": "2025-10-14T00:00:00Z",
+      "AverageProductDiscountPercent": {
+        "Value": "0.000000",
+        "Currency": "USD"
+      },
+      "CurrencyCode": "USD",
+      "MarketCode": "3131",
+      "QuoteId": 3339,
+      "TotalListPrice": {
+        "Value": "88582.080000",
+        "Currency": "USD"
+      },
+      "AverageGrossMarginPercent": {
+        "Value": "47.781797",
+        "Currency": "USD"
+      },
+      "OwnerId": 135,
+      "StatusName": "Preparing",
+      "QuoteTables": [
+        "LBF_QT_OTHER",
+        "ADDITIONAL_INFO",
+        "Market_Notes",
+        "Total_Summary",
+        "ItemType_Summary",
+        "ProfitCenter_Summary"
+      ],
+      "TotalProductDiscountAmount": {
+        "Value": "0.000000",
+        "Currency": "USD"
+      },
+      "DateModified": "2025-10-15T06:53:07Z",
+      "TotalNetPrice": {
+        "Value": "88582.080000",
+        "Currency": "USD"
+      },
+      "QuoteNumber": "01350902",
+      "StatusId": 32,
+      "RevisionNumber": "0",
+      "InvolvedParties": [
+        {
+          "AddressName4": "",
+          "StreetName": "Industrial Dr",
+          "Name4": "",
+          "ExternalId": "1005809",
+          "Name2": "",
+          "Name3": "",
+          "Name": "Miller LS Bridge Construction, LLC",
+          "SystemId": "Miller_LS_Bridge_Construction,_LLC_cpq",
+          "Id": 6119,
+          "AdditionalStreetSuffixName": "",
+          "Phone": "",
+          "MobilePhone": "",
+          "PartnerId": "1005809",
+          "PartnerFunctionId": 7,
+          "BusinessPartnerId": 3714,
+          "AdditionalStreetPrefixName": "",
+          "PostalCode": "48875",
+          "PrimaryIndustry": "",
+          "StreetSuffixName": "",
+          "PartnerNumber": "",
+          "HouseNumber": "7030",
+          "Fax": "",
+          "Country": "",
+          "PartnerFunctionName": "Sold-to party",
+          "TransportZone": "",
+          "CorrespondenceLanguage": "EN",
+          "InvolvedPartyCustomFields": [
+            {
+              "Name": "SalesOrg",
+              "Value": "3131.0000000000"
+            }
+          ],
+          "LastName": "",
+          "FirstName": "",
+          "District": "",
+          "AddressName": "",
+          "EmailAddress": "Invoice@lbfoster.com",
+          "FormOfAddress": "",
+          "PartnerFunctionKey": "SP",
+          "CityName": "Portland",
+          "TimeZone": "",
+          "POBox": "",
+          "AddressName3": "",
+          "StreetPrefixName": "",
+          "AddressAdditionalName": "",
+          "POBoxPostalCode": "",
+          "State": "",
+          "Region": ""
+        },
+        {
+          "AddressName4": "",
+          "StreetName": "Industrial Dr",
+          "Name4": "",
+          "ExternalId": "1005809",
+          "Name2": "",
+          "Name3": "",
+          "Name": "Miller LS Bridge Construction, LLC",
+          "SystemId": "Miller_LS_Bridge_Construction,_LLC_cpq",
+          "Id": 6120,
+          "AdditionalStreetSuffixName": "",
+          "Phone": "",
+          "MobilePhone": "",
+          "PartnerId": "1005809",
+          "PartnerFunctionId": 8,
+          "BusinessPartnerId": 3714,
+          "AdditionalStreetPrefixName": "",
+          "PostalCode": "48875",
+          "PrimaryIndustry": "",
+          "StreetSuffixName": "",
+          "PartnerNumber": "",
+          "HouseNumber": "7030",
+          "Fax": "",
+          "Country": "",
+          "PartnerFunctionName": "Ship-to party",
+          "TransportZone": "",
+          "CorrespondenceLanguage": "EN",
+          "InvolvedPartyCustomFields": [
+            {
+              "Name": "SalesOrg",
+              "Value": "3131.0000000000"
+            }
+          ],
+          "LastName": "",
+          "FirstName": "",
+          "District": "",
+          "AddressName": "",
+          "EmailAddress": "Invoice@lbfoster.com",
+          "FormOfAddress": "",
+          "PartnerFunctionKey": "SH",
+          "CityName": "Portland",
+          "TimeZone": "",
+          "POBox": "",
+          "AddressName3": "",
+          "StreetPrefixName": "",
+          "AddressAdditionalName": "",
+          "POBoxPostalCode": "",
+          "State": "",
+          "Region": ""
+        },
+        {
+          "InvolvedPartyCustomFields": [
+            {
+              "Name": "SalesOrg",
+              "Value": ""
+            }
+          ],
+          "PartnerFunctionId": 11,
+          "Id": 6121,
+          "PartnerFunctionKey": "CP",
+          "PartnerFunctionName": "Contact person"
+        },
+        {
+          "InvolvedPartyCustomFields": [
+            {
+              "Name": "SalesOrg",
+              "Value": ""
+            }
+          ],
+          "PartnerFunctionId": 12,
+          "Id": 6122,
+          "PartnerFunctionKey": "SR",
+          "PartnerFunctionName": "Sales representative"
+        },
+        {
+          "InvolvedPartyCustomFields": [
+            {
+              "Name": "SalesOrg",
+              "Value": ""
+            }
+          ],
+          "PartnerFunctionId": 15,
+          "Id": 6123,
+          "PartnerFunctionKey": "EC",
+          "PartnerFunctionName": "End Customer"
+        }
+      ],
+      "TotalTaxAmount": {
+        "Value": "0.000000",
+        "Currency": "USD"
+      }
+    },
+    "Quoteitems": [
+      {
+        "ItemType": "0",
+        "ExternalConfigurationId": "",
+        "ProductTypeNameTranslated": "FabBridge",
+        "Comment": "",
+        "CustomFields": [
+          {
+            "Name": "LBF_QU_COST",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_PRICE",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_GP_PER",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_UoM",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_FREIGHT",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_HANDLING_OB",
+            "AttibuteValueCode": "MAN",
+            "Content": "MAN"
+          },
+          {
+            "Name": "LBF_QU_PLANT",
+            "Content": "3131"
+          },
+          {
+            "Name": "LBF_QU_MAT_CST",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_MAT_CST_OVR",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_FREIGHT_CST",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_FREIGHT_CST_EXT",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_HANDLING_CST",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_HANDLING_CST_EXT",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_BU",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_SELPRICE",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_GP_VAL",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_TOTAL_COST",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_SELPRICE_UN",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_ITEMDESC",
+            "Content": "SIP Forms 2x8.5 20GA G235"
+          },
+          {
+            "Name": "LBF_QU_ITEMNOTE",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_COST_UN",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_FM_PLANT",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_FM_CUR",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_FM_PWRCSTRT",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_FM_PRTCST",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LB_QU_FM_INTRCO",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LB_QU_FM_INTRPR",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_FM_FOREX",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LB_QU_FM_SPCAD",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LB_QU_FM_SPUSD",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_FM_COST",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_TARUOM",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_CXT_HlItm",
+            "Content": "10"
+          },
+          {
+            "Name": "LBF_QU_CXT_ICAT",
+            "Content": "ZFAB"
+          },
+          {
+            "Name": "LBF_QU_CXT_FDATE",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_Notes",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_ExtCost",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_FREIGHT_CST_UN",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_SalesOrg",
+            "AttibuteValueCode": "3131",
+            "Content": "3131"
+          },
+          {
+            "Name": "LBF_QU_DC",
+            "AttibuteValueCode": "10",
+            "Content": "10"
+          },
+          {
+            "Name": "LBF_QU_PLANT1",
+            "AttibuteValueCode": "3131",
+            "Content": "3131"
+          },
+          {
+            "Name": "LBF_QU_FreightFB",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_Engineering",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_PRODUCTSTATUS",
+            "Content": "complete"
+          },
+          {
+            "Name": "LBF_QU_CXT_DDATE",
+            "Content": "1"
+          },
+          {
+            "Name": "LBF_QU_DIV",
+            "AttibuteValueCode": "30",
+            "Content": "30"
+          },
+          {
+            "Name": "LBF_QU_SO_STATUS",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_SO_ORDERNO",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_SO_ITEMNO",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_COSTSTATUS",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_COSTERROR",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_ITEMCONFIG",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_ITEMCONFIG1",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_IsVCPFieldsChanged",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_CXT_GASF",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_CXT_Broker",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_CXT_State",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_CXT_Coat",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_CXT_STRU",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_CXT_SMPVCP",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_OP",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_NetWeight",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_WeightUnit",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_Currency1",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_Currency",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_InternalCostNotes",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_TotalGrossProfitPercent",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_TotalGrossProfitMarginamount",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_SAL_QTY",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_SAL_Type",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_ProfitCenter",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_SALITEMDESC",
+            "Content": ""
+          }
+        ],
+        "UnitOfMeasure": "",
+        "ContractAutoRenewalIndicator": false,
+        "GeneralItemCategoryGroup": "",
+        "HasUsageBasedPricing": false,
+        "DateAdded": "2025-10-15T04:19:23Z",
+        "ProductTypeName": "FabBridge",
+        "Description": "SIP Forms 2x8.5 20GA G235",
+        "PricingDetails": {
+          "Fixed": {
+            "TaxAmount": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "TaxPercent": {
+              "Value": "0.000000"
+            },
+            "RolledUpExtendedAmount": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "MinDiscountPercent": {
+              "Value": "0.000000"
+            },
+            "ShippingCost": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "MaxDiscountPercent": {
+              "Value": "0.000000"
+            },
+            "Cost": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "RolledUpNetPrice": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "MarginPercent": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "UnitDiscountAmount": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "RolledUpExtendedListPrice": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "ExtendedListPrice": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "DiscountAmount": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "DiscountPercent": {
+              "Value": "0.000000"
+            },
+            "RolledUpDiscountPercent": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "ExtendedCost": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "RolledUpDiscountAmount": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "RolledUpCost": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "RolledUpGrossMargin": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "DefaultDiscountPercent": {
+              "Value": "0.000000"
+            },
+            "ExtendedAmount": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "NetPrice": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "RolledUpExtendedCost": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "RolledUpListPrice": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "ListPrice": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            }
+          }
+        },
+        "ProductName": "BridgeOEHelper",
+        "IsOptional": false,
+        "ParentItemId": 0,
+        "IsSubItem": false,
+        "IsLineItem": false,
+        "IsSubscriptionItem": false,
+        "Quantity": "109.000000",
+        "SyncedFromBackOffice": false,
+        "PartNumber": "7269400",
+        "RolledUpItemNumber": "2",
+        "ConfigurationId": "",
+        "ProductExternalId": "",
+        "IsAlternative": false,
+        "ConfigurationType": "Standard",
+        "ParentRolledUpItemNumber": "",
+        "IsVariant": false,
+        "OrderItemType": "Sales",
+        "ProductNameTranslated": "BridgeOEHelper",
+        "ItemNumber": 2,
+        "ItemId": 10842,
+        "DisplayType": "Simple",
+        "ReferencedItemId": 0,
+        "ParentItemNumber": 0,
+        "ProductTypeId": 230,
+        "IsMainItem": true,
+        "ProductSystemId": "BridgeOEHelper_cpq",
+        "ItemClassificationType": "0",
+        "ProductId": 989,
+        "IsInvalid": false,
+        "CollaborationComments": [],
+        "DescriptionLong": ""
+      },
+      {
+        "ItemType": "0",
+        "ExternalConfigurationId": "",
+        "ProductTypeNameTranslated": "FabBridge",
+        "Comment": "",
+        "CustomFields": [
+          {
+            "Name": "LBF_QU_COST",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_PRICE",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_GP_PER",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_UoM",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_FREIGHT",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_HANDLING_OB",
+            "AttibuteValueCode": "MAN",
+            "Content": "MAN"
+          },
+          {
+            "Name": "LBF_QU_PLANT",
+            "Content": "3131"
+          },
+          {
+            "Name": "LBF_QU_MAT_CST",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_MAT_CST_OVR",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_FREIGHT_CST",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_FREIGHT_CST_EXT",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_HANDLING_CST",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_HANDLING_CST_EXT",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_BU",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_SELPRICE",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_GP_VAL",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_TOTAL_COST",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_SELPRICE_UN",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_ITEMDESC",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_ITEMNOTE",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_COST_UN",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_FM_PLANT",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_FM_CUR",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_FM_PWRCSTRT",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_FM_PRTCST",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LB_QU_FM_INTRCO",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LB_QU_FM_INTRPR",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_FM_FOREX",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LB_QU_FM_SPCAD",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LB_QU_FM_SPUSD",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_FM_COST",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_TARUOM",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_CXT_HlItm",
+            "Content": "20"
+          },
+          {
+            "Name": "LBF_QU_CXT_ICAT",
+            "Content": "ZFAB"
+          },
+          {
+            "Name": "LBF_QU_CXT_FDATE",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_Notes",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_ExtCost",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_FREIGHT_CST_UN",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_SalesOrg",
+            "AttibuteValueCode": "3131",
+            "Content": "3131"
+          },
+          {
+            "Name": "LBF_QU_DC",
+            "AttibuteValueCode": "10",
+            "Content": "10"
+          },
+          {
+            "Name": "LBF_QU_PLANT1",
+            "AttibuteValueCode": "3131",
+            "Content": "3131"
+          },
+          {
+            "Name": "LBF_QU_FreightFB",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_Engineering",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_PRODUCTSTATUS",
+            "Content": "complete"
+          },
+          {
+            "Name": "LBF_QU_CXT_DDATE",
+            "Content": "1"
+          },
+          {
+            "Name": "LBF_QU_DIV",
+            "AttibuteValueCode": "30",
+            "Content": "30"
+          },
+          {
+            "Name": "LBF_QU_SO_STATUS",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_SO_ORDERNO",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_SO_ITEMNO",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_COSTSTATUS",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_COSTERROR",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_ITEMCONFIG",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_ITEMCONFIG1",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_IsVCPFieldsChanged",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_CXT_GASF",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_CXT_Broker",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_CXT_State",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_CXT_Coat",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_CXT_STRU",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_CXT_SMPVCP",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_OP",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_NetWeight",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_WeightUnit",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_Currency1",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_Currency",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_InternalCostNotes",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_TotalGrossProfitPercent",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_TotalGrossProfitMarginamount",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_SAL_QTY",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_SAL_Type",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_ProfitCenter",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_SALITEMDESC",
+            "Content": ""
+          }
+        ],
+        "UnitOfMeasure": "",
+        "ContractAutoRenewalIndicator": false,
+        "GeneralItemCategoryGroup": "",
+        "HasUsageBasedPricing": false,
+        "DateAdded": "2025-10-15T06:41:10Z",
+        "ProductTypeName": "FabBridge",
+        "Description": "Angle 10GA G165 2X3X120 90deg",
+        "PricingDetails": {
+          "Fixed": {
+            "TaxAmount": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "TaxPercent": {
+              "Value": "0.000000"
+            },
+            "RolledUpExtendedAmount": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "MinDiscountPercent": {
+              "Value": "0.000000"
+            },
+            "ShippingCost": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "MaxDiscountPercent": {
+              "Value": "0.000000"
+            },
+            "Cost": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "RolledUpNetPrice": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "MarginPercent": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "UnitDiscountAmount": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "RolledUpExtendedListPrice": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "ExtendedListPrice": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "DiscountAmount": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "DiscountPercent": {
+              "Value": "0.000000"
+            },
+            "RolledUpDiscountPercent": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "ExtendedCost": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "RolledUpDiscountAmount": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "RolledUpCost": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "RolledUpGrossMargin": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "DefaultDiscountPercent": {
+              "Value": "0.000000"
+            },
+            "ExtendedAmount": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "NetPrice": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "RolledUpExtendedCost": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "RolledUpListPrice": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "ListPrice": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            }
+          }
+        },
+        "ProductName": "BridgeOEHelper",
+        "IsOptional": false,
+        "ParentItemId": 0,
+        "IsSubItem": false,
+        "IsLineItem": false,
+        "IsSubscriptionItem": false,
+        "Quantity": "100.000000",
+        "SyncedFromBackOffice": false,
+        "PartNumber": "6990300",
+        "RolledUpItemNumber": "4",
+        "ConfigurationId": "",
+        "ProductExternalId": "",
+        "IsAlternative": false,
+        "ConfigurationType": "Standard",
+        "ParentRolledUpItemNumber": "",
+        "IsVariant": false,
+        "OrderItemType": "Sales",
+        "ProductNameTranslated": "BridgeOEHelper",
+        "ItemNumber": 4,
+        "ItemId": 10852,
+        "DisplayType": "Simple",
+        "ReferencedItemId": 0,
+        "ParentItemNumber": 0,
+        "ProductTypeId": 230,
+        "IsMainItem": true,
+        "ProductSystemId": "BridgeOEHelper_cpq",
+        "ItemClassificationType": "0",
+        "ProductId": 989,
+        "IsInvalid": false,
+        "CollaborationComments": [],
+        "DescriptionLong": ""
+      },
+      {
+        "ItemType": "0",
+        "ExternalConfigurationId": "",
+        "ProductTypeNameTranslated": "FabBridge",
+        "Comment": "",
+        "CustomFields": [
+          {
+            "Name": "LBF_QU_COST",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_PRICE",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_GP_PER",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_UoM",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_FREIGHT",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_HANDLING_OB",
+            "AttibuteValueCode": "MAN",
+            "Content": "MAN"
+          },
+          {
+            "Name": "LBF_QU_PLANT",
+            "Content": "3131"
+          },
+          {
+            "Name": "LBF_QU_MAT_CST",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_MAT_CST_OVR",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_FREIGHT_CST",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_FREIGHT_CST_EXT",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_HANDLING_CST",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_HANDLING_CST_EXT",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_BU",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_SELPRICE",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_GP_VAL",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_TOTAL_COST",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_SELPRICE_UN",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_ITEMDESC",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_ITEMNOTE",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_COST_UN",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_FM_PLANT",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_FM_CUR",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_FM_PWRCSTRT",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_FM_PRTCST",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LB_QU_FM_INTRCO",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LB_QU_FM_INTRPR",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_FM_FOREX",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LB_QU_FM_SPCAD",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LB_QU_FM_SPUSD",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_FM_COST",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_TARUOM",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_CXT_HlItm",
+            "Content": "20"
+          },
+          {
+            "Name": "LBF_QU_CXT_ICAT",
+            "Content": "ZFAB"
+          },
+          {
+            "Name": "LBF_QU_CXT_FDATE",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_Notes",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_ExtCost",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_FREIGHT_CST_UN",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_SalesOrg",
+            "AttibuteValueCode": "3131",
+            "Content": "3131"
+          },
+          {
+            "Name": "LBF_QU_DC",
+            "AttibuteValueCode": "10",
+            "Content": "10"
+          },
+          {
+            "Name": "LBF_QU_PLANT1",
+            "AttibuteValueCode": "3131",
+            "Content": "3131"
+          },
+          {
+            "Name": "LBF_QU_FreightFB",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_Engineering",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_PRODUCTSTATUS",
+            "Content": "complete"
+          },
+          {
+            "Name": "LBF_QU_CXT_DDATE",
+            "Content": "1"
+          },
+          {
+            "Name": "LBF_QU_DIV",
+            "AttibuteValueCode": "30",
+            "Content": "30"
+          },
+          {
+            "Name": "LBF_QU_SO_STATUS",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_SO_ORDERNO",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_SO_ITEMNO",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_COSTSTATUS",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_COSTERROR",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_ITEMCONFIG",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_ITEMCONFIG1",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_IsVCPFieldsChanged",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_CXT_GASF",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_CXT_Broker",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_CXT_State",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_CXT_Coat",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_CXT_STRU",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_CXT_SMPVCP",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_OP",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_NetWeight",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_WeightUnit",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_Currency1",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_Currency",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_InternalCostNotes",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_TotalGrossProfitPercent",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_TotalGrossProfitMarginamount",
+            "Content": "0.000000"
+          },
+          {
+            "Name": "LBF_QU_SAL_QTY",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_SAL_Type",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_ProfitCenter",
+            "Content": ""
+          },
+          {
+            "Name": "LBF_QU_SALITEMDESC",
+            "Content": ""
+          }
+        ],
+        "UnitOfMeasure": "",
+        "ContractAutoRenewalIndicator": false,
+        "GeneralItemCategoryGroup": "",
+        "HasUsageBasedPricing": false,
+        "DateAdded": "2025-10-15T06:41:10Z",
+        "ProductTypeName": "FabBridge",
+        "Description": "SIP Forms 2x8.5 20GA G235",
+        "PricingDetails": {
+          "Fixed": {
+            "TaxAmount": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "TaxPercent": {
+              "Value": "0.000000"
+            },
+            "RolledUpExtendedAmount": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "MinDiscountPercent": {
+              "Value": "0.000000"
+            },
+            "ShippingCost": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "MaxDiscountPercent": {
+              "Value": "0.000000"
+            },
+            "Cost": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "RolledUpNetPrice": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "MarginPercent": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "UnitDiscountAmount": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "RolledUpExtendedListPrice": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "ExtendedListPrice": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "DiscountAmount": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "DiscountPercent": {
+              "Value": "0.000000"
+            },
+            "RolledUpDiscountPercent": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "ExtendedCost": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "RolledUpDiscountAmount": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "RolledUpCost": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "RolledUpGrossMargin": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "DefaultDiscountPercent": {
+              "Value": "0.000000"
+            },
+            "ExtendedAmount": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "NetPrice": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "RolledUpExtendedCost": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "RolledUpListPrice": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            },
+            "ListPrice": {
+              "Value": "0.000000",
+              "Currency": "USD"
+            }
+          }
+        },
+        "ProductName": "BridgeOEHelper",
+        "IsOptional": false,
+        "ParentItemId": 0,
+        "IsSubItem": false,
+        "IsLineItem": false,
+        "IsSubscriptionItem": false,
+        "Quantity": "109.000000",
+        "SyncedFromBackOffice": false,
+        "PartNumber": "7269400",
+        "RolledUpItemNumber": "5",
+        "ConfigurationId": "",
+        "ProductExternalId": "",
+        "IsAlternative": false,
+        "ConfigurationType": "Standard",
+        "ParentRolledUpItemNumber": "",
+        "IsVariant": false,
+        "OrderItemType": "Sales",
+        "ProductNameTranslated": "BridgeOEHelper",
+        "ItemNumber": 5,
+        "ItemId": 10853,
+        "DisplayType": "Simple",
+        "ReferencedItemId": 0,
+        "ParentItemNumber": 0,
+        "ProductTypeId": 230,
+        "IsMainItem": true,
+        "ProductSystemId": "BridgeOEHelper_cpq",
+        "ItemClassificationType": "0",
+        "ProductId": 989,
+        "IsInvalid": false,
+        "CollaborationComments": [],
+        "DescriptionLong": ""
+      }
+    ]
+  }
+}

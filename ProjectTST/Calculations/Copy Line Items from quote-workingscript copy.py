@@ -27,8 +27,16 @@ class CopyLineItems:
     
     def deleteQuoteMsgs(self):
         for msg in self.quoteInfo.Messages:
-            if str(msg.Content) == "Items added successfully!" or str(msg.Content) == "Items not found for the provided reference quote number." or str(msg.Content) == "Invalid reference quote number, please check." or str(msg.Content) =="Quote number missing, enter quote number to copy lines.":
+            if str(msg.Content) == "Items added successfully!" or str(msg.Content) == "Items not found for the provided reference quote number." or str(msg.Content) == "Invalid reference quote number, please check." or str(msg.Content) =="Quote number missing, enter quote number to copy lines." or str(msg.Content) =="Error while adding the line items, please check the logs for more info.":
                 self.quoteInfo.DeleteMessage(msg.Id)
+
+    def clean_text(self,value):
+        # Replace curly quotes with straight quotes
+        value = str(value).replace(u'“', '"').replace(u'”', '"').replace(u'‘', "'").replace(u'’', "'")
+        # Optional cleanup for CPQ-safe JSON
+        value = value.replace('\r', '').replace('\n', '\\n')
+        Trace.Write("value:"+str(value))
+        return value
 
     def get_ref_quote_items(self):
         ref_quote_id = QuoteHelper.Get(str(self.ref_quote_number)).Id
@@ -37,15 +45,28 @@ class CopyLineItems:
         self.headers = {"Authorization": encodedKeys}
         quoteHeaderObj = RestClient.Get(self.url, self.headers)
         #serializedQuote_data = JsonHelper.Serialize(quoteHeaderObj)
-        serializedQuote_data = JsonHelper.Serialize(quoteHeaderObj) if quoteHeaderObj else quoteHeaderObj
-        return serializedQuote_data
+        # Clean up the data
+        for i in range(len(quoteHeaderObj)):
+            for item in quoteHeaderObj[i]['CustomFields']:
+                #Trace.Write(item["Name"])
+                if item["Name"] == "LBF_QU_ITEMDESC" or item["Name"] == "LBF_QU_Notes":
+                    Trace.Write(item["Name"])
+                    item["Content"] = self.clean_text(item["Content"])
+                    Trace.Write(self.clean_text(item["Content"]))
+        #serializedQuote_data = JsonHelper.Deserialize(JsonHelper.Serialize(quoteHeaderObj)) if quoteHeaderObj else quoteHeaderObj
+        #deserdata = JsonHelper.Serialize(quoteHeaderObj)
+        Trace.Write("quoteHeaderObj")
+        Trace.Write(quoteHeaderObj)
+        return quoteHeaderObj
     
     def copy_items_to_currentquote(self, refQuoteJSON):
+        Trace.Write("111111111")
         curr_quote_id = context.Quote.Id
         url = 'https://lbfoster-tst.cpq.cloud.sap/api/v1/quotes/{0}/items'.format(curr_quote_id)
         try:
             response = RestClient.Post(url, str(refQuoteJSON), self.headers)
         except:
+            Trace.Write('except')
             response = RestClient.Post(url, (refQuoteJSON), self.headers)
         if response:
             self.quoteMsg('Success','Items added successfully!')
@@ -62,11 +83,18 @@ class CopyLineItems:
                 if auth != "error":
                     self.bearer_token = auth
                     refQuoteJSON = self.get_ref_quote_items()
+                    #Trace.Write("refQuoteJSON: "+str(refQuoteJSON))
                     if list(refQuoteJSON) != []:
-                        if "The request is invalid." not in refQuoteJSON:
-                            self.copy_items_to_currentquote(refQuoteJSON)
-                        else:
-                            Log.Info("Something went wrong in get items call, please check.")
+                        Trace.Write("000000000000 ")
+                        
+                        # if "The request is invalid." not in refQuoteJSON and 'error' not in refQuoteJSON:
+                        self.copy_items_to_currentquote((refQuoteJSON))
+                        # if "ParentRolledUpItemNumber" in refQuoteJSON:
+                        #     Trace.Write("2222222222 ")
+                        #     self.copy_items_to_currentquote(str(refQuoteJSON))
+                        # else:
+                        #     Log.Info("ERROR:Copy line items from quote: "+str(refQuoteJSON))
+                        #     self.quoteMsg('Error','Error while adding the line items, please check the logs for more info.')
                     else:
                         self.quoteMsg('Warning','Items not found for the provided reference quote number.')
                 elif auth == "error":

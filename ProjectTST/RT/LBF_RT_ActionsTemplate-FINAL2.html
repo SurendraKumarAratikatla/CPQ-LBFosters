@@ -1,0 +1,177 @@
+<style>
+    #placeOrderTarget,#placeOrderTarget2,#placeOrderTarget3#placeOrderTargetCheck{
+        display: none; 
+        position: fixed; 
+        z-index: 1; 
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+    }
+    #placeOrderContent, #placeOrderContent2,#placeOrderContent3 {
+        background-color: white;
+        padding: 20px;
+        margin: 15% auto;
+        width: 300px;
+        text-align: center;
+        border-radius: 8px;
+    }
+    #placeOrderContentCheck {
+        background-color: white;
+        padding: 20px;
+        margin: 15% auto;
+        width: 380px;
+        text-align: center;
+        border-radius: 8px;
+    }
+    button {
+        margin: 0px;
+        padding: 8px 15px;
+        cursor: pointer;
+    }
+    </style>
+    
+    <script type="text/html" id="actionsTemplate">
+    <!-- ko foreach: $data-->
+        <!-- ko if: name == 'Place Order.' -->
+            <li class="action-row">
+                <!-- <a href="#" role="button" data-toggle="modal" data-target="#placeOrderTarget"> -->
+                <a href="#" role="button" data-toggle="modal" onclick="placeOrder()">
+
+                    <!-- ko if : $root.cartActionsModel().displayImagesForCartActions -->
+                    <img data-bind="attr: { src: imageUrl }, visible: imageUrl" alt="">
+                    <!-- /ko -->
+                    <span data-bind="text: name"></span>
+                </a>
+            </li>
+        <!-- /ko -->
+        <!-- ko ifnot: name == 'Place Order.' -->
+            <li class="action-row">
+                <a href="#" data-bind="click: execute" role="button">
+                    <!-- ko if : $root.cartActionsModel().displayImagesForCartActions -->
+                    <img data-bind="attr: { src: imageUrl }, visible: imageUrl" alt="">
+                    <!-- /ko -->
+                    <span data-bind="text: name"></span>
+                </a>
+            </li>
+        <!-- /ko -->
+    <!-- /ko -->
+    </script>
+    
+    <!-- Modal -->
+    <div class="modal fade" id="placeOrderTarget" role="dialog" data-backdrop="false">
+        <div class="modal-dialog">
+            <div class="modal-content" id="placeOrderContent">
+                <div class="modal-body">
+                    <p>Are you sure you want to proceed with placing the order?</p>
+                </div>
+                <div class="modal-footer" style="display: flex; justify-content: space-evenly;">
+                    <button type="button" class="btn btn-primary" onclick="orderProcess()" id="balnketOkId" data-dismiss="modal">Yes</button>
+                    <button type="button" class="btn btn-primary" id="balnketOkIdCanId" data-target="#balnketCanTarget" data-dismiss="modal">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="placeOrderTarget2" role="dialog" data-backdrop="false">
+        <div class="modal-dialog">
+            <div class="modal-content" id="placeOrderContent2">
+                <div class="modal-body">
+                    <p id="placedorderpharId"></p>
+                </div>
+                <div class="modal-footer" style="display: flex; justify-content: space-evenly;">
+                    <button type="button" class="btn btn-primary" id="balnketOkIdCanId2" data-target="#balnketCanTarget1" onclick="placeOrderStatus()" data-dismiss="modal">Ok</button>
+                    <!-- <button type="button" class="btn btn-primary" id="balnketOkIdCanId3" data-target="#balnketCanTarget2" data-dismiss="modal">Cancel</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal FOR Header fields check -->
+    <div class="modal fade" id="placeOrderTarget3" role="dialog" data-backdrop="false">
+        <div class="modal-dialog">
+            <div class="modal-content" id="placeOrderContent3">
+                <div class="modal-body">
+                    <p id="placedorderpharId3"></p>
+                </div>
+                <div class="modal-footer" style="display: flex; justify-content: space-evenly;">
+                    <button type="button" class="btn btn-primary" id="balnketOkIdCanId3" data-target="#balnketCanTarget3" data-dismiss="modal">Ok</button>
+                    <!-- <button type="button" class="btn btn-primary" id="balnketOkIdCanId3" data-target="#balnketCanTarget2" data-dismiss="modal">Cancel</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal check -->
+    <div class="modal fade" id="placeOrderTargetCheck" role="dialog" data-backdrop="false">
+        <div class="modal-dialog">
+            <div class="modal-content" id="placeOrderContentCheck">
+                <div class="modal-body">
+                    <p id="itemsCheckMsgId"></p>
+                </div>
+                <div class="modal-footer" style="display: flex; justify-content: space-evenly;">
+                    <button type="button" class="btn btn-primary" onclick="orderProcess()" id="balnketOkIdCheck" data-dismiss="modal">Yes</button>
+                    <button type="button" class="btn btn-primary" id="balnketOkIdCanIdCheck" data-target="#balnketCanTarget" data-dismiss="modal">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function orderProcess(){
+            cpq.server.executeScript('LBF_GS_PlaceOrder', {'Action': 'orderProcessing'},
+                function(data){
+                    console.log('LBF_GS_PlaceOrder script executed');
+                    console.log('order placed!');
+                    location.reload();
+            });
+        };
+
+        function placeOrder() {
+            var textPre = "";
+            var textSuf = "";
+            cpq.server.executeScript('LBF_GS_PlaceOrder', {'Action': 'itemsSyncCheck'},
+                function(data){
+                    console.log('LBF_GS_PlaceOrder check data---->',data)
+                    if(data != ""){
+                        if(data.includes("Please enter the")){
+                            document.getElementById('placedorderpharId3').innerText = data
+                            $('#placeOrderTarget3').modal('show');
+                        }
+
+                        else if (data == "Order confirmation pending. Please wait a moment." || data == "Order is already placed for the quote. Refresh the page to update Header status."){
+                            document.getElementById('placedorderpharId').innerText = data
+                            $('#placeOrderTarget2').modal('show');
+                            
+                        }
+                        else if (String(data.length) == "1") {
+                            textPre = "id "
+                            textSuf = " Material is not a valid S/4 Material. Proceed for rest of the items ?"
+                            document.getElementById('itemsCheckMsgId').innerText = "Item "+String(textPre) + String(data) + String(textSuf); // Update modal content
+                            $('#placeOrderTargetCheck').modal('show'); // Show modal
+
+                        } 
+                        else {
+                            textPre = "id's "
+                            textSuf = " Materials are not a valid S/4 Material. Proceed for rest of the items ?"
+                            document.getElementById('itemsCheckMsgId').innerText = "Item "+String(textPre) + String(data) + String(textSuf); // Update modal content
+                            $('#placeOrderTargetCheck').modal('show'); // Show modal
+                        }
+                        
+                    }  
+                    else if (data == ""){
+                        $('#placeOrderTarget').modal('show'); // Show modal
+                        // orderProcess();
+                    }
+                });
+        };
+    function placeOrderStatus(){
+        location.reload();
+    }
+    </script>
+    
+    

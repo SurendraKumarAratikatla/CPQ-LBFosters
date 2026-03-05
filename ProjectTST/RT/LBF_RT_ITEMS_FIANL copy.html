@@ -1,0 +1,411 @@
+<style>
+
+    input:checked + .slider {
+        background-color: #2196F3;
+    }
+
+    input:checked + .slider:before {
+        transform: translateX(32px);
+    }
+
+    /* Optional label text next to toggle */
+    .switch-text {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 20px;
+        /*font-weight: bold;*/
+        margin-top: 3px;
+    }
+</style>
+
+<section class="row" id="Items">
+    <div id="items-section" class="clearfix fiori3-items-section" style="position: relative">
+        <div class="fiori3-quote-section-header items-section-header">
+            <h3>@Translation.Get("xsltQuoteCartProducts")&nbsp;</h3>
+            <a role="button" id="toggleAllItemsTrigger" data-bind="visible: !isEmpty(), click: toggleItemsState, css: { 'items-collapsed': areItemsCollapsed() }, tooltip: { title: '@Translation.GetJS("Cart.CollapseExpandItems")' }" class="toggle-expand-collapse-items-icon fiori3-items-expand-icon" href="#"><span class="sap-icon visible-md-inline visible-lg-inline">&#xe1c5;</span></a>
+            <div class="fiori3-product-section-action-row">
+                <div class="add-product pull-right clear-padding">
+                    <div class="fiori3-input-group">
+                        <div style="display: flex; gap: 5px; margin-bottom: -10px !important; font-size: 14px !important;">
+                            <div style="display: flex; gap: 10px;">
+                                <label class="switch">
+                                    <input type="checkbox" id="toggleEditableSwitch" style="margin-top: -1px" checked>
+                                    <span class="slider"></span>
+                                </label>
+                                <span class="switch-text">Editable</span>
+                            </div>
+
+                            <div style="display: flex; gap: 10px;">
+                                <label class="switch">
+                                    <input type="checkbox" id="toggleReadonlySwitch"  style="margin-top: -1px" checked>
+                                    <span class="slider"></span>
+                                </label>
+                                <span class="switch-text">Readonly</span>
+                            </div>
+                        </div>
+
+
+
+                        <div class="fiori3-search-input-wrapper" data-bind="visible: diplayAddProdSection">
+                            <!-- <input tabindex="0" autocomplete="off" aria-label="@Translation.Get("xsltAddItems")" id="quickAddInput" type="text" class="form-control" placeholder="@Translation.Get("xsltAddItems")" data-bind="value: quickAdd.quickAddSearch, event:{keyup:startswithfun},valueUpdate: 'afterkeyup', hasfocus: quickAdd.quickAddHasFocus, popover: { templateId: 'QuickAddTemplate', moduleFactory: QuickAddModuleFactory, trigger: 'manual', autoClose: true, placement: 'bottom' }"> -->
+                            <input tabindex="0"
+                                autocomplete="off"
+                                id="quickAddInput"
+                                type="text"
+                                class="form-control"
+                                placeholder="@Translation.Get("xsltAddItems")"
+                                data-bind="
+                                    value: quickAdd.quickAddSearch,
+                                    valueUpdate: 'afterkeydown',
+                                    event: { keyup: runStartsWithFilter },
+                                    hasfocus: quickAdd.quickAddHasFocus,
+                                    popover: {
+                                        templateId: 'QuickAddTemplate',
+                                        moduleFactory: QuickAddModuleFactory,
+                                        trigger: 'manual',
+                                        autoClose: true,
+                                        placement: 'bottom'
+                                    }">
+
+                            <span class="sap-icon">&#xe00d;</span>
+                        </div>
+                        <div class="input-group-btn">
+                            <div class="fiori3-single-action-wrapper flex">
+                                <ul class="fiori3-single-action-list flex">
+                                    <li>
+                                        <button class="btn fiori3-icon-button" data-bind="visible: showQuickConfig, click: quickAdd.quickConfig, tooltip: { title: quickAdd.quickConfigTranslation }"><span class="sap-icon">&#xe0a6;</span></button>
+                                    </li>
+                                    <!-- ko if: $root.showBulkValidation -->
+                                    <li>
+                                        <a href="/quotation/BulkValidation.aspx" class="fiori3-icon-button" data-bind="tooltip: { title: '@Translation.GetJS("BulkValidation.Title")' }">
+                                            <span class="sap-icon">&#xe1b0;</span>
+                                        </a>
+                                    </li>
+                                    <!-- /ko -->
+                                    <li>
+                                        <a class="fiori3-icon-button" data-bind="visible: diplayAddProdSection, attr: { href: quickAdd.searchCatalogUrl }, tooltip: { title: '@Translation.GetJS("Cart.BrowseCatalog")' }" aria-label="@Translation.GetJS("Cart.BrowseCatalog")"><span class="sap-icon">&#xe011;</span></a>
+                                    </li>
+                                    <!-- ko if: $root.useNewQuoteEngine -->
+                                    <li>
+                                        <button id="itemsFilter" class="btn fiori3-icon-button" data-bind="click: toggleFilterEditor, tooltip: { title: 'Filter Items' }, visible: !isEmpty()"><span class="sap-icon">&#xe076;</span></button>
+                                    </li>
+                                    <li>
+                                        <button class="btn fiori3-icon-button" data-bind="enable: isAnyItemSelectedNewQuoteEngine(), visible: !isEmpty() && diplayAddProdSection, css: { 'disabled': !isAnyItemSelectedNewQuoteEngine() }, click: copySelectedItems, tooltip: { title: '@Translation.GetJS("Cart.CopySelectedItems")' }"><span class="sap-icon">&#xe245;</span></button>
+                                    </li>
+                                    <li>
+                                        <button class="btn fiori3-icon-button" data-bind="enable: isAnyItemSelectedNewQuoteEngine(), visible: !isEmpty() && diplayAddProdSection, css: { 'disabled': !isAnyItemSelectedNewQuoteEngine() }, click: deleteSelectedItems, tooltip: { title: '@Translation.GetJS("Cart.DeleteSelectedItems")' }"><span class="sap-icon">&#xe03d;</span></button>
+                                    </li>
+                                    <!-- /ko -->
+                                    <li>
+                                        <button class="btn fiori3-icon-button" data-bind="enable: isAnyItemSelected(), visible: !isEmpty() && !$root.useNewQuoteEngine && diplayAddProdSection, css: { 'disabled': !isAnyItemSelected() }, click: deleteSelectedItems, tooltip: { title: '@Translation.GetJS("Cart.DeleteSelectedItems")' }"><span class="sap-icon">&#xe03d;</span></button>
+                                    </li>
+                                    <li>
+                                        <button class="btn fiori3-icon-button" data-bind="enable: isAnyItemSelected(), visible: !isEmpty() && isItemTypeEditable() && !$root.useNewQuoteEngine && diplayAddProdSection, css: { 'disabled': !isAnyItemSelected() }, popover: { templateId: 'ItemsTypeEditTemplate', autoClose: true, placement: 'top' }, tooltip: { title: '@Translation.GetJS("Cart.SetItemType")' }"><span class="sap-icon">&#xe224;</span></button>
+                                    </li>
+                                    <li>
+                                        <button class="btn btn-secondary fiori3-btn-secondary btn-xs" data-bind="click: updateCartItems, visible: canManageItems(), tooltip: { title: '@Translation.GetJS("Cart.Reorder")' }">@Translation.GetJS("Cart.Reorder")</button>
+                                    </li>
+                                    <li>
+                                        <button class="btn btn-secondary fiori3-btn-secondary btn-xs" data-bind="click: replaceCartItems, visible: canManageItems() && canReplaceItems(), tooltip: { title: '@Translation.GetJS("Cart.Replace")' }">@Translation.GetJS("Cart.Replace")</button>
+                                    </li>
+                                    <li>
+                                        <button class="btn fiori3-icon-button" data-bind="click: toggleCanManageItems, visible: !isEmpty() && !isInViewMode() && !$root.useNewQuoteEngine, tooltip: { title: '@Translation.GetJS("Cart.ManageItems")'}"><span class="sap-icon">&#xe1b7;</span></button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <script type="text/html" id="ItemsTypeEditTemplate">
+                            <div class="item-type-popover">
+                                <ul class="chckqty">
+                                    <li>
+                                        <label class="fiori3-radio-button">
+                                            <input type="radio" name="itemsType" value="0" data-bind="checked: selectedItemsType">
+                                            <span>@Translation.Get("ItemType.Base.Label")</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="fiori3-radio-button">
+                                            <input type="radio" name="itemsType" value="3" data-bind="checked: selectedItemsType">
+                                            <span>@Translation.Get("ItemType.Optional.Label")</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                                <div class="center">
+                                    <button class="btn btn-primary fiori3-btn-primary" data-bind="click: changeItemsType">@Translation.Get("ItemTypes.Save")</button>
+                                    <button class="btn btn-tertiary fiori3-btn-tertiary" data-bind="click: close">@Translation.Get("ItemTypes.Cancel")</button>
+                                </div>
+                            </div>
+                        </script>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="items-container" class="clearfix col-md-12 fiori3-quote-section-container fiori3-items-container">
+            <div class="fiori3-input-group search-items add-product col-sm-12 clear-padding" data-bind="style: { display: areItemsPaged() && isMobile() ? 'block' : 'none' }">
+                <input id="searchInput1" type="text" class="form-control" placeholder="@Translation.Get("RD.Cart.SearchItems")" tabindex="51" data-bind="value: itemsSearch.search, valueUpdate: 'afterkeydown', hasfocus: itemsSearch.hasFocus, popover: { templateId: 'ItemsSearchTemplate', moduleFactory: ItemsSearchModuleFactory, trigger: 'manual', autoClose: true, placement: 'bottom' }">
+            </div>
+            <div class="quote-filter-pills-container col-md-12 fiori3-pills-container" style="display: none; padding-right: 250px" data-bind="visible: displayFilterPills().length">
+                <ul>
+                    <!-- ko foreach: displayFilterPills -->
+                    <li>
+                        <span class="fiori3-pills">
+                            <span id="labelFilter" style="padding: 0 5px;" data-bind="text: label + ':'"></span>
+                            <span id="valueFilter" style="padding: 0 5px;font-weight: bold" data-bind="text: displayValue()"></span>
+                            <a role="button" href="#" class="sap-icon" data-bind="click: $root.removeFilterCriteria, tooltip: { title: '@Translation.Get("QuoteList.RemoveFilter")' }, attr: { 'aria-labelledby': 'labelFilter valueFilter', id: label + '_' + displayValue() }">&#xe03e;</a>
+                        </span>
+                    </li>
+                    <!-- /ko -->
+                    <li>
+                        <a role="button" class="close-filter-pill" href="#" data-bind="visible: displayFilterPills().length, click: clearFilters">@Translation.Get("QuoteList.ClearFilters")</a>
+                    </li>
+                </ul>
+        
+                <div class="filtered-total-value">@Translation.Get("QuoteItemsFilter.FilteredTotalAmount") <!-- ko text: $root.filteredTotalAmount() --><!-- /ko --></div>
+            </div>
+            <div class="clearfix"></div>
+            <div style="display: none" data-bind="visible: isEmpty() && !itemsLoading()">
+                <div class="alert alert-warning">
+                    @Translation.Get("View.Items.CartIsEmpty")
+                </div>
+            </div>
+        @Html.Action("GetItemTableView")
+        </div>
+    </div>
+</section>
+<script>
+
+   function runStartsWithFilter() {
+    try {
+        console.log("runStartsWithFilter : Searching for:");
+
+        let input = document.getElementById("quickAddInput");
+        if (!input) return;
+
+        let search = input.value.trim().toLowerCase();
+        console.log("Searching:", search);
+
+        if (!search) return;
+
+        let ctx = ko.contextFor(input);
+        if (!ctx || !ctx.$root || !ctx.$root.quickAdd) return;
+
+        let model = ctx.$root.quickAdd;
+        console.log("model quickAddProducts result:", model);
+
+        let modellist = model.quickAddProducts();
+
+        // Call backend custom script
+        cpq.server.executeScript("LBF_GS_QuickAddPorducts", { searchval: search, mainmodel:modellist }, function (backendList) {
+            console.log("Backend list:", backendList);
+
+            // if (!Array.isArray(backendList) || backendList.length === 0) {
+            //     console.log("No backend results");
+            //     model.quickAddProducts([]);
+            //     return;
+            // }
+
+            // let listresult = [];
+
+            //  // Create new observable if not already created
+            // // if (!model.quickAddProductsStartsWith) {
+            // model.quickAddProductsStartsWith = ko.observableArray([]);
+            // // }
+
+            // // Loop backend data → one call per productName
+            // for (let i = 0; i < backendList.length; i++) {
+            //     let prodName = backendList[i];   // ✔ correct item
+            //     console.log("Calling QuickAdd for:", prodName);
+
+            //     $.ajax({
+            //         url: "/api/rd/v1/Catalog/GetQuickAdd",
+            //         method: "GET",
+            //         data: { search: prodName },
+            //         success: function (res) {
+            //             if (res?.Products?.length) {
+            //                 listresult.push(res.Products[0]);
+            //             }
+            //         }
+            //     });
+            // }
+
+            // console.log("Final merged backend result:", listresult);
+
+            // Update Knockout
+            // model.quickAddProducts(listresult);
+            // model.quickAddProductsStartsWith(listresult);
+
+        });
+
+    } catch (err) {
+        console.error("StartsWith Filter Error:", err);
+    }
+}
+
+    let hasFunctionBeenCalled = false;
+    
+    function UpdateUom(x) {
+    // done
+    document.querySelectorAll("#itemsTable td[data-title='Target.UoM']").forEach(function (td) {
+            const link = td.querySelector(".editable-column"); // Get the <a> tag inside the column
+            if (link && (link.textContent.trim() === "FT" || link.textContent.trim() === "EA") ) {
+                link.style.pointerEvents = "none"; // Disable clicking
+                link.style.color = "gray"; // Make it visually disabled
+                link.style.cursor = "not-allowed"; // Show disabled cursor
+                link.removeAttribute("title"); // Remove tooltip
+            }
+        });
+    //console.log(x);
+    document.querySelectorAll("#itemTable td").forEach(function (td) {
+            //console.log("hello")
+        // Find the <a> tag inside the specific column
+        let link = td.querySelector(".editable-column");
+        if (link && link.textContent.trim() === "FT") {
+            link.style.pointerEvents = "none"; // Disable click
+            link.style.color = "gray"; // Make it look disabled
+            link.style.cursor = "not-allowed"; // Change cursor to indicate it's disabled
+            link.removeAttribute("title"); // Remove the tooltip
+        }
+    });
+    
+    
+    let currentRow = x[1];
+    let itemNumber = $(currentRow).find('.item-part-number').text().trim();
+        //console.log(itemNumber);
+    
+    // Cache all <td> elements once to avoid multiple DOM queries
+    let tdElements = $(currentRow).find('td');
+    
+    let currencyValue = '';
+    
+    // Iterate over each <td> in the current row and check for 'Currency' data-title
+    tdElements.each(function() {
+        let dataTitle = $(this).attr('data-title');
+        
+        if (dataTitle === 'Currency') {
+            currencyValue = $(this).find('select option:selected').text().trim();
+            
+            if (!currencyValue) {
+                currencyValue = $(this).text().trim();
+            }
+            //console.log('Currency Value:', currencyValue);
+        }
+    });
+
+    // Common function to disable anchor and input elements
+    function disableElement(td, shouldDisableInput = false) {
+        td.find('a').css({
+            'border-bottom': '0',
+            'color': '#737373',
+            'pointer-events': 'none'
+        });
+        let anchor = td.find('a');
+        
+        // Change the text inside the <a> tag if a new value is provided
+        
+            anchor.text(0);
+        
+        if (shouldDisableInput) {
+            td.find('input').prop('disabled', true).val('0');
+        }
+    }
+
+    // If the currency is 'CAD', disable specific columns
+    if (currencyValue === 'CAD') {
+        //console.log('Hello inside condition');
+        
+        tdElements.each(function() {
+            let dataTitle = $(this).attr('data-title');
+            
+            // Disable certain columns for 'CAD' currency
+            if (['Interco.Markup%', 'Forex', 'Sell price (USD)', "Interco.Price"].includes(dataTitle)) {
+                disableElement($(this), true);
+                //console.log(`Disabled ${dataTitle} column for Item Number: ${itemNumber} due to CAD currency`);
+            }
+        });
+    }
+    // Log the itemNumber for debugging
+    console.log('Item Number:', itemNumber);
+    if (['7'].includes(itemNumber[0]?.toLowerCase())) {
+        if (currencyValue === 'CAD') {
+        console.log('Hello inside condition');
+        
+        tdElements.each(function() {
+            let dataTitle = $(this).attr('data-title');
+            
+            // Disable certain columns for 'CAD' currency
+            if (['Interco.Markup%', 'Forex', 'Sell price (USD)', "Interco.Price", "Power Curve Cost Ratio", "PartCost@20"].includes(dataTitle)) {
+                disableElement($(this), true);
+                //console.log(`Disabled ${dataTitle} column for Item Number: ${itemNumber} due to CAD currency`);
+            }
+        });
+    }
+        if (currencyValue === 'USD') {
+        tdElements.each(function() {
+            let dataTitle = $(this).attr('data-title');
+
+            // Disable UoM and other specific columns
+            if (['Power Curve Cost Ratio', 'PartCost@20', 'Interco.Markup%', 'Forex', 'Interco.Price', 'Sell Price (CAD)'].includes(dataTitle)) {
+                disableElement($(this), dataTitle !== 'Power Curve Cost Ratio');
+                //console.log(`Disabled UoM/Forex for Item Number: ${itemNumber} and data-title: ${dataTitle}`);
+            }
+        });
+    }
+    }
+
+    // Check if the itemNumber does not start with 'r' or 'b'
+    if (!['r', 'b', '7'].includes(itemNumber[0]?.toLowerCase())) {
+        tdElements.each(function() {
+            let dataTitle = $(this).attr('data-title');
+
+            // Disable UoM and other specific columns
+            if (['Power Curve Cost Ratio', 'PartCost@20', 'Interco.Markup%', 'Forex', 'Interco.Price'].includes(dataTitle)) {
+                disableElement($(this), dataTitle !== 'Power Curve Cost Ratio');
+                //console.log(`Disabled UoM/Forex for Item Number: ${itemNumber} and data-title: ${dataTitle}`);
+            }
+            
+        });
+        
+    }
+}
+    cpq.events.sub("catalog:updated", function () {
+    
+});
+
+function isAnyItemSelected() {
+    return $("#itemsTable input[type=checkbox]:checked").length > 0;
+}
+
+function isAnyItemSelectedNewQuoteEngine() {
+    return $("#itemsTable input[type=checkbox]:checked").length > 0;
+}
+
+
+// Recompute whenever checkboxes change
+$(document).on("change", "#itemsTable input[type=checkbox]", function () {
+    let selectedCount = $("#itemsTable input[type=checkbox]:checked").length;
+
+    if (selectedCount > 0) {
+        // Enable buttons
+        $(".fiori3-icon-button[data-bind*='copySelectedItems']").removeClass("disabled").prop("disabled", false);
+        $(".fiori3-icon-button[data-bind*='deleteSelectedItems']").removeClass("disabled").prop("disabled", false);
+    } else {
+        // Disable buttons
+        $(".fiori3-icon-button[data-bind*='copySelectedItems']").addClass("disabled").prop("disabled", true);
+        $(".fiori3-icon-button[data-bind*='deleteSelectedItems']").addClass("disabled").prop("disabled", true);
+    }
+});
+
+
+function startswithfun(){
+    console.log("ran starts with funciton...")
+    console.log($(this))
+}
+
+</script>
+
+
+@Html.PartialWithNameAsComment("Templates/QuickAddTemplate")
+@Html.PartialWithNameAsComment("Templates/ItemsSearchTemplate")
+

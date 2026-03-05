@@ -1,5 +1,6 @@
 selected_market = context.Quote.SelectedMarket
 selected_market_code = selected_market.Code
+
 quoteNumber = context.Quote.QuoteNumber
 quote = QuoteHelper.Get(str(quoteNumber))
 
