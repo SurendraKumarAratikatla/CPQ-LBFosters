@@ -1,3 +1,4 @@
+# adding comments this script will copy line items from reference quote to current quote based on the quote number entered in the custom field "LBF_CF_QuoteNumbertoCopyLines". It will first validate the reference quote number, then get the line items from reference quote and add to current quote. It will also handle the error scenarios and display appropriate messages on the quote.
 from LBF_GS_CREATEBEARERTOKEN import creating_bearer_token
 from Scripting.Quote import MessageLevel
 
